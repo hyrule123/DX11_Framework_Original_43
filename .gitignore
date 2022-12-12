@@ -401,9 +401,8 @@ FodyWeavers.xsd
 
 # Include Resources
 
-# Except Engine Folder : Used to gather header files - automatically generated at build time
-Engine/
-
+# Except External/Include Folder : Used to gather header files - automatically generated at build time
+External/Include/
 
 # imgui settings file
 # imgui.ini

@@ -39,7 +39,4 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\ClientBeforeBuildCopy.bat" />
-  </ItemGroup>
 </Project>

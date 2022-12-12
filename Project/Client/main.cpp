@@ -5,14 +5,30 @@
 #include "Client.h"
 
 
-
+#include <StaticLib\math.h>
 #pragma comment(lib, "StaticLib//StaticLib_d.lib")
-#include <StaticLib/math.h>
 
-// dll 암시적 링크5
-#pragma comment(lib, "DynamicLib/DynamicLib_d.lib")
-#include <DynamicLib/math_dll.h>
+// dll 암시적 링크
+#include <DynamicLib\math_dll.h>
+//#pragma comment(lib, "DynamicLib//DynamicLib_d.lib")
 
+
+
+
+
+// Engine Library
+#include <Engine\global.h>
+#include <Engine\CEngine.h>
+
+#ifdef _DEBUG
+#pragma comment(lib, "Engine//Engine_d.lib")
+#else
+#pragma comment(lib, "Engine//Engine.lib")
+#endif
+
+
+
+typedef int (*FUNC_TYPE)(int, int);
 
 #define MAX_LOADSTRING 100
 
@@ -34,14 +50,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ int       nCmdShow)
 {
     int a = Add(10, 100);
-
-    int b = Mul(100, 200);
-
+    //int b = Mul(100, 200);
 
     // Dll 명시적인 링크
-    //HMODULE hModule = LoadLibrary();
-    //hModule
-    //FreeLibrary(hModule);
+    HMODULE hModule = LoadLibrary(L"..//bin_d//DynamicLib_d.dll");    
+
+    FUNC_TYPE MulFunc = (FUNC_TYPE)GetProcAddress(hModule, "Mul");
+    int c = MulFunc(100, 2);
+
+    if(nullptr != hModule)
+        FreeLibrary(hModule);
 
 
     // 전역 문자열을 초기화합니다.
@@ -54,6 +72,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     {
         return FALSE;
     }
+
+
+    // CEngine 초기화
+    CEngine::GetInst()->init(g_hWnd, 1600, 900);
+
+
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
     MSG msg;
@@ -74,9 +98,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
         else
         {
-
+            CEngine::GetInst()->progress();
         }       
     }
+
+    
 
     return (int) msg.wParam;
 }
@@ -122,7 +148,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
-   ShowWindow(g_hWnd, nCmdShow);
+   ShowWindow(g_hWnd, false);
    UpdateWindow(g_hWnd);
 
    return TRUE;

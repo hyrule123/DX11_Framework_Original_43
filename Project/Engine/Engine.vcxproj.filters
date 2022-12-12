@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Source\00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Source\00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Source\00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Source\00. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CEngine.h">
+      <Filter>Source\01. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CSingleton.h">
+      <Filter>Source\08. Module</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="CEngine.cpp">
+      <Filter>Source\01. Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Default">
+      <UniqueIdentifier>{bf35e007-92a1-401c-bb41-cafe9c4fd5e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{f7c4fb8b-3b9f-43d1-af3b-ecee090c360c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\01. Engine">
+      <UniqueIdentifier>{cd444e0e-d969-4391-b8f7-fece5daf0bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\00. Header">
+      <UniqueIdentifier>{c5e19d51-b47f-4a43-8e10-8ff0062f5fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\02. Device">
+      <UniqueIdentifier>{769ff45f-aa32-458a-9282-19906e3c14c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager">
+      <UniqueIdentifier>{ff80abf2-a382-43db-9139-bdb15da13dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\04. Resource">
+      <UniqueIdentifier>{a860b8d2-329c-422a-a7a0-3aee123c6fac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\05. GameObject">
+      <UniqueIdentifier>{c8caa982-e753-4824-b0f1-dc97ebec0e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Comopnent">
+      <UniqueIdentifier>{687dc90e-c2c0-4507-bd5e-153a25cd4d38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\07. ShaderCode">
+      <UniqueIdentifier>{7bae9d30-a4aa-4ff1-abdc-5ed8dcbd21ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\08. Module">
+      <UniqueIdentifier>{77da0800-3a79-4f9b-aa08-9bf7e06d17d5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
