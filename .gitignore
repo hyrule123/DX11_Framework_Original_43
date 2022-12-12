@@ -362,19 +362,21 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # SVN related files
-.svn/
-*.*.r*
+.[sS][vV][nN]/
+*.*.[rR]*
 
 # Build Result
-*.exe
-*.idb
-*.lib
-*.dll
+*.[eE][xX][eE]
+*.[iI]][dD][bB]
+*.[lL][iI][bB]
+*.[dD][lL][lL]
+*.[eE][xX][pP]
+*.[iI][dD][bB]
 ## HLSL Compiled Shader
-*.cso
+*.[cC][sS][oO]
 
 ## Winmerge
-*.bak
+*.[bB][aA][kK]
 
 
 # Include External Libraries
@@ -390,23 +392,14 @@ FodyWeavers.xsd
 
 # Client2D, Editor Bin Folder
 [Bb]in/
-BinObj/
-BinObjDebug/
+[Bb]in_d/
+
 # Exclude Original Bin Folder
-!AR41Engine/Bin/
-AR41Engine/Bin/Texture
-AR41Engine/Bin/Sound
 
 
 # Exclude Editor Results
-!AR41Editor/Bin/
-AR41Editor/Bin/*
 
 # Include Resources
-!AR41Editor/Bin/Texture/
-!AR41Editor/Bin/Sound/
-!AR41Editor/Bin/Scene/
-!AR41Editor/Bin/Animation2D/
 
 # Except Engine Folder : Used to gather header files - automatically generated at build time
 Engine/
