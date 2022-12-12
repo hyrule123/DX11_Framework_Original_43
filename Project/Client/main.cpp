@@ -5,13 +5,6 @@
 #include "Client.h"
 
 
-#include <StaticLib\math.h>
-#pragma comment(lib, "StaticLib//StaticLib_d.lib")
-
-// dll 암시적 링크
-#include <DynamicLib\math_dll.h>
-//#pragma comment(lib, "DynamicLib//DynamicLib_d.lib")
-
 
 
 
@@ -21,9 +14,9 @@
 #include <Engine\CEngine.h>
 
 #ifdef _DEBUG
-#pragma comment(lib, "Engine//Engine_d.lib")
+#pragma comment(lib, "Engine//Engine_d")
 #else
-#pragma comment(lib, "Engine//Engine.lib")
+#pragma comment(lib, "Engine//Engine")
 #endif
 
 
@@ -49,18 +42,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
-    int a = Add(10, 100);
-    //int b = Mul(100, 200);
-
-    // Dll 명시적인 링크
-    HMODULE hModule = LoadLibrary(L"..//bin_d//DynamicLib_d.dll");    
-
-    FUNC_TYPE MulFunc = (FUNC_TYPE)GetProcAddress(hModule, "Mul");
-    int c = MulFunc(100, 2);
-
-    if(nullptr != hModule)
-        FreeLibrary(hModule);
-
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -73,9 +54,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-
     // CEngine 초기화
-    CEngine::GetInst()->init(g_hWnd, 1600, 900);
+    if (FAILED(CEngine::GetInst()->init(g_hWnd, 1600, 900)))
+    {
+        return 0;
+    }
 
 
 

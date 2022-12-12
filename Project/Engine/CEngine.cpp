@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CEngine.h"
 
-
+#include "CDevice.h"
 
 CEngine::CEngine()
 	: m_hWnd(nullptr)
@@ -12,7 +12,7 @@ CEngine::~CEngine()
 {
 }
 
-void CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
+int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 {
 	// 메인 윈도우 핸들
 	m_hWnd = _hWnd;
@@ -23,6 +23,13 @@ void CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	SetWindowPos(m_hWnd, nullptr, 10, 10, rt.right - rt.left, rt.bottom - rt.top, 0);
 	ShowWindow(m_hWnd, true);
 
+
+	// Device 초기화
+	if (FAILED(CDevice::GetInst()->init(m_hWnd, _iWidth, _iHeight)))
+	{
+		MessageBox(nullptr, L"Device 초기화 실패", L"에러", MB_OK);
+		return E_FAIL;
+	}
 }
 
 void CEngine::progress()
