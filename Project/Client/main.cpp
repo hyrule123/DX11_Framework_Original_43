@@ -7,9 +7,6 @@
 
 
 
-
-
-
 // Engine Library
 #include <Engine\global.h>
 #include <Engine\CEngine.h>
@@ -43,6 +40,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {
+
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);

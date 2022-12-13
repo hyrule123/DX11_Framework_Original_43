@@ -3,6 +3,8 @@
 
 #include "CDevice.h"
 
+#include "Test.h"
+
 CEngine::CEngine()
 	: m_hWnd(nullptr)
 {
@@ -31,6 +33,10 @@ int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 		MessageBox(nullptr, L"Device 초기화 실패", L"에러", MB_OK);
 		return E_FAIL;
 	}
+
+	Init();
+
+	return S_OK;
 }
 
 void CEngine::progress()
@@ -42,7 +48,7 @@ void CEngine::progress()
 
 void CEngine::tick()
 {
-
+	Tick();
 }
 
 void CEngine::render()
@@ -51,6 +57,9 @@ void CEngine::render()
 	float arrColor[4] = { 0.4f, 0.4f, 0.4f, 1.f };
 	CDevice::GetInst()->ClearTarget(arrColor);
 
+
+
+	Render();
 
 
 

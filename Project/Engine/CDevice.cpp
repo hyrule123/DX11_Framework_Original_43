@@ -68,6 +68,8 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 
     m_Context->RSSetViewports(1, &m_ViewPort);
 
+
+
     return S_OK; // E_FAIL;
 }
 
@@ -94,8 +96,7 @@ int CDevice::CreateSwapChain()
     tDesc.SampleDesc.Count = 1;
     tDesc.SampleDesc.Quality = 0;
     tDesc.Flags = 0;
-
-
+    
 
     // 스왚체인 생성
     ComPtr<IDXGIDevice>  pDXGIDevice;

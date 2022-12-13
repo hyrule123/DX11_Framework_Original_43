@@ -42,6 +42,11 @@ private:
 	int CreateView();
 
 public:
+	ID3D11Device* GetDevice() { return m_Device.Get(); }
+	ID3D11DeviceContext* GetDeviceContext() { return m_Context.Get(); }
+
+
+public:
 	CDevice();
 	~CDevice();
 };

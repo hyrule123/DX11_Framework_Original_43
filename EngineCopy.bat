@@ -1,1 +1,2 @@
 xcopy /d /s /y /i  /exclude:exclude_list.txt ".\Project\Engine\*.h" ".\External\Include\Engine\"
+xcopy /d /s /y /i  /exclude:exclude_list.txt ".\Project\Engine\SimpleMath.inl" ".\External\Include\Engine\"
