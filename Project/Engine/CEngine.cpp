@@ -15,6 +15,7 @@ CEngine::CEngine()
 
 CEngine::~CEngine()
 {
+	Release();
 }
 
 int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)

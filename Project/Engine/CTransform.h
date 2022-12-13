@@ -9,8 +9,8 @@ private:
     Vec3    m_vRelativeRot;
 
 public:
-    virtual void finaltick() override;
-    
+    virtual void finaltick() override;    
+    void UpdateData();
 
 
     CLONE(CTransform);    

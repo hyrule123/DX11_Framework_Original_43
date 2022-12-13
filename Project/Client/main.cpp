@@ -4,9 +4,6 @@
 #include "framework.h"
 #include "Client.h"
 
-
-
-
 // Engine Library
 #include <Engine\global.h>
 #include <Engine\CEngine.h>
@@ -16,8 +13,6 @@
 #else
 #pragma comment(lib, "Engine//Engine")
 #endif
-
-
 
 typedef int (*FUNC_TYPE)(int, int);
 
