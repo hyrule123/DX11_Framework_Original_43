@@ -1,22 +1,27 @@
 #pragma once
 #include "CComponent.h"
 
-class CMesh;
-class CGraphicsShader;
+
+#include "CMesh.h"
+#include "CGraphicsShader.h"
+#include "ptr.h"
+
+
+
 
 class CMeshRender :
     public CComponent
 {
 private:
-    CMesh*              m_pMesh;
-    CGraphicsShader*    m_pShader;
+    Ptr<CMesh>              m_pMesh;
+    Ptr<CGraphicsShader>    m_pShader;
 
 public:
-    void SetMesh(CMesh* _Mesh) { m_pMesh = _Mesh; }
-    void SetShader(CGraphicsShader* _Shader) { m_pShader = _Shader; }
+    void SetMesh(Ptr<CMesh> _Mesh) { m_pMesh = _Mesh; }
+    void SetShader(Ptr<CGraphicsShader> _Shader) { m_pShader = _Shader; }
 
-    CMesh* GetMesh() { return m_pMesh; }
-    CGraphicsShader* GetShader() { return m_pShader; }
+    Ptr<CMesh> GetMesh() { return m_pMesh; }
+    Ptr<CGraphicsShader>  GetShader() { return m_pShader; }
 
 
 public:

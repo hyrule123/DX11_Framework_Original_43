@@ -12,9 +12,9 @@ public:
 	static T* GetInst();
 	static void Destroy();
 
-public:
+protected:
 	CSingleton() { }
-	virtual ~CSingleton() {}
+	virtual ~CSingleton() {}	
 };
 
 template<typename T>

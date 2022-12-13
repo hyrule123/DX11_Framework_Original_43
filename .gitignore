@@ -390,15 +390,16 @@ FodyWeavers.xsd
 !fmod.dll
 
 
-# Client2D, Editor Bin Folder
-OutputFile/[Bb]in/
-OutputFile[Bb]in_d/
+# Exclude *.pdb, *.exe file from OutputFile Bin Folder
+OutputFile/[Bb]in/*
+OutputFile/[Bb]in_d/*
+
+# Include Content Files, Exclude Only Shader Files(*.fx) - will be copied after build
+!OutputFile/[Bb]in/content/
+OutputFile/[Bb]in/content/shader/
 
 # Exclude Unity cpp File
 Unity_*.cpp
-
-# Exclude Original Bin Folder
-
 
 # Exclude Editor Results
 

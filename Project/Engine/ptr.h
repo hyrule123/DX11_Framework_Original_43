@@ -8,7 +8,7 @@ private:
 
 
 public:
-	T* Get() { return m_Res; }
+	T* Get() const { return m_Res; }
 
 	T* operator -> ()
 	{
@@ -36,6 +36,27 @@ public:
 		if (nullptr != m_Res)
 			m_Res->AddRef();
 	}
+
+	bool operator == (T* _Other)
+	{
+		return m_Res == _Other;			
+	}
+
+	bool operator != (T* _Other)
+	{
+		return m_Res != _Other;
+	}
+
+	bool operator == (const Ptr<T>& _Other)
+	{
+		return m_Res == _Other.m_Res;
+	}
+
+	bool operator != (const Ptr<T>& _Other)
+	{
+		return m_Res != _Other.m_Res;
+	}
+
 
 
 public:
@@ -67,3 +88,17 @@ public:
 		}
 	}
 };
+
+
+template<typename T>
+bool operator == (void* _Res, const Ptr<T>& _Ptr)
+{
+	return _Res == _Ptr.Get();
+}
+
+template<typename T>
+bool operator != (void* _Res, const Ptr<T>& _Ptr)
+{
+	return _Res != _Ptr.Get();
+}
+

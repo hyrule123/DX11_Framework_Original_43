@@ -6,8 +6,8 @@
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
 #include "CResMgr.h"
+#include "CLevelMgr.h"
 
-#include "Test.h"
 
 CEngine::CEngine()
 	: m_hWnd(nullptr)
@@ -16,7 +16,7 @@ CEngine::CEngine()
 
 CEngine::~CEngine()
 {
-	Release();
+
 }
 
 int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
@@ -45,10 +45,7 @@ int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	CKeyMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
 	CResMgr::GetInst()->init();
-
-
-
-	Init();
+	CLevelMgr::GetInst()->init();		
 
 	return S_OK;
 }
@@ -64,10 +61,9 @@ void CEngine::tick()
 {
 	// Manager Tick
 	CTimeMgr::GetInst()->tick();
-	CKeyMgr::GetInst()->tick();
+	CKeyMgr::GetInst()->tick();	
 
-
-	Tick();
+	CLevelMgr::GetInst()->tick();
 }
 
 void CEngine::render()
@@ -80,8 +76,7 @@ void CEngine::render()
 	CDevice::GetInst()->ClearTarget(arrColor);
 
 
-
-	Render();
+	CLevelMgr::GetInst()->render();
 
 
 

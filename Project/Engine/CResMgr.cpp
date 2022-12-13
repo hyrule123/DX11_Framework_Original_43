@@ -14,7 +14,8 @@ CResMgr::~CResMgr()
 
 void CResMgr::init()
 {
-	
+	CreateDefaultMesh();
+	CreateDefaultGraphicsShader();
 }
 
 void CResMgr::CreateDefaultMesh()
@@ -64,8 +65,15 @@ void CResMgr::CreateDefaultMesh()
 
 void CResMgr::CreateDefaultGraphicsShader()
 {
-	// Shader »ý¼º
-	//g_pShader = new CGraphicsShader;
-	//g_pShader->CreateVertexShader(L"shader\\test.fx", "VS_Test");
-	//g_pShader->CreatePixelShader(L"shader\\test.fx", "PS_Test");
+	Ptr<CGraphicsShader> pShader = nullptr;
+
+	// ===========
+	// Test Shader
+	// ===========
+	pShader = new CGraphicsShader;
+	pShader->SetKey(L"TestShader");
+	pShader->CreateVertexShader(L"shader\\test.fx", "VS_Test");
+	pShader->CreatePixelShader(L"shader\\test.fx", "PS_Test");
+
+	m_arrRes[(UINT)RES_TYPE::GRAPHICS_SHADER].insert(make_pair(pShader->GetKey(), pShader.Get()));
 }
