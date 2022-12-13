@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "Test.h"
 
+#include "CGameObject.h"
+#include "CTransform.h"
+#include "CMeshRender.h"
+
 #include "CDevice.h"
 #include "CPathMgr.h"
 #include "CTimeMgr.h"
@@ -24,14 +28,41 @@ ComPtr<ID3D11PixelShader>	g_PS;
 ComPtr<ID3D11InputLayout>	g_Layout;
 
 
-
 // Vertex 
 Vtx		g_arrVtx[4] = {};
 UINT	g_arrIdx[6] = {};
 
+Vec4    g_PlayerPos;
+
+
+CGameObject* g_Obj = nullptr;
+
 
 void Init()
 {
+	// 오브젝트 생성
+	g_Obj = new CGameObject;
+	g_Obj->AddComponent(new CTransform);
+	g_Obj->AddComponent(new CMeshRender);
+
+
+
+
+	// 상수버퍼 생성
+	// 16바이트 단위 메모리 정렬
+	D3D11_BUFFER_DESC tBufferDesc = {};
+
+	tBufferDesc.ByteWidth = sizeof(Vec4);
+	tBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	tBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	tBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;	
+	
+	if (FAILED(DEVICE->CreateBuffer(&tBufferDesc, nullptr, g_CB.GetAddressOf())))
+	{
+		assert(nullptr);
+	}
+
+
 	// 0 --- 1 
 	// |  \  |
 	// 3 --- 2
@@ -48,14 +79,14 @@ void Init()
 	g_arrVtx[3].vColor = Vec4(0.f, 0.f, 0.f, 1.f);
 
 
-	D3D11_BUFFER_DESC tBufferDesc = {};
+	
 
 	// 정점 저장용도
 	tBufferDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
 
 	// SystemMemroy 에서 수정 가능한 버퍼
-	tBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-	tBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	tBufferDesc.CPUAccessFlags = 0;
+	tBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 
 	// 버퍼 크기
 	tBufferDesc.ByteWidth = sizeof(Vtx) * 4;
@@ -160,7 +191,7 @@ void Tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			g_arrVtx[i].vPos.y += DT * 1.f;
+			g_PlayerPos.y += DT * 1.f;
 		}
 	}
 
@@ -168,7 +199,7 @@ void Tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			g_arrVtx[i].vPos.y -= DT * 1.f;
+			g_PlayerPos.y -= DT * 1.f;
 		}
 	}
 
@@ -176,7 +207,7 @@ void Tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			g_arrVtx[i].vPos.x -= DT * 1.f;
+			g_PlayerPos.x -= DT * 1.f;
 		}
 	}
 
@@ -184,16 +215,17 @@ void Tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			g_arrVtx[i].vPos.x += DT * 1.f;
+			g_PlayerPos.x += DT * 1.f;
 		}
 	}	
 
-	// g_arrVtx ==> g_VB
-	D3D11_MAPPED_SUBRESOURCE tSubRes = {};
-
-	CONTEXT->Map(g_VB.Get(), 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &tSubRes);
-	memcpy(tSubRes.pData, g_arrVtx, sizeof(Vtx) * 4);	
-	CONTEXT->Unmap(g_VB.Get(), 0);
+	// g_PlayerPos ==> g_CB
+	D3D11_MAPPED_SUBRESOURCE tSubRes = {};	
+	if (!FAILED(CONTEXT->Map(g_CB.Get(), 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &tSubRes)))
+	{
+		memcpy(tSubRes.pData, &g_PlayerPos, sizeof(Vec4));
+		CONTEXT->Unmap(g_CB.Get(), 0);
+	}	
 }
 
 void Render()
@@ -207,6 +239,9 @@ void Render()
 	CONTEXT->IASetInputLayout(g_Layout.Get());
 	CONTEXT->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
+	CONTEXT->VSSetConstantBuffers(0, 1, g_CB.GetAddressOf());
+
+
 	CONTEXT->VSSetShader(g_VS.Get(), nullptr, 0);
 	CONTEXT->PSSetShader(g_PS.Get(), nullptr, 0);
 
@@ -215,5 +250,5 @@ void Render()
 
 void Release()
 {
-
+	delete g_Obj;
 }
