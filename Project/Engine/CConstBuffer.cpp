@@ -37,3 +37,29 @@ void CConstBuffer::Create(UINT _iElementSize, UINT _iElementCount)
 	}
 }
 
+void CConstBuffer::SetData(void* _pSrc, UINT _iSize)
+{
+	// 크기가 지정되지 않은 데이터는 상수버퍼 크기로 본다.
+	UINT size = _iSize;
+	if (0 == _iSize)
+	{
+		size = m_iElementSize* m_iElementCount;
+	}
+
+	// 상수버퍼 크기보다 더 큰 데이터가 입력으로 들어온 경우
+	assert(!(size > m_iElementSize * m_iElementCount));
+
+	// SysMem -> GPU Mem
+	D3D11_MAPPED_SUBRESOURCE tSubRes = {};
+	if (!FAILED(CONTEXT->Map(m_CB.Get(), 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &tSubRes)))
+	{
+		memcpy(tSubRes.pData, _pSrc, _iSize);
+		CONTEXT->Unmap(m_CB.Get(), 0);
+	}
+}
+
+void CConstBuffer::UpdateData()
+{
+	CONTEXT->VSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
+}
+

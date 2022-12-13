@@ -15,7 +15,7 @@ CPathMgr::~CPathMgr()
 
 void CPathMgr::init()
 {
-	GetCurrentDirectory(256, m_szContentPath);	
+	GetCurrentDirectory(256, m_szContentPath);
 
 	// 상위폴더로 감
 	int iLen = (int)wcslen(m_szContentPath);
@@ -36,5 +36,6 @@ void CPathMgr::init()
 	}
 
 	// + bin\\content
-	wcscat_s(m_szContentPath, L"\\OutputFile\\bin\\content\\");		
+	wcscat_s(m_szContentPath, L"\\OutputFile\\bin\\content\\");
 }
+

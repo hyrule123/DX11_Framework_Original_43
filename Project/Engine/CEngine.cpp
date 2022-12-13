@@ -5,6 +5,7 @@
 #include "CPathMgr.h"
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
+#include "CResMgr.h"
 
 #include "Test.h"
 
@@ -43,7 +44,7 @@ int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	CPathMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
-
+	CResMgr::GetInst()->init();
 
 
 

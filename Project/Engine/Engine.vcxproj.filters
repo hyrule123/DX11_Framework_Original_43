@@ -68,6 +68,24 @@
     <ClInclude Include="CGraphicsShader.h">
       <Filter>Source\04. Resource\4. Shader\GraphicsShader</Filter>
     </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>Source\06. Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CConstBuffer.h">
+      <Filter>Source\02. Device\ConstBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevelMgr.h">
+      <Filter>Source\03. Manager\03. LevelMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>Source\03. Manager\04. ResMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ptr.h">
+      <Filter>Source\03. Manager\04. ResMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -118,6 +136,21 @@
     </ClCompile>
     <ClCompile Include="CGraphicsShader.cpp">
       <Filter>Source\04. Resource\4. Shader\GraphicsShader</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>Source\06. Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CConstBuffer.cpp">
+      <Filter>Source\02. Device\ConstBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevelMgr.cpp">
+      <Filter>Source\03. Manager\03. LevelMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>Source\03. Manager\04. ResMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +222,21 @@
     </Filter>
     <Filter Include="Source\06. Component\2. MeshRender">
       <UniqueIdentifier>{3dd66862-9fa0-441f-8888-fa938d05bdbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\Script">
+      <UniqueIdentifier>{ca120d65-a3f9-4d3c-9f9d-b9642fb0c222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scripts">
+      <UniqueIdentifier>{e03b309e-cd1a-4fc9-bde6-af05087411c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\02. Device\ConstBuffer">
+      <UniqueIdentifier>{57b55dc8-c509-4d81-8671-8f3269f50b93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager\03. LevelMgr">
+      <UniqueIdentifier>{b1764c9e-7279-4948-b236-fc6fd24bbc07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager\04. ResMgr">
+      <UniqueIdentifier>{f1be8e7f-adbe-4ebe-bfd9-d80b27fba88a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

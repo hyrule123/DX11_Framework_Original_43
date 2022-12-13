@@ -1,5 +1,7 @@
 #pragma once
 
+
+#include <typeinfo>
 #include <assert.h>
 
 #include <wrl.h>

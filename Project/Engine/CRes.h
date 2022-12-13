@@ -36,5 +36,8 @@ public:
     virtual ~CRes();
 
     friend class CResMgr;
+
+    template<typename T>
+    friend class Ptr;
 };
 

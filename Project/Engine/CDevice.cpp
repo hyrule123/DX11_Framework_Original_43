@@ -13,6 +13,7 @@ CDevice::CDevice()
 
 CDevice::~CDevice()
 {
+    Safe_Del_Array(m_arrConstBuffer);
 }
 
 int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)

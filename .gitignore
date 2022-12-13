@@ -394,6 +394,9 @@ FodyWeavers.xsd
 OutputFile/[Bb]in/
 OutputFile[Bb]in_d/
 
+# Exclude Unity cpp File
+Unity_*.cpp
+
 # Exclude Original Bin Folder
 
 
