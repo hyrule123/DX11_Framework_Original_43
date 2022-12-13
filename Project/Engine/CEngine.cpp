@@ -3,6 +3,8 @@
 
 #include "CDevice.h"
 #include "CPathMgr.h"
+#include "CKeyMgr.h"
+#include "CTimeMgr.h"
 
 #include "Test.h"
 
@@ -38,12 +40,8 @@ int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 
 	// Manager 초기화
 	CPathMgr::GetInst()->init();
-
-
-
-
-
-
+	CKeyMgr::GetInst()->init();
+	CTimeMgr::GetInst()->init();
 
 
 
@@ -62,11 +60,19 @@ void CEngine::progress()
 
 void CEngine::tick()
 {
+	// Manager Tick
+	CTimeMgr::GetInst()->tick();
+	CKeyMgr::GetInst()->tick();
+
+
 	Tick();
 }
 
 void CEngine::render()
 {
+	CTimeMgr::GetInst()->render();
+
+
 	// 렌더링 시작
 	float arrColor[4] = { 0.4f, 0.4f, 0.4f, 1.f };
 	CDevice::GetInst()->ClearTarget(arrColor);

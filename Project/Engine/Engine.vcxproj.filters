@@ -119,7 +119,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="test.fx">
+    <FxCompile Include="..\bin\content\shader\test.fx">
       <Filter>Source\07. ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>
