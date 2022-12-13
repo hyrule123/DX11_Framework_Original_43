@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "CResMgr.h"
 
-#include "CMesh.h"
-#include "CGraphicsShader.h"
+#include "CPathMgr.h"
 
 CResMgr::CResMgr()
 {
@@ -16,6 +15,7 @@ void CResMgr::init()
 {
 	CreateDefaultMesh();
 	CreateDefaultGraphicsShader();
+	LoadDefaultTexture();
 }
 
 void CResMgr::CreateDefaultMesh()
@@ -34,18 +34,22 @@ void CResMgr::CreateDefaultMesh()
 	// 3 --- 2
 	v.vPos = Vec3(-0.5f, 0.5f, 0.5f);
 	v.vColor = Vec4(1.f, 0.f, 0.f, 1.f);
+	v.vUV = Vec2(0.f, 0.f);
 	vecVtx.push_back(v);
 
 	v.vPos = Vec3(0.5f, 0.5f, 0.5f);
 	v.vColor = Vec4(0.f, 1.f, 0.f, 1.f);
+	v.vUV = Vec2(1.f, 0.f);
 	vecVtx.push_back(v);
 
 	v.vPos = Vec3(0.5f, -0.5f, 0.5f);
 	v.vColor = Vec4(0.f, 0.f, 1.f, 1.f);
+	v.vUV = Vec2(1.f, 1.f);
 	vecVtx.push_back(v);
 
 	v.vPos = Vec3(-0.5f, -0.5f, 0.5f);
 	v.vColor = Vec4(0.f, 0.f, 0.f, 1.f);
+	v.vUV = Vec2(0.f, 1.f);
 	vecVtx.push_back(v);
 
 	vecIdx.push_back(0);
@@ -57,10 +61,8 @@ void CResMgr::CreateDefaultMesh()
 	vecIdx.push_back(2);
 
 	pMesh = new CMesh;
-	pMesh->SetKey(L"RectMesh");
-
 	pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
-	m_arrRes[(UINT)RES_TYPE::MESH].insert(make_pair(pMesh->GetKey(), pMesh.Get()));
+	AddRes(L"RectMesh", pMesh);
 }
 
 void CResMgr::CreateDefaultGraphicsShader()
@@ -75,5 +77,25 @@ void CResMgr::CreateDefaultGraphicsShader()
 	pShader->CreateVertexShader(L"shader\\test.fx", "VS_Test");
 	pShader->CreatePixelShader(L"shader\\test.fx", "PS_Test");
 
-	m_arrRes[(UINT)RES_TYPE::GRAPHICS_SHADER].insert(make_pair(pShader->GetKey(), pShader.Get()));
+	AddRes(L"TestShader", pShader);
+}
+
+void CResMgr::LoadDefaultTexture()
+{
+	/*wstring strContent = CPathMgr::GetInst()->GetContentPath();
+
+	wstring strFilePath = strContent + L"texture\\Fighter.bmp";
+	Ptr<CRes> pTexture = new CTexture;
+	pTexture->SetKey(L"PlayerTex");
+	pTexture->SetRelativePath(L"texture\\Fighter.bmp");
+	pTexture->Load(strFilePath);
+
+	m_arrRes[(UINT)RES_TYPE::TEXTURE].insert(make_pair(pTexture->GetKey(), pTexture.Get()));*/
+
+
+	Ptr<CTexture> pTexture = Load<CTexture>(L"PlayerTex", L"texture\\Fighter.bmp");
+
+
+	// t0 ¹ÙÀÎµù
+	((CTexture*)pTexture.Get())->UpdateData(0);
 }

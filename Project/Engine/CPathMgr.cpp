@@ -17,7 +17,7 @@ void CPathMgr::init()
 {
 	GetCurrentDirectory(256, m_szContentPath);
 
-	// 상위폴더로 감
+	// 2단계 상위폴더로 감
 	int iLen = (int)wcslen(m_szContentPath);
 	int SlashCount = 0;
 

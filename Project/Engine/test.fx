@@ -8,18 +8,23 @@ cbuffer TRANSFORM : register(b0)
     float4 vPlayerPos;
 };
 
+Texture2D g_tex_0 : register(t0);
+
+SamplerState g_sam_0 : register(s0);
 
 // VS 입력 구조체
 struct VS_IN
 {   
     float3 vPos     : POSITION; // semantic  
     float4 vColor   : COLOR;    
+    float2 vUV      : TEXCOORD;
 };
 
 struct VS_OUT
 {
     float4 vPosition : SV_Position;
     float4 vOutColor : COLOR;
+    float2 vOutUV    : TEXCOORD;
 };
 
 // vertex shader
@@ -27,6 +32,8 @@ struct VS_OUT
 VS_OUT VS_Test(VS_IN _in)
 {
     VS_OUT output = (VS_OUT) 0.f;
+    
+    
         
     // 입력으로 들어온 정점좌표에 상수버퍼 값을 더해서 출력
     float3 vPos = _in.vPos;
@@ -34,6 +41,7 @@ VS_OUT VS_Test(VS_IN _in)
     
     output.vPosition = float4(vPos, 1.f);
     output.vOutColor = _in.vColor;
+    output.vOutUV = _in.vUV;
     
     return output;
 }
@@ -43,7 +51,9 @@ float4 PS_Test(VS_OUT _in) : SV_Target
 {
     float4 vColor = (float4) 0.f;
         
-    vColor = _in.vOutColor;
+    // vColor = _in.vOutColor;   
+    
+    vColor = g_tex_0.Sample(g_sam_0, _in.vOutUV);    
     
     return vColor;
 }

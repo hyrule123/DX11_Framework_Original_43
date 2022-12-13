@@ -13,12 +13,18 @@ private:
 	D3D11_BUFFER_DESC		m_tIBDesc;
 	UINT					m_IdxCount;
 
-
 	void*					m_pVtxSys;
 	void*					m_pIdxSys;
 
 public:
 	void Create(void* _VtxSysMem, UINT _iVtxCount, void* _IdxSysMem, UINT _IdxCount);
+
+private:
+	virtual int Load(const wstring& _strFilePath) { return S_OK; }
+public:
+	virtual int Save(const wstring& _strRelativePath) { return S_OK; }
+
+
 	void render();
 
 private:
