@@ -14,6 +14,10 @@ private:
 
 
 public:
+    void tick();
+    void finaltick();
+
+
     void render();
 
 

@@ -21,6 +21,24 @@ CGameObject::~CGameObject()
 	Safe_Del_Array(m_arrCom);
 }
 
+void CGameObject::tick()
+{
+	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::END; ++i)
+	{
+		if (nullptr != m_arrCom[i])
+			m_arrCom[i]->tick();
+	}
+}
+
+void CGameObject::finaltick()
+{
+	for (UINT i = 0; i < (UINT)COMPONENT_TYPE::SCRIPT; ++i)
+	{
+		if (nullptr != m_arrCom[i])
+			m_arrCom[i]->finaltick();
+	}
+}
+
 void CGameObject::render()
 {
 	if (nullptr == MeshRender())

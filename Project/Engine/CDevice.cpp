@@ -2,10 +2,12 @@
 #include "CDevice.h"
 
 #include "CEngine.h"
+#include "CConstBuffer.h"
 
 CDevice::CDevice()
     : m_hWnd(nullptr)  
     , m_ViewPort{}
+    , m_arrConstBuffer{}
 {
 }
 
@@ -68,6 +70,9 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 
     m_Context->RSSetViewports(1, &m_ViewPort);
 
+
+    // 상수버퍼 생성
+    CreateConstBuffer();
 
 
     return S_OK; // E_FAIL;
@@ -163,4 +168,11 @@ void CDevice::ClearTarget(float(&_color)[4])
 {
     m_Context->ClearRenderTargetView(m_RTV.Get(), _color);
     m_Context->ClearDepthStencilView(m_DSV.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.f, 0);
+}
+
+
+void CDevice::CreateConstBuffer()
+{
+    m_arrConstBuffer[(UINT)CB_TYPE::TRANSFORM] = new CConstBuffer((UINT)CB_TYPE::TRANSFORM);
+    m_arrConstBuffer[(UINT)CB_TYPE::TRANSFORM]->Create(sizeof(Vec4), 1);
 }

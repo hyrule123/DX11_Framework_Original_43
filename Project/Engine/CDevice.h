@@ -1,5 +1,7 @@
 #pragma once
 
+class CConstBuffer;
+
 class CDevice
 	: public CSingleton<CDevice>
 {
@@ -22,7 +24,7 @@ private:
 	// ∑ª¥ı≈∏∞Ÿ «ÿªÛµµ
 	Vec2							m_vRenderResolution;
 						
-
+	CConstBuffer*					m_arrConstBuffer[(UINT)CB_TYPE::END];
 
 
 	// ID3D11RenderTargetView
@@ -40,6 +42,7 @@ public:
 private:
 	int CreateSwapChain();
 	int CreateView();
+	void CreateConstBuffer();
 
 public:
 	ID3D11Device* GetDevice() { return m_Device.Get(); }

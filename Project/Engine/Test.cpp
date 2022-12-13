@@ -4,6 +4,7 @@
 #include "CGameObject.h"
 #include "CTransform.h"
 #include "CMeshRender.h"
+#include "CPlayerScript.h"
 
 #include "CDevice.h"
 #include "CPathMgr.h"
@@ -73,6 +74,7 @@ void Init()
 	g_Obj = new CGameObject;
 	g_Obj->AddComponent(new CTransform);
 	g_Obj->AddComponent(new CMeshRender);
+	g_Obj->AddComponent(new CPlayerScript);
 
 	g_Obj->MeshRender()->SetMesh(g_RectMesh);
 	g_Obj->MeshRender()->SetShader(g_pShader);
@@ -104,50 +106,13 @@ void Init()
 
 void Tick()
 {
-	if (KEY_PRESSED(KEY::UP))
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			g_PlayerPos.y += DT * 1.f;
-		}
-	}
-
-	if (KEY_PRESSED(KEY::DOWN))
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			g_PlayerPos.y -= DT * 1.f;
-		}
-	}
-
-	if(KEY_PRESSED(KEY::LEFT))
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			g_PlayerPos.x -= DT * 1.f;
-		}
-	}
-
-	if (KEY_PRESSED(KEY::RIGHT))
-	{
-		for (int i = 0; i < 4; ++i)
-		{
-			g_PlayerPos.x += DT * 1.f;
-		}
-	}	
-
-	// g_PlayerPos ==> g_CB
-	D3D11_MAPPED_SUBRESOURCE tSubRes = {};	
-	if (!FAILED(CONTEXT->Map(g_CB.Get(), 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &tSubRes)))
-	{
-		memcpy(tSubRes.pData, &g_PlayerPos, sizeof(Vec4));
-		CONTEXT->Unmap(g_CB.Get(), 0);
-	}	
+	g_Obj->tick();
+	g_Obj->finaltick();
 }
 
 void Render()
 {
-	g_Obj->render();	
+	g_Obj->render();
 }
 
 void Release()

@@ -9,7 +9,6 @@ cbuffer TRANSFORM : register(b0)
 };
 
 
-
 // VS 입력 구조체
 struct VS_IN
 {   
