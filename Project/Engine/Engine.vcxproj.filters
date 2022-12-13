@@ -32,6 +32,15 @@
     <ClInclude Include="SimpleMath.h">
       <Filter>Source\08. Module\SimpleMath</Filter>
     </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>Source\03. Manager\01. PathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>Source\03. Manager\02. KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>Source\03. Manager\02. TimeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -47,6 +56,15 @@
       <Filter>Source\02. Device</Filter>
     </ClCompile>
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>Source\03. Manager\01. PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>Source\03. Manager\02. KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>Source\03. Manager\02. TimeMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
@@ -84,6 +102,15 @@
     </Filter>
     <Filter Include="Source\08. Module\SimpleMath">
       <UniqueIdentifier>{c3fbf7d1-977b-4a8d-916b-bc3be792b42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager\01. PathMgr">
+      <UniqueIdentifier>{2aa9b216-f75e-4630-9d44-09e348de8ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager\02. TimeMgr">
+      <UniqueIdentifier>{aa8c912d-bf14-485e-9725-ea658382287f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager\02. KeyMgr">
+      <UniqueIdentifier>{02aa0ad4-b3bd-4a3a-9f2b-86e403b21394}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -391,8 +391,8 @@ FodyWeavers.xsd
 
 
 # Client2D, Editor Bin Folder
-OutputFile/[Bb]in/
-OutputFile[Bb]in_d/
+[Bb]in/
+[Bb]in_d/
 
 # Exclude Original Bin Folder
 
