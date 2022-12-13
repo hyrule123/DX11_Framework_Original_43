@@ -29,27 +29,30 @@ void CLevelMgr::init()
 
 	// 오브젝트 생성
 	CGameObject* pObj = new CGameObject;
+	pObj->SetName(L"Player");
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);
 	pObj->AddComponent(new CPlayerScript);
 
 	Ptr<CMesh> RectMesh = CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh");
-	Ptr<CGraphicsShader> TestShader = CResMgr::GetInst()->FindRes<CGraphicsShader>(L"TestShader");
+	Ptr<CMaterial> TestMtrl = CResMgr::GetInst()->FindRes<CMaterial>(L"TestMtrl");
+	Ptr<CTexture> PlayerTex = CResMgr::GetInst()->FindRes<CTexture>(L"PlayerTex");
+
+	TestMtrl->SetTexParam(TEX_0, PlayerTex);
 
 	pObj->MeshRender()->SetMesh(RectMesh);
-	pObj->MeshRender()->SetShader(TestShader);
+	pObj->MeshRender()->SetMaterial(TestMtrl);
 
 	m_pCurLevel->AddGameObject(pObj, 0);
 
-
-
-
+	// Test Object
 	pObj = new CGameObject;
+	pObj->SetName(L"Test Object");
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);	
 
 	pObj->MeshRender()->SetMesh(RectMesh);
-	pObj->MeshRender()->SetShader(TestShader);
+	pObj->MeshRender()->SetMaterial(TestMtrl);
 
 	m_pCurLevel->AddGameObject(pObj, 1);
 }

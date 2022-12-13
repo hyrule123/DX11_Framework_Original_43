@@ -28,7 +28,8 @@ public:
 
 
 public:
-    void UpdateData(int _iRegisterNum);
+    // _PipelineStage : PIPELINE_STAGE
+    void UpdateData(int _iRegisterNum, int _PipelineStage);
 
 private:
     virtual void UpdateData() override;

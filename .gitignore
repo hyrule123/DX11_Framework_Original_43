@@ -378,17 +378,8 @@ FodyWeavers.xsd
 ## Winmerge
 *.[bB][aA][kK]
 
-
-# Include External Libraries
-##DirectXTex
-!DirectXTex.lib
-!DirectXTex_Debug.lib
-##fmod
-!fmod_vc.lib
-!fmod64_vc.lib
-!fmod64.dll
-!fmod.dll
-
+# Except External/*/Engine Folder : Used to gather header files - automatically generated at build time
+External/*/Engine/
 
 # Exclude *.pdb, *.exe file from OutputFile Bin Folder
 OutputFile/[Bb]in/*
@@ -405,8 +396,7 @@ Unity_*.cpp
 
 # Include Resources
 
-# Except External/*/Engine Folder : Used to gather header files - automatically generated at build time
-External/*/Engine/
+
 
 
 # imgui settings file

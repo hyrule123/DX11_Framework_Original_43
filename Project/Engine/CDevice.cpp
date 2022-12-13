@@ -72,6 +72,14 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
     m_Context->RSSetViewports(1, &m_ViewPort);
 
 
+    // 샘플러 생성
+    if (FAILED(CreateSampler()))
+    {
+        MessageBox(nullptr, L"샘플러 생성 실패", L"Device 초기화 에러", MB_OK);
+        return E_FAIL;
+    }
+
+
     // 상수버퍼 생성
     CreateConstBuffer();
 
@@ -164,6 +172,37 @@ int CDevice::CreateView()
     return S_OK;
 }
 
+int CDevice::CreateSampler()
+{
+    D3D11_SAMPLER_DESC tSamDesc = {};
+
+    tSamDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+    tSamDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+    tSamDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+    tSamDesc.Filter   = D3D11_FILTER_ANISOTROPIC;    
+    DEVICE->CreateSamplerState(&tSamDesc, m_Sampler[0].GetAddressOf());
+
+    tSamDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+    tSamDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+    tSamDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+    tSamDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+    DEVICE->CreateSamplerState(&tSamDesc, m_Sampler[1].GetAddressOf());
+
+    CONTEXT->VSSetSamplers(0, 1, m_Sampler[0].GetAddressOf());
+    CONTEXT->HSSetSamplers(0, 1, m_Sampler[0].GetAddressOf());
+    CONTEXT->DSSetSamplers(0, 1, m_Sampler[0].GetAddressOf());
+    CONTEXT->GSSetSamplers(0, 1, m_Sampler[0].GetAddressOf());
+    CONTEXT->PSSetSamplers(0, 1, m_Sampler[0].GetAddressOf());
+
+    CONTEXT->VSSetSamplers(1, 1, m_Sampler[1].GetAddressOf());
+    CONTEXT->HSSetSamplers(1, 1, m_Sampler[1].GetAddressOf());
+    CONTEXT->DSSetSamplers(1, 1, m_Sampler[1].GetAddressOf());
+    CONTEXT->GSSetSamplers(1, 1, m_Sampler[1].GetAddressOf());
+    CONTEXT->PSSetSamplers(1, 1, m_Sampler[1].GetAddressOf());
+
+    return S_OK;
+}
+
 
 void CDevice::ClearTarget(float(&_color)[4])
 {
@@ -176,4 +215,7 @@ void CDevice::CreateConstBuffer()
 {
     m_arrConstBuffer[(UINT)CB_TYPE::TRANSFORM] = new CConstBuffer((UINT)CB_TYPE::TRANSFORM);
     m_arrConstBuffer[(UINT)CB_TYPE::TRANSFORM]->Create(sizeof(Vec4), 1);
+
+    m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL] = new CConstBuffer((UINT)CB_TYPE::MATERIAL);
+    m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL]->Create(sizeof(tMtrlConst), 1);
 }

@@ -5,6 +5,7 @@
 #include "CMesh.h"
 #include "CTexture.h"
 #include "CGraphicsShader.h"
+#include "CMaterial.h"
 
 
 class CResMgr :
@@ -20,6 +21,7 @@ public:
 private:
     void CreateDefaultMesh();
     void CreateDefaultGraphicsShader();
+    void CreateDefaultMaterial();
     void LoadDefaultTexture();
 
 public:
@@ -38,7 +40,7 @@ RES_TYPE GetResType()
 {
     const type_info& mesh = typeid(CMesh);
     //const type_info& meshdata = typeid(CMeshData);
-    //const type_info& material = typeid(CMaterial);
+    const type_info& material = typeid(CMaterial);
     const type_info& texture = typeid(CTexture);
     //const type_info& sound = typeid(CSound);
     //const type_info& prefab = typeid(CPrefab);
@@ -51,6 +53,8 @@ RES_TYPE GetResType()
         return RES_TYPE::GRAPHICS_SHADER;
     if (typeid(T).hash_code() == texture.hash_code())
         return RES_TYPE::TEXTURE;
+    if (typeid(T).hash_code() == material.hash_code())
+        return RES_TYPE::MATERIAL;
 
     return RES_TYPE::END;
 }
@@ -79,7 +83,6 @@ inline void CResMgr::AddRes(const wstring& _strKey, Ptr<T>& _Res)
     m_arrRes[(UINT)type].insert(make_pair(_strKey, _Res.Get()));
     _Res->SetKey(_strKey);
 }
-
 
 
 template<typename T>

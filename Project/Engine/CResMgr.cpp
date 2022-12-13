@@ -15,6 +15,8 @@ void CResMgr::init()
 {
 	CreateDefaultMesh();
 	CreateDefaultGraphicsShader();
+	CreateDefaultMaterial();
+
 	LoadDefaultTexture();
 }
 
@@ -80,22 +82,18 @@ void CResMgr::CreateDefaultGraphicsShader()
 	AddRes(L"TestShader", pShader);
 }
 
+void CResMgr::CreateDefaultMaterial()
+{
+	Ptr<CMaterial> pMtrl = nullptr;
+
+	// Test Material
+	pMtrl = new CMaterial;
+	pMtrl->SetShader(FindRes<CGraphicsShader>(L"TestShader"));
+	AddRes(L"TestMtrl", pMtrl);
+}
+
 void CResMgr::LoadDefaultTexture()
 {
-	/*wstring strContent = CPathMgr::GetInst()->GetContentPath();
+	Ptr<CTexture> pTexture = Load<CTexture>(L"PlayerTex", L"texture\\Fighter.bmp");	
 
-	wstring strFilePath = strContent + L"texture\\Fighter.bmp";
-	Ptr<CRes> pTexture = new CTexture;
-	pTexture->SetKey(L"PlayerTex");
-	pTexture->SetRelativePath(L"texture\\Fighter.bmp");
-	pTexture->Load(strFilePath);
-
-	m_arrRes[(UINT)RES_TYPE::TEXTURE].insert(make_pair(pTexture->GetKey(), pTexture.Get()));*/
-
-
-	Ptr<CTexture> pTexture = Load<CTexture>(L"PlayerTex", L"texture\\Fighter.bmp");
-
-
-	// t0 ¹ÙÀÎµù
-	((CTexture*)pTexture.Get())->UpdateData(0);
 }

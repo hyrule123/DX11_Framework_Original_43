@@ -53,7 +53,7 @@ void CConstBuffer::SetData(void* _pSrc, UINT _iSize)
 	D3D11_MAPPED_SUBRESOURCE tSubRes = {};
 	if (!FAILED(CONTEXT->Map(m_CB.Get(), 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &tSubRes)))
 	{
-		memcpy(tSubRes.pData, _pSrc, _iSize);
+		memcpy(tSubRes.pData, _pSrc, size);
 		CONTEXT->Unmap(m_CB.Get(), 0);
 	}
 }
@@ -61,5 +61,9 @@ void CConstBuffer::SetData(void* _pSrc, UINT _iSize)
 void CConstBuffer::UpdateData()
 {
 	CONTEXT->VSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
+	CONTEXT->HSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
+	CONTEXT->DSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
+	CONTEXT->GSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
+	CONTEXT->PSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
 }
 
