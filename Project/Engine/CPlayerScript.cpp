@@ -50,6 +50,19 @@ void CPlayerScript::tick()
 	}
 
 	Transform()->SetRelativePos(vCurPos);
+
+
+	if (KEY_PRESSED(KEY::A))
+	{
+		Vec3 vRot = Transform()->GetRelativeRot();
+		vRot.z += DT * XM_PI;
+		Transform()->SetRelativeRot(vRot);
+	}
+
+
+
+
+
 			
 	if (KEY_TAP(KEY::_1))
 	{

@@ -34,13 +34,15 @@ void CLevelMgr::init()
 	pObj->AddComponent(new CMeshRender);
 	pObj->AddComponent(new CPlayerScript);
 
-	Ptr<CMesh> RectMesh = CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh");
+	Ptr<CMesh> pMesh = CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh");
 	Ptr<CMaterial> TestMtrl = CResMgr::GetInst()->FindRes<CMaterial>(L"TestMtrl");
 	Ptr<CTexture> PlayerTex = CResMgr::GetInst()->FindRes<CTexture>(L"PlayerTex");
 
 	TestMtrl->SetTexParam(TEX_0, PlayerTex);
 
-	pObj->MeshRender()->SetMesh(RectMesh);
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.5f));
+
+	pObj->MeshRender()->SetMesh(pMesh);
 	pObj->MeshRender()->SetMaterial(TestMtrl);
 
 	m_pCurLevel->AddGameObject(pObj, 0);
@@ -51,7 +53,7 @@ void CLevelMgr::init()
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);	
 
-	pObj->MeshRender()->SetMesh(RectMesh);
+	pObj->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
 	pObj->MeshRender()->SetMaterial(TestMtrl);
 
 	m_pCurLevel->AddGameObject(pObj, 1);

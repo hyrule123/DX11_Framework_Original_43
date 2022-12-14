@@ -1,5 +1,6 @@
 #pragma once
 #include "CComponent.h"
+
 class CTransform :
     public CComponent
 {
@@ -7,6 +8,9 @@ private:
     Vec3    m_vRelativePos;
     Vec3    m_vRelativeScale;
     Vec3    m_vRelativeRot;
+
+    Matrix  m_matWorld; // 크기, 회전, 이동 정보를 합쳐놓음
+
 
 public:
     void SetRelativePos(Vec3 _vPos) { m_vRelativePos = _vPos; }

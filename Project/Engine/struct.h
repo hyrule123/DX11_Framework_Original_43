@@ -12,6 +12,15 @@ struct tVertex
 typedef tVertex Vtx;
 
 
+struct tTransform
+{
+	Matrix matWorld;
+	Matrix matView;
+	Matrix matProj;
+};
+
+
+
 struct tMtrlConst
 {
 	int arrInt[4];
