@@ -73,7 +73,11 @@ VS_OUT VS_Test(VS_IN _in)
     VS_OUT output = (VS_OUT) 0.f;
             
     // 입력으로 들어온 정점좌표에 상수버퍼 값을 더해서 출력    
-    output.vPosition = mul(float4(_in.vPos, 1.f), g_matWorld);
+    float4 vWorldPos = mul(float4(_in.vPos, 1.f), g_matWorld);
+    float4 vViewPos = mul(vWorldPos, g_matView);
+    float4 vProjPos = mul(vViewPos, g_matProj);
+       
+    output.vPosition = vProjPos;
     output.vOutColor = _in.vColor;
     output.vOutUV = _in.vUV;
     

@@ -19,6 +19,8 @@ struct tTransform
 	Matrix matProj;
 };
 
+extern tTransform g_transform;
+
 
 
 struct tMtrlConst

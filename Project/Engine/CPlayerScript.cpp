@@ -6,6 +6,7 @@
 
 
 CPlayerScript::CPlayerScript()
+	: m_fSpeed(100.f)
 {
 }
 
@@ -21,7 +22,7 @@ void CPlayerScript::tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			vCurPos.y += DT * 1.f;
+			vCurPos.y += DT * m_fSpeed;
 		}
 	}
 
@@ -29,7 +30,7 @@ void CPlayerScript::tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			vCurPos.y -= DT * 1.f;
+			vCurPos.y -= DT * m_fSpeed;
 		}
 	}
 
@@ -37,7 +38,7 @@ void CPlayerScript::tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			vCurPos.x -= DT * 1.f;
+			vCurPos.x -= DT * m_fSpeed;
 		}
 	}
 
@@ -45,21 +46,23 @@ void CPlayerScript::tick()
 	{
 		for (int i = 0; i < 4; ++i)
 		{
-			vCurPos.x += DT * 1.f;
+			vCurPos.x += DT * m_fSpeed;
 		}
 	}
 
-	Transform()->SetRelativePos(vCurPos);
+	
 
 
-	if (KEY_PRESSED(KEY::A))
+	if (KEY_PRESSED(KEY::Z))
 	{
 		Vec3 vRot = Transform()->GetRelativeRot();
-		vRot.z += DT * XM_PI;
+		vRot.y += DT * XM_PI;
 		Transform()->SetRelativeRot(vRot);
+
+		vCurPos.z += m_fSpeed * DT;
 	}
 
-
+	Transform()->SetRelativePos(vCurPos);
 
 
 

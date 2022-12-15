@@ -15,7 +15,6 @@
 #endif
 
 
-
 typedef int (*FUNC_TYPE)(int, int);
 
 #define MAX_LOADSTRING 100

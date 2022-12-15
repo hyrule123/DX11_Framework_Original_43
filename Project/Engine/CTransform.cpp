@@ -17,7 +17,7 @@ CTransform::~CTransform()
 void CTransform::finaltick()
 {
 	Matrix matScale = XMMatrixIdentity();	
-	XMMatrixScaling(m_vRelativeScale.x, m_vRelativeScale.y, m_vRelativeScale.z);
+	matScale = XMMatrixScaling(m_vRelativeScale.x, m_vRelativeScale.y, m_vRelativeScale.z);
 	
 	Matrix matRot = XMMatrixIdentity();
 	matRot = XMMatrixRotationX(m_vRelativeRot.x);
@@ -33,6 +33,9 @@ void CTransform::UpdateData()
 {
 	// 위치값을 상수버퍼에 전달 및 바인딩		
 	CConstBuffer* pTransformBuffer = CDevice::GetInst()->GetConstBuffer(CB_TYPE::TRANSFORM);
-	pTransformBuffer->SetData(&m_matWorld, sizeof(Matrix));
+
+	g_transform.matWorld = m_matWorld;
+
+	pTransformBuffer->SetData(&g_transform);
 	pTransformBuffer->UpdateData();
 }
