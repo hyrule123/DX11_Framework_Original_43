@@ -9,6 +9,9 @@ private:
     Vec3    m_vRelativeScale;
     Vec3    m_vRelativeRot;
 
+    Vec3     m_vRelativeDir[3];
+
+
     Matrix  m_matWorld; // 크기, 회전, 이동 정보를 합쳐놓음
 
 
@@ -25,6 +28,7 @@ public:
     Vec3 GetRelativeScale() { return m_vRelativeScale; }
     Vec3 GetRelativeRot() { return m_vRelativeRot; }
 
+    Vec3 GetRelativeDir(DIR_TYPE _type) { return m_vRelativeDir[(UINT)_type]; }
 
 
 

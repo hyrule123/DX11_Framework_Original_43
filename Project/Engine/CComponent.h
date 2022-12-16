@@ -25,7 +25,7 @@ public:
 public:
     CTransform* Transform() { return m_pOwner->Transform(); }
     CMeshRender* MeshRender() { return m_pOwner->MeshRender(); }
-
+    CCamera* Camera() { return m_pOwner->Camera(); }
 
 
 public:
