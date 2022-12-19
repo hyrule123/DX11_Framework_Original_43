@@ -128,6 +128,7 @@ void CResMgr::CreateDefaultGraphicsShader()
 	pShader->SetKey(L"TestShader");
 	pShader->CreateVertexShader(L"shader\\test.fx", "VS_Test");
 	pShader->CreatePixelShader(L"shader\\test.fx", "PS_Test");
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
 
 	AddRes(L"TestShader", pShader);
 }

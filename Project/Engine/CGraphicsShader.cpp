@@ -7,6 +7,9 @@
 CGraphicsShader::CGraphicsShader()
 	: CShader(RES_TYPE::GRAPHICS_SHADER)
 	, m_eTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
+	, m_RSType(RS_TYPE::CULL_BACK)
+	, m_DSType(DS_TYPE::LESS)
+	, m_BSType(BS_TYPE::DEFAULT)
 {
 }
 
@@ -94,10 +97,12 @@ void CGraphicsShader::UpdateData()
 {
 	CONTEXT->IASetInputLayout(m_Layout.Get());
 	CONTEXT->IASetPrimitiveTopology(m_eTopology);
-
+		
 	CONTEXT->VSSetShader(m_VS.Get(), nullptr, 0);
 	//CONTEXT->HSSetShader(m_HS.Get(), nullptr, 0);
 	//CONTEXT->DSSetShader(m_DS.Get(), nullptr, 0);
 	//CONTEXT->GSSetShader(m_GS.Get(), nullptr, 0);
 	CONTEXT->PSSetShader(m_PS.Get(), nullptr, 0);
+
+	CONTEXT->RSSetState(CDevice::GetInst()->GetRSState(m_RSType).Get());
 }

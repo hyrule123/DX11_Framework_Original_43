@@ -32,8 +32,6 @@ void CTransform::finaltick()
 
 	m_matWorld = matScale * matRot * matTranslation;
 
-
-
 	Vec3 vDefaultDir[3] = {
 		  Vec3(1.f, 0.f, 0.f)
 		, Vec3(0.f, 1.f, 0.f)

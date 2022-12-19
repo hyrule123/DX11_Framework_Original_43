@@ -29,8 +29,6 @@ void CLevelMgr::init()
 {
 	m_pCurLevel = new CLevel;
 
-
-
 	// Main Camera Object »ý¼º
 	CGameObject* pMainCam = new CGameObject;
 	pMainCam->SetName(L"MainCamera");

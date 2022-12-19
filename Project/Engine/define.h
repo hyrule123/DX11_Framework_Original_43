@@ -19,6 +19,10 @@
 
 
 
+
+
+
+
 enum class COMPONENT_TYPE
 {
 	// update
@@ -122,6 +126,40 @@ enum PIPELINE_STAGE
 
 	PS_ALL = PS_VERTEX | PS_HULL | PS_DOMAIN | PS_GEOMETRY | PS_PIXEL,	
 };
+
+enum class RS_TYPE
+{
+	CULL_BACK,
+	CULL_FRONT,
+	CULL_NONE,
+	WIRE_FRAME,
+	END,
+};
+
+enum class DS_TYPE
+{
+	LESS,
+	LESS_EQUAL,
+	GREATER,
+	GREATER_EQUAL,
+	NO_WRITE,			// LESS, DepthWrite X
+	NO_TEST_NO_WRITE,	// Test X, DepthWrite X
+	END,
+};
+
+
+enum class BS_TYPE
+{
+	DEFAULT,		// No Blending
+	MASK,			// Alpha Coverage
+	ALPHA_BLEND,	// Alpha °è¼ö 
+	ONE_ONE,		// 1:1 È¥ÇÕ
+	END,
+};
+
+
+
+
 
 enum class DIR_TYPE
 {

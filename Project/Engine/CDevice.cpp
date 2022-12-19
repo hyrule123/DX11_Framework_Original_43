@@ -9,6 +9,7 @@ CDevice::CDevice()
     , m_ViewPort{}
     , m_arrConstBuffer{}
 {
+
 }
 
 CDevice::~CDevice()
@@ -70,6 +71,15 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
     m_ViewPort.MaxDepth = 1.f;
 
     m_Context->RSSetViewports(1, &m_ViewPort);
+
+
+    // RasterizerState 생성
+    if (FAILED(CreateRasterizerState()))
+    {
+        MessageBox(nullptr, L"레스터라이져 스테이트 생성 실패", L"Device 초기화 에러", MB_OK);
+        return E_FAIL;
+    }
+
 
 
     // 샘플러 생성
@@ -171,6 +181,127 @@ int CDevice::CreateView()
 
     return S_OK;
 }
+
+int CDevice::CreateRasterizerState()
+{
+    m_RSState[(UINT)RS_TYPE::CULL_BACK] = nullptr;
+
+    D3D11_RASTERIZER_DESC Desc = {};
+    Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_FRONT;
+    Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
+    DEVICE->CreateRasterizerState(&Desc, m_RSState[(UINT)RS_TYPE::CULL_FRONT].GetAddressOf());
+
+    Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
+    Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
+    DEVICE->CreateRasterizerState(&Desc, m_RSState[(UINT)RS_TYPE::CULL_NONE].GetAddressOf());
+
+    Desc.CullMode = D3D11_CULL_MODE::D3D11_CULL_NONE;
+    Desc.FillMode = D3D11_FILL_MODE::D3D11_FILL_WIREFRAME;
+    DEVICE->CreateRasterizerState(&Desc, m_RSState[(UINT)RS_TYPE::WIRE_FRAME].GetAddressOf());
+
+    return S_OK;
+}
+
+int CDevice::CreateDepthStencilState()
+{
+    // Less
+    m_DSState[(UINT)DS_TYPE::LESS] = nullptr;
+
+    // Less Equal
+    D3D11_DEPTH_STENCIL_DESC Desc = {};
+    Desc.DepthEnable = true;
+    Desc.DepthFunc = D3D11_COMPARISON_LESS_EQUAL;
+    Desc.StencilEnable = false;
+    Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::LESS_EQUAL].GetAddressOf());
+    
+    // Greater
+    Desc.DepthEnable = true;
+    Desc.DepthFunc = D3D11_COMPARISON_GREATER;
+    Desc.StencilEnable = false;
+    Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::GREATER].GetAddressOf());
+
+    // Greater Equal
+    Desc.DepthEnable = true;
+    Desc.DepthFunc = D3D11_COMPARISON_GREATER_EQUAL;
+    Desc.StencilEnable = false;
+    Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::GREATER_EQUAL].GetAddressOf());
+
+    // No Write
+    Desc.DepthEnable = true;
+    Desc.DepthFunc = D3D11_COMPARISON_LESS;
+    Desc.StencilEnable = false;
+    Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+    DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::NO_WRITE].GetAddressOf());
+
+    // NoTest NoWrite
+    Desc.DepthEnable = false;    
+    Desc.StencilEnable = false;
+    Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+    DEVICE->CreateDepthStencilState(&Desc, m_DSState[(UINT)DS_TYPE::NO_TEST_NO_WRITE].GetAddressOf());
+
+
+    return S_OK;
+}
+
+int CDevice::CreateBlendState()
+{
+    // No Blend
+    m_BSState[(UINT)BS_TYPE::DEFAULT] = nullptr;
+
+    // Mask
+    D3D11_BLEND_DESC Desc = {};
+    Desc.AlphaToCoverageEnable = true;
+    Desc.IndependentBlendEnable = false;
+    Desc.RenderTarget[0].BlendEnable = false;
+    DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::MASK].GetAddressOf());
+
+
+    // Alpha Blend   
+    Desc.AlphaToCoverageEnable = false;
+    Desc.IndependentBlendEnable = false;
+
+    Desc.RenderTarget[0].BlendEnable = true;
+    Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+    Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+    Desc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+
+    Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+    Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+
+    Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+    DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::ALPHA_BLEND].GetAddressOf());
+
+
+
+
+    // One One
+    Desc.AlphaToCoverageEnable = false;
+    Desc.IndependentBlendEnable = false;
+
+    Desc.RenderTarget[0].BlendEnable = true;
+    Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+    Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+    Desc.RenderTarget[0].DestBlend = D3D11_BLEND_ONE;
+
+    Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+    Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+
+    Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+    DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::ONE_ONE].GetAddressOf());
+
+    return S_OK;
+}
+
+
+
+
+
+
 
 int CDevice::CreateSampler()
 {
