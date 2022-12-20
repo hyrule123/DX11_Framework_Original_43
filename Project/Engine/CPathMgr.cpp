@@ -21,26 +21,19 @@ void CPathMgr::init()
 	//현재 프로그램의 주소를 받아오는게 더 나음.(고정된 주소를 받아올 수 있음)
 	GetModuleFileNameW(0, m_szContentPath, 256);
 
-	// 2단계 상위폴더로 감
 	int iLen = (int)wcslen(m_szContentPath);
-	int SlashCount = 0;
 
-	//Bin 바깥으로 나가서 OutputFile 까지의 주소만 남긴다
+	//프로그램 파일 명을 제거한다.
 	for (int i = iLen - 1; i >= 0; --i)
 	{
 		if (L'\\' == m_szContentPath[i])
 		{
-			++SlashCount;
-
-			if (2 == SlashCount)
-			{
-				m_szContentPath[i] = 0;
-				break;
-			}
+			m_szContentPath[i] = 0;
+			break;
 		}
 	}
 
-	// + bin\\content
-	wcscat_s(m_szContentPath, L"\\bin\\content\\");
+	// + bin(_d)\\content
+	wcscat_s(m_szContentPath, L"\\content\\");
 }
 

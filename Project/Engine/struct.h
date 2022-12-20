@@ -17,6 +17,9 @@ struct tTransform
 	Matrix matWorld;
 	Matrix matView;
 	Matrix matProj;
+
+	Matrix matWV;
+	Matrix matWVP;
 };
 
 extern tTransform g_transform;
@@ -30,6 +33,8 @@ struct tMtrlConst
 	Vec2 arrV2[4];
 	Vec4 arrV4[4];
 	Matrix arrMat[4];
+
+	int arrTex[(UINT)TEX_PARAM::TEX_END];
 };
 
 

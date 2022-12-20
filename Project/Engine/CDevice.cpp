@@ -9,7 +9,6 @@ CDevice::CDevice()
     , m_ViewPort{}
     , m_arrConstBuffer{}
 {
-
 }
 
 CDevice::~CDevice()
@@ -80,7 +79,19 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
         return E_FAIL;
     }
 
+    // DepthStencilState 생성
+    if (FAILED(CreateDepthStencilState()))
+    {
+        MessageBox(nullptr, L"DepthStencilState 생성 실패", L"Device 초기화 에러", MB_OK);
+        return E_FAIL;
+    }
 
+    // BlendState 생성
+    if (FAILED(CreateBlendState()))
+    {
+        MessageBox(nullptr, L"BlendState 생성 실패", L"Device 초기화 에러", MB_OK);
+        return E_FAIL;
+    }
 
     // 샘플러 생성
     if (FAILED(CreateSampler()))
@@ -115,6 +126,7 @@ int CDevice::CreateSwapChain()
     tDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
     tDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER::DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
     
+
     tDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_DISCARD;
 
     tDesc.SampleDesc.Count = 1;
@@ -254,12 +266,21 @@ int CDevice::CreateBlendState()
     // Mask
     D3D11_BLEND_DESC Desc = {};
     Desc.AlphaToCoverageEnable = true;
-    Desc.IndependentBlendEnable = false;
-    Desc.RenderTarget[0].BlendEnable = false;
+    Desc.IndependentBlendEnable = false;   
+
+    Desc.RenderTarget[0].BlendEnable = true;
+    Desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+    Desc.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+    Desc.RenderTarget[0].DestBlend = D3D11_BLEND_ZERO;
+
+    Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+    Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+
     DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::MASK].GetAddressOf());
 
 
-    // Alpha Blend   
+    // Alpha Blend
     Desc.AlphaToCoverageEnable = false;
     Desc.IndependentBlendEnable = false;
 

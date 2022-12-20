@@ -173,3 +173,12 @@ enum class PROJ_TYPE
 	ORTHOGRAPHIC,
 	PERSPECTIVE,
 };
+
+enum class SHADER_DOMAIN
+{
+	DOMAIN_OPAQUE,		// 불투명 오브젝트
+	DOMAIN_MASK,		// 불투명, 투명
+	DOMAIN_TRANSPARENT,	// 반투명
+
+	DOMAIN_UNDEFINED,	// 미정
+};

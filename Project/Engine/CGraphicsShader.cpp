@@ -10,6 +10,7 @@ CGraphicsShader::CGraphicsShader()
 	, m_RSType(RS_TYPE::CULL_BACK)
 	, m_DSType(DS_TYPE::LESS)
 	, m_BSType(BS_TYPE::DEFAULT)
+	, m_Domain(SHADER_DOMAIN::DOMAIN_UNDEFINED)
 {
 }
 
@@ -105,4 +106,6 @@ void CGraphicsShader::UpdateData()
 	CONTEXT->PSSetShader(m_PS.Get(), nullptr, 0);
 
 	CONTEXT->RSSetState(CDevice::GetInst()->GetRSState(m_RSType).Get());
+	CONTEXT->OMSetDepthStencilState(CDevice::GetInst()->GetDSState(m_DSType).Get(), 0);
+	CONTEXT->OMSetBlendState(CDevice::GetInst()->GetBSState(m_BSType).Get(), Vec4(0.f, 0.f, 0.f, 0.f), 0xffffffff);
 }

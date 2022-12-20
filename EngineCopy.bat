@@ -6,3 +6,6 @@ xcopy /d /s /y /i  /exclude:exclude_list.txt ".\Project\Engine\SimpleMath.inl" "
 
 :: *.fx 파일 복사(쉐이더 컴파일 코드)
 xcopy /d /s /y /i  /exclude:exclude_list.txt ".\Project\Engine\*.fx" ".\OutputFile\bin\content\shader\"
+
+:: bin/content/ 폴더를 bin_d/content/ 폴더로 복사
+xcopy /d /s /y /i  /exclude:exclude_list.txt ".\OutputFile\bin\content\*" ".\OutputFile\bin_d\content\"
