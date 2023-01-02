@@ -9,8 +9,12 @@ private:
     Vec3    m_vRelativeScale;
     Vec3    m_vRelativeRot;
 
-    Vec3    m_vRelativeDir[3];
+    bool    m_bAbsolute;    // 상대 이동, 크기를 절대값으로 지정    
 
+    Vec3    m_vRelativeDir[3];
+    Vec3    m_vWorldDir[3];
+
+    Matrix  m_matWorldScale;    // 월드 크기 행렬
     Matrix  m_matWorld; // 크기, 회전, 이동 정보를 합쳐놓음
 
 
@@ -23,11 +27,15 @@ public:
     void SetRelativeScale(float _x, float _y, float _z) { m_vRelativeScale = Vec3(_x, _y, _z); }
     void SetRelativeRot(float _x, float _y, float _z) { m_vRelativeRot = Vec3(_x, _y, _z);  }
 
+    // 상대 이동, 크기를 절대값으로 지정  
+    void SetAbsolute(bool _Set) { m_bAbsolute = _Set; }    
+
     Vec3 GetRelativePos() const { return m_vRelativePos; }
     Vec3 GetRelativeScale() const { return m_vRelativeScale; }
     Vec3 GetRelativeRot() const { return m_vRelativeRot; }
 
     Vec3 GetRelativeDir(DIR_TYPE _type) const { return m_vRelativeDir[(UINT)_type]; }
+    Vec3 GetWorldDir(DIR_TYPE _type) const { { return m_vWorldDir[(UINT)_type]; } }
 
     const Matrix& GetWorldMat() const { return m_matWorld; }
 

@@ -39,14 +39,36 @@ public:
     CTransform* Transform() const { return (CTransform*)m_arrCom[(UINT)COMPONENT_TYPE::TRANSFORM]; }
     CMeshRender* MeshRender() const { return (CMeshRender*)m_arrCom[(UINT)COMPONENT_TYPE::MESHRENDER]; }
     CCamera* Camera() const { return (CCamera*)m_arrCom[(UINT)COMPONENT_TYPE::CAMERA]; }
+
     CRenderComponent* GetRenderComponent() const {  return m_RenderCom; }
+
+
+    int GetLayerIndex() { return m_iLayerIdx; }
+
+    template<typename T>
+    T* GetScript();
+
+
 
 
     CLONE(CGameObject)    
 public:
     CGameObject();
+
     ~CGameObject();
 
     friend class CLayer;
 };
 
+template<typename T>
+inline T* CGameObject::GetScript()
+{
+    for (size_t i = 0; i < m_vecScript.size(); ++i)
+    {
+        T* pScript = dynamic_cast<T*> (m_vecScript[i]);
+        if (nullptr != pScript)
+            return pScript;
+    }
+
+    return nullptr;
+}

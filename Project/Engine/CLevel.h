@@ -16,7 +16,12 @@ public:
     void finaltick(); 
 
 public:
+    CLayer* FindLayerByName(const wstring& _strName);
+
     void AddGameObject(CGameObject* _Object, int _iLayerIdx, bool _Move);
+    void AddGameObject(CGameObject* _Object, const wstring& _LayerName, bool _Move);
+
+
     CLayer* GetLayer(int _iLayerIdx) { assert(!(_iLayerIdx < 0)); return m_arrLayer[_iLayerIdx]; }
 
 

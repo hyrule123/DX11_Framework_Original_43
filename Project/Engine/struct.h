@@ -12,6 +12,27 @@ struct tVertex
 typedef tVertex Vtx;
 
 
+
+
+// Event
+struct tEvent
+{
+	EVENT_TYPE	Type;
+	DWORD_PTR	wParam;
+	DWORD_PTR	lParam;
+};
+
+
+
+
+
+
+
+
+
+// ===================
+// 상수버퍼 대응 구조체
+// ===================
 struct tTransform
 {
 	Matrix matWorld;

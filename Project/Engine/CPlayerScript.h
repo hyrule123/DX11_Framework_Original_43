@@ -11,6 +11,9 @@ public:
     virtual void tick() override;
 
 
+private:
+    void Shoot();
+
     CLONE(CPlayerScript);
 public:
     CPlayerScript();

@@ -1,14 +1,16 @@
 #pragma once
 #include "CComponent.h"
 
-//#include "CLevelMgr.h"
-//#include "CResMgr.h"
+#include "CLevelMgr.h"
+#include "CLevel.h"
+#include "CLayer.h"
+
+#include "CResMgr.h"
 #include "CTimeMgr.h"
 #include "CKeyMgr.h"
 
 #include "CGameObject.h"
-#include "CTransform.h"
-#include "CMeshRender.h"
+#include "components.h"
 
 
 class CScript :

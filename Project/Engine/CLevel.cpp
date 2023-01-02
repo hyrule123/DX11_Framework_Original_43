@@ -44,9 +44,28 @@ void CLevel::finaltick()
 	}
 }
 
+CLayer* CLevel::FindLayerByName(const wstring& _strName)
+{
+	for (int i = 0; i < MAX_LAYER; ++i)
+	{
+		if (m_arrLayer[i]->GetName() == _strName)
+			return m_arrLayer[i];
+	}
+
+	return nullptr;
+}
+
 void CLevel::AddGameObject(CGameObject* _Object, int _iLayerIdx, bool _bMove)
 {
 	m_arrLayer[_iLayerIdx]->AddGameObject(_Object, _bMove);
+}
+
+void CLevel::AddGameObject(CGameObject* _Object, const wstring& _LayerName, bool _Move)
+{
+	CLayer* pLayer = FindLayerByName(_LayerName);
+	assert(pLayer);
+
+	pLayer->AddGameObject(_Object, _Move);
 }
 
 
