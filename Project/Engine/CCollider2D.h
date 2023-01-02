@@ -23,6 +23,8 @@ public:
     void SetAbsolute(bool _bSet) { m_bAbsolute = _bSet; }
     void SetCollider2DType(COLLIDER2D_TYPE _Type) { m_Shape = _Type; }
 
+    const Matrix& GetColliderWorldMat() { return m_matCollider2D; }
+
 
 public:
     void BeginOverlap(CCollider2D* _Other);
