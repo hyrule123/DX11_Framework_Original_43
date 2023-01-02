@@ -15,8 +15,12 @@ CEventMgr::~CEventMgr()
 
 }
 
+
 void CEventMgr::tick()
 {
+	GC_Clear();
+
+
 	for (size_t i = 0; i < m_vecEvent.size(); ++i)
 	{
 		switch (m_vecEvent[i].Type)
@@ -31,8 +35,15 @@ void CEventMgr::tick()
 		}
 			break;
 		case EVENT_TYPE::DELETE_OBJECT:
+		{
+			CGameObject* DeleteObject = (CGameObject*)m_vecEvent[i].wParam;
 
-
+			if (false == DeleteObject->m_bDead)
+			{
+				DeleteObject->m_bDead = true;
+				m_vecGC.push_back(DeleteObject);
+			}			
+		}
 			break;
 		case EVENT_TYPE::ADD_CHILD:
 
@@ -50,4 +61,15 @@ void CEventMgr::tick()
 	}
 
 	m_vecEvent.clear();
+}
+
+
+void CEventMgr::GC_Clear()
+{
+	for (size_t i = 0; i < m_vecGC.size(); ++i)
+	{
+		if (nullptr != m_vecGC[i])
+			delete m_vecGC[i];
+	}
+	m_vecGC.clear();
 }

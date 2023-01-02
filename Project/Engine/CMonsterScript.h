@@ -1,25 +1,18 @@
 #pragma once
 #include "CScript.h"
-
-class CPlayerScript :
+class CMonsterScript :
     public CScript
 {
 private:
-    float       m_fSpeed;
 
 public:
     virtual void tick() override;
-
-
     virtual void BeginOverlap(CCollider2D* _Other) override;
 
-
-private:
-    void Shoot();
-
-    CLONE(CPlayerScript);
+    CLONE(CMonsterScript);
 public:
-    CPlayerScript();
-    ~CPlayerScript();
+    CMonsterScript();
+    ~CMonsterScript();
 };
+
 

@@ -79,3 +79,9 @@ void CPlayerScript::Shoot()
 	// 레벨에 추가
 	SpawnGameObject(pCloneMissile, vMissilePos, L"PlayerProjectile");
 }
+
+
+void CPlayerScript::BeginOverlap(CCollider2D* _Other)
+{
+	
+}

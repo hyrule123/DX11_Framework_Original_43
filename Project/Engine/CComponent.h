@@ -28,6 +28,7 @@ public:
     CMeshRender* MeshRender() { return m_pOwner->MeshRender(); }
     CCamera* Camera() { return m_pOwner->Camera(); }
     CCollider2D* Collider2D() { return m_pOwner->Collider2D(); }
+    CLight2D* Light2D() { return m_pOwner->Light2D(); }
 
 public:
     CComponent(COMPONENT_TYPE _Type);

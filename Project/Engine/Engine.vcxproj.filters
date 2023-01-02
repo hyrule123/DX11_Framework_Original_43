@@ -127,6 +127,12 @@
     <ClInclude Include="CCollisionMgr.h">
       <Filter>Source\03. Manager\07. CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CMonsterScript.h">
+      <Filter>Source\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CLight2D.h">
+      <Filter>Source\06. Component\4. Light2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -228,12 +234,20 @@
     <ClCompile Include="CPrefab.cpp">
       <Filter>Source\07. Resource\5. Prefab</Filter>
     </ClCompile>
-    <ClCompile Include="func.cpp" />
     <ClCompile Include="CCollider2D.cpp">
       <Filter>Source\06. Component\2. Collider2D</Filter>
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
       <Filter>Source\03. Manager\07. CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Source\00. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterScript.cpp">
+      <Filter>Source\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CLight2D.cpp">
+      <Filter>Source\06. Component\4. Light2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -356,6 +370,9 @@
     </Filter>
     <Filter Include="Source\03. Manager\07. CollisionMgr">
       <UniqueIdentifier>{233a4c00-46c3-4613-8f0a-479f30314f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\4. Light2D">
+      <UniqueIdentifier>{47977f3b-3e69-4e3d-bf03-c87abe9f355c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
