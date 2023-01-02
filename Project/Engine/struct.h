@@ -23,6 +23,19 @@ struct tEvent
 };
 
 
+struct tDebugShapeInfo
+{
+	SHAPE_TYPE	eShape;
+	Matrix		matWorld;
+	Vec3		vWorldPos;
+	Vec3		vWorldScale;
+	Vec3		vWorldRotation;
+	Vec4		vColor;
+	float		fMaxTime;
+	float		fCurTime;
+};
+
+
 
 
 

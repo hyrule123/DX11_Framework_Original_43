@@ -61,8 +61,7 @@ void CLevelMgr::init()
 	//pParent->AddComponent(new CPlayerScript);
 
 	Ptr<CMesh> pMesh = CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh");
-	Ptr<CMaterial> Std2DMtrl = CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DMtrl");
-
+	Ptr<CMaterial> Std2DMtrl = CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DMtrl");	
 	Ptr<CTexture> PlayerTex = CResMgr::GetInst()->FindRes<CTexture>(L"CharacterTex");
 	Std2DMtrl->SetTexParam(TEX_0, PlayerTex);
 

@@ -31,7 +31,7 @@ void CResMgr::CreateDefaultMesh()
 	Ptr<CMesh> pMesh = nullptr;
 	// =============
 	// RectMesh »ý¼º
-	// =============	
+	// =============
 	// 0 --- 1 
 	// |  \  |
 	// 3 --- 2
@@ -66,6 +66,17 @@ void CResMgr::CreateDefaultMesh()
 	pMesh = new CMesh;
 	pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
 	AddRes(L"RectMesh", pMesh);
+	
+	vecIdx.clear();
+	vecIdx.push_back(0);
+	vecIdx.push_back(1);
+	vecIdx.push_back(2);
+	vecIdx.push_back(3);
+	vecIdx.push_back(0);
+
+	pMesh = new CMesh;
+	pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
+	AddRes(L"RectMesh_Debug", pMesh);
 
 	vecVtx.clear();
 	vecIdx.clear();
@@ -114,6 +125,18 @@ void CResMgr::CreateDefaultMesh()
 	pMesh = new CMesh;
 	pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
 	AddRes(L"CircleMesh", pMesh);
+	
+	vecIdx.clear();
+	for (UINT i = 0; i < Slice; ++i)
+	{
+		vecIdx.push_back(i + 1);
+	}
+	vecIdx.push_back(1);
+
+	pMesh = new CMesh;
+	pMesh->Create(vecVtx.data(), (UINT)vecVtx.size(), vecIdx.data(), (UINT)vecIdx.size());
+	AddRes(L"CircleMesh_Debug", pMesh);
+
 	vecVtx.clear();
 	vecIdx.clear();
 }
@@ -160,6 +183,29 @@ void CResMgr::CreateDefaultGraphicsShader()
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASK);
 
 	AddRes(pShader->GetKey(), pShader);
+
+
+	// =================
+	// DebugShape Shader
+	// Topology : LineStrip
+	// RS_TYPE  : CULL_NONE
+	// DS_TYPE  : NO_TEST_NO_WRITE
+	// BS_TYPE  : Default
+	// g_vec4_0 : OutColor
+	// ==================
+	pShader = new CGraphicsShader;
+	pShader->SetKey(L"DebugShapeShader");
+	pShader->CreateVertexShader(L"shader\\debugshape.fx", "VS_DebugShape");
+	pShader->CreatePixelShader(L"shader\\debugshape.fx", "PS_DebugShape");
+
+	pShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
+	pShader->SetBSType(BS_TYPE::DEFAULT);
+
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASK);
+
+	AddRes(pShader->GetKey(), pShader);
 }
 
 void CResMgr::CreateDefaultMaterial()
@@ -171,11 +217,15 @@ void CResMgr::CreateDefaultMaterial()
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"TestShader"));
 	AddRes(L"TestMtrl", pMtrl);
 
-
 	// Std2D Material
 	pMtrl = new CMaterial;
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DShader"));
 	AddRes(L"Std2DMtrl", pMtrl);
+
+	// DebugShape Material
+	pMtrl = new CMaterial;
+	pMtrl->SetShader(FindRes<CGraphicsShader>(L"DebugShapeShader"));
+	AddRes(L"DebugShapeMtrl", pMtrl);
 }
 
 #include "CGameObject.h"

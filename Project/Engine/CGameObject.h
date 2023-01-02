@@ -26,13 +26,17 @@ private:
 public:
     void begin();       // 레벨이 시작될 때 호출 or 시작 된 레벨에 합류할 때
     void tick();        
-    void finaltick();
+    virtual void finaltick();
     void render();
 
 
 public:
     void AddComponent(CComponent* _Component);
     void AddChild(CGameObject* _Object);
+
+    CComponent* GetComponent(COMPONENT_TYPE _ComType) { return m_arrCom[(UINT)_ComType]; }
+    const vector<CGameObject*> GetChild() { return m_vecChild; }
+
 
     CGameObject* GetParent() const { return m_Parent; }
 
@@ -54,7 +58,7 @@ public:
     CLONE(CGameObject)    
 public:
     CGameObject();
-
+    CGameObject(const CGameObject& _Other);
     ~CGameObject();
 
     friend class CLayer;

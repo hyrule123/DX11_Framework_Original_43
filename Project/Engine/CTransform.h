@@ -36,14 +36,16 @@ public:
 
     Vec3 GetRelativeDir(DIR_TYPE _type) const { return m_vRelativeDir[(UINT)_type]; }
     Vec3 GetWorldDir(DIR_TYPE _type) const { { return m_vWorldDir[(UINT)_type]; } }
+    Vec3 GetWorldPos() { return m_matWorld.Translation(); }
 
+    const Matrix& GetWorldScaleMat() { return m_matWorldScale; }
     const Matrix& GetWorldMat() const { return m_matWorld; }
 
 public:
     virtual void finaltick() override;    
     void UpdateData();
 
-    CLONE(CTransform);    
+    CLONE(CTransform);
 public:
     CTransform();
     ~CTransform();

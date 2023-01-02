@@ -27,6 +27,16 @@ CCamera::CCamera()
 	m_fAspectRatio = vRenderResol.x / vRenderResol.y;
 }
 
+CCamera::CCamera(const CCamera& _Other)
+	: CComponent(_Other)
+	, m_fAspectRatio(_Other.m_fAspectRatio)
+	, m_fScale(_Other.m_fScale)
+	, m_ProjType(_Other.m_ProjType)
+	, m_iLayerMask(_Other.m_iLayerMask)
+	, m_iCamIdx(-1)
+{
+}
+
 CCamera::~CCamera()
 {
 }

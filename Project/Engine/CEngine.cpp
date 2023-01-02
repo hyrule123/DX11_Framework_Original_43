@@ -8,6 +8,7 @@
 #include "CResMgr.h"
 #include "CLevelMgr.h"
 #include "CRenderMgr.h"
+#include "CEventMgr.h"
 
 
 CEngine::CEngine()
@@ -57,6 +58,9 @@ void CEngine::progress()
 	tick();
 
 	render();
+
+	// Event Ã³¸®
+	CEventMgr::GetInst()->tick();
 }
 
 void CEngine::tick()
@@ -76,10 +80,5 @@ void CEngine::render()
 	float arrColor[4] = { 0.4f, 0.4f, 0.4f, 1.f };
 	CDevice::GetInst()->ClearTarget(arrColor);
 
-
-	CRenderMgr::GetInst()->render();
-
-
-	// ·»´õ Á¾·á
-	CDevice::GetInst()->Present();
+	CRenderMgr::GetInst()->render();	
 }

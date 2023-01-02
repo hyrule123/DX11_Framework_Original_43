@@ -121,6 +121,9 @@
     <ClInclude Include="CPrefab.h">
       <Filter>Source\07. Resource\5. Prefab</Filter>
     </ClInclude>
+    <ClInclude Include="CCollider2D.h">
+      <Filter>Source\06. Component\2. Collider2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -221,6 +224,10 @@
     </ClCompile>
     <ClCompile Include="CPrefab.cpp">
       <Filter>Source\07. Resource\5. Prefab</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp" />
+    <ClCompile Include="CCollider2D.cpp">
+      <Filter>Source\06. Component\2. Collider2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +345,9 @@
     <Filter Include="Source\07. Resource\5. Prefab">
       <UniqueIdentifier>{bb3a4eec-2ba4-4576-8eac-788c0ab1f9c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\06. Component\2. Collider2D">
+      <UniqueIdentifier>{95818b5c-89c4-4cb1-a32b-1d06f120f939}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -353,6 +363,9 @@
       <Filter>Source\08. ShaderCode</Filter>
     </FxCompile>
     <FxCompile Include="std2d.fx">
+      <Filter>Source\08. ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="debugshape.fx">
       <Filter>Source\08. ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>

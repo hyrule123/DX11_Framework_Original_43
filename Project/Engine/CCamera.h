@@ -13,7 +13,6 @@ private:
     Matrix      m_matView;
     Matrix      m_matProj;
 
-
     UINT        m_iLayerMask;
 
     int         m_iCamIdx;  // 카메라 우선순위
@@ -65,6 +64,7 @@ private:
     CLONE(CCamera);
 public:    
     CCamera();
+    CCamera(const CCamera& _Other);
     ~CCamera();
 };
 
