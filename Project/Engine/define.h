@@ -41,11 +41,11 @@ enum class COMPONENT_TYPE
 	TILEMAP,		// 2차원 타일
 	LANDSCAPE,		// 3차원 지형
 	DECAL,			// 내부 렌더링
+		
+	END,
 
 	// custom
-	SCRIPT,			
-
-	END,
+	SCRIPT,
 };
 
 

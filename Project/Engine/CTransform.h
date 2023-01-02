@@ -9,8 +9,7 @@ private:
     Vec3    m_vRelativeScale;
     Vec3    m_vRelativeRot;
 
-    Vec3     m_vRelativeDir[3];
-
+    Vec3    m_vRelativeDir[3];
 
     Matrix  m_matWorld; // 크기, 회전, 이동 정보를 합쳐놓음
 
@@ -24,19 +23,17 @@ public:
     void SetRelativeScale(float _x, float _y, float _z) { m_vRelativeScale = Vec3(_x, _y, _z); }
     void SetRelativeRot(float _x, float _y, float _z) { m_vRelativeRot = Vec3(_x, _y, _z);  }
 
-    Vec3 GetRelativePos() { return m_vRelativePos; }
-    Vec3 GetRelativeScale() { return m_vRelativeScale; }
-    Vec3 GetRelativeRot() { return m_vRelativeRot; }
+    Vec3 GetRelativePos() const { return m_vRelativePos; }
+    Vec3 GetRelativeScale() const { return m_vRelativeScale; }
+    Vec3 GetRelativeRot() const { return m_vRelativeRot; }
 
-    Vec3 GetRelativeDir(DIR_TYPE _type) { return m_vRelativeDir[(UINT)_type]; }
+    Vec3 GetRelativeDir(DIR_TYPE _type) const { return m_vRelativeDir[(UINT)_type]; }
 
-
-
+    const Matrix& GetWorldMat() const { return m_matWorld; }
 
 public:
     virtual void finaltick() override;    
     void UpdateData();
-
 
     CLONE(CTransform);    
 public:

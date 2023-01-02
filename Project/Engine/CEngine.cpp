@@ -10,7 +10,6 @@
 #include "CRenderMgr.h"
 
 
-
 CEngine::CEngine()
 	: m_hWnd(nullptr)
 {
