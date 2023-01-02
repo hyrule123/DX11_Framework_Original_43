@@ -62,20 +62,5 @@ void CPlayerScript::tick()
 		vCurPos.z += m_fSpeed * DT;
 	}
 
-	Transform()->SetRelativePos(vCurPos);
-
-
-
-			
-	if (KEY_TAP(KEY::_1))
-	{
-		int a = 0;
-		MeshRender()->GetMaterial()->SetScalarParam(INT_0, &a);
-	}
-
-	else if (KEY_TAP(KEY::_2))
-	{
-		int a = 1;
-		MeshRender()->GetMaterial()->SetScalarParam(INT_0, &a);
-	}
+	Transform()->SetRelativePos(vCurPos);			
 }

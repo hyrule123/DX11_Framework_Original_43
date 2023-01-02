@@ -126,7 +126,6 @@ int CDevice::CreateSwapChain()
     tDesc.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
     tDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER::DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
     
-
     tDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_DISCARD;
 
     tDesc.SampleDesc.Count = 1;
@@ -276,6 +275,8 @@ int CDevice::CreateBlendState()
     Desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
     Desc.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
     Desc.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+
+    Desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
 
     DEVICE->CreateBlendState(&Desc, m_BSState[(UINT)BS_TYPE::MASK].GetAddressOf());
 

@@ -38,6 +38,8 @@ void CLevelMgr::init()
 	pMainCam->AddComponent(new CCameraMoveScript);
 	
 	pMainCam->Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
+	pMainCam->Camera()->SetCameraIndex(0);		// MainCamera 로 설정
+	pMainCam->Camera()->SetLayerMaskAll(true);	// 모든 레이어 체크
 
 	m_pCurLevel->AddGameObject(pMainCam, 0);
 
@@ -53,7 +55,7 @@ void CLevelMgr::init()
 	Ptr<CMesh> pMesh = CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh");
 	Ptr<CMaterial> Std2DMtrl = CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DMtrl");
 
-	Ptr<CTexture> PlayerTex = CResMgr::GetInst()->FindRes<CTexture>(L"SmokeTex");
+	Ptr<CTexture> PlayerTex = CResMgr::GetInst()->FindRes<CTexture>(L"CharacterTex");
 	Std2DMtrl->SetTexParam(TEX_0, PlayerTex);
 
 	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
@@ -70,7 +72,7 @@ void CLevelMgr::init()
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);	
 
-	pObj->Transform()->SetRelativePos(Vec3(400.f, 0.f, 200.f));
+	pObj->Transform()->SetRelativePos(Vec3(200.f, 0.f, 200.f));
 	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
 
 	pObj->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
@@ -83,9 +85,4 @@ void CLevelMgr::tick()
 {
 	m_pCurLevel->tick();
 	m_pCurLevel->finaltick();
-}
-
-void CLevelMgr::render()
-{
-	m_pCurLevel->render();
 }

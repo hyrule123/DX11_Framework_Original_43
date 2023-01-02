@@ -53,7 +53,7 @@
       <Filter>Source\06. Component\1. Transform</Filter>
     </ClInclude>
     <ClInclude Include="CMeshRender.h">
-      <Filter>Source\06. Component\2. MeshRender</Filter>
+      <Filter>Source\06. Component\RenderComponent\1. MeshRender</Filter>
     </ClInclude>
     <ClInclude Include="CRes.h">
       <Filter>Source\07. Resource</Filter>
@@ -106,6 +106,12 @@
     <ClInclude Include="CCameraMoveScript.h">
       <Filter>Source\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CRenderMgr.h">
+      <Filter>Source\03. Manager\06. RenderMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderComponent.h">
+      <Filter>Source\06. Component\RenderComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -142,7 +148,7 @@
       <Filter>Source\06. Component\1. Transform</Filter>
     </ClCompile>
     <ClCompile Include="CMeshRender.cpp">
-      <Filter>Source\06. Component\2. MeshRender</Filter>
+      <Filter>Source\06. Component\RenderComponent\1. MeshRender</Filter>
     </ClCompile>
     <ClCompile Include="CRes.cpp">
       <Filter>Source\07. Resource</Filter>
@@ -192,6 +198,12 @@
     <ClCompile Include="CCameraMoveScript.cpp">
       <Filter>Source\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="CRenderMgr.cpp">
+      <Filter>Source\03. Manager\06. RenderMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderComponent.cpp">
+      <Filter>Source\06. Component\RenderComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
@@ -223,9 +235,6 @@
     </Filter>
     <Filter Include="Source\06. Component\1. Transform">
       <UniqueIdentifier>{d0e54e64-2aaa-4fe6-babe-d15fd49d6a77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\06. Component\2. MeshRender">
-      <UniqueIdentifier>{3dd66862-9fa0-441f-8888-fa938d05bdbb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\06. Component\Script">
       <UniqueIdentifier>{ca120d65-a3f9-4d3c-9f9d-b9642fb0c222}</UniqueIdentifier>
@@ -283,6 +292,27 @@
     </Filter>
     <Filter Include="Source\06. Component\3. Camera">
       <UniqueIdentifier>{79af7ea9-0e2d-45fe-a008-5042fdc0754c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\03. Manager\06. RenderMgr">
+      <UniqueIdentifier>{90675cab-88f2-42d9-bb02-95bcbd85a7f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\RenderComponent">
+      <UniqueIdentifier>{9cecd8a1-3634-4969-8ff0-3dbca52469cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\RenderComponent\1. MeshRender">
+      <UniqueIdentifier>{3dd66862-9fa0-441f-8888-fa938d05bdbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\RenderComponent\2. ParticleSystem">
+      <UniqueIdentifier>{ddedfa9d-149c-436d-ba74-99ef2cbf0457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\RenderComponent\3. TileMap">
+      <UniqueIdentifier>{a31ec3b6-9833-48c1-95cf-2ec5f761508b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\RenderComponent\4. Decal">
+      <UniqueIdentifier>{77837a5b-9428-40ac-b78f-5ecbda8d05d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\RenderComponent\5. Landscape">
+      <UniqueIdentifier>{f136de34-cd33-45d6-be6a-5fb4de15646b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

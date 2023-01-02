@@ -46,6 +46,21 @@ void CCameraMoveScript::Camera2DMove()
 		vPos.x += DT * m_fCamSpeed;
 	}
 
+
+	if (KEY_PRESSED(KEY::_1))
+	{
+		float fScale = Camera()->GetScale();
+		fScale += DT * 1.f;
+		Camera()->SetScale(fScale);
+	}
+
+	if (KEY_PRESSED(KEY::_2))
+	{
+		float fScale = Camera()->GetScale();
+		fScale -= DT * 1.f;
+		Camera()->SetScale(fScale);
+	}
+
 	Transform()->SetRelativePos(vPos);
 }
 
@@ -82,6 +97,7 @@ void CCameraMoveScript::Camera3DMove()
 	{
 		vPos += DT * vRight * fSpeed;
 	}
+
 
 
 	if (KEY_PRESSED(KEY::RBTN))

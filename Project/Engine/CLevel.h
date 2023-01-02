@@ -12,12 +12,11 @@ private:
 
 public:
     void tick();
-    void finaltick();
-    void render();
+    void finaltick(); 
 
 public:
     void AddGameObject(CGameObject* _Object, int _iLayerIdx);
-
+    CLayer* GetLayer(int _iLayerIdx) { assert(!(_iLayerIdx < 0)); return m_arrLayer[_iLayerIdx]; }
 
 
     CLONE(CLevel);

@@ -4,7 +4,7 @@
 #include "CTransform.h"
 
 CMeshRender::CMeshRender()
-	: CComponent(COMPONENT_TYPE::MESHRENDER)		
+	: CRenderComponent(COMPONENT_TYPE::MESHRENDER)		
 {
 }
 
@@ -18,12 +18,15 @@ void CMeshRender::finaltick()
 
 void CMeshRender::render()
 {	
-	if (nullptr == m_pMesh || nullptr == m_pMtrl)
+	if (nullptr == GetMesh() || nullptr == GetMaterial())
 		return;
 
 	// Transform 에 UpdateData 요청
 	Transform()->UpdateData();
 
-	m_pMtrl->UpdateData();
-	m_pMesh->render();
+	// 재질 업데이트
+	GetMaterial()->UpdateData();
+
+	// 렌더
+	GetMesh()->render();
 }

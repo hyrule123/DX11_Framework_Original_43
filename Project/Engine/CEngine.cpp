@@ -7,6 +7,8 @@
 #include "CTimeMgr.h"
 #include "CResMgr.h"
 #include "CLevelMgr.h"
+#include "CRenderMgr.h"
+
 
 
 CEngine::CEngine()
@@ -45,6 +47,7 @@ int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 	CKeyMgr::GetInst()->init();
 	CTimeMgr::GetInst()->init();
 	CResMgr::GetInst()->init();
+	CRenderMgr::GetInst()->init();
 	CLevelMgr::GetInst()->init();		
 
 	return S_OK;
@@ -70,14 +73,12 @@ void CEngine::render()
 {
 	CTimeMgr::GetInst()->render();
 
-
 	// ·»´õ¸µ ½ÃÀÛ
-	float arrColor[4] = { 0.f, 0.f, 0.f, 1.f };
+	float arrColor[4] = { 0.4f, 0.4f, 0.4f, 1.f };
 	CDevice::GetInst()->ClearTarget(arrColor);
 
 
-	CLevelMgr::GetInst()->render();
-
+	CRenderMgr::GetInst()->render();
 
 
 	// ·»´õ Á¾·á

@@ -27,11 +27,3 @@ void CLayer::finaltick()
 		m_vecObject[i]->finaltick();
 	}
 }
-
-void CLayer::render()
-{
-	for (size_t i = 0; i < m_vecObject.size(); ++i)
-	{
-		m_vecObject[i]->render();
-	}
-}

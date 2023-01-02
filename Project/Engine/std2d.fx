@@ -37,20 +37,7 @@ VS_OUT VS_Std2D(VS_IN _in)
 
 float4 PS_Std2D(VS_OUT _in) : SV_Target
 {
-    float4 vOutColor = (float4) 0.f;
-            
-    //uint iWidth = 0;
-    //uint iHeight = 0;
-    //g_tex_0.GetDimensions(iWidth, iHeight);
-    
-    //if (0 == iWidth && 0 == iHeight)
-    //{
-    //    vOutColor = float4(1.f, 0.f, 0.f, 1.f);
-    //}
-    //else
-    //{
-    //    vOutColor = g_tex_0.Sample(g_sam_0, _in.vUV);
-    //}
+    float4 vOutColor = (float4) 0.f;            
         
     if (g_btex_0)
     {
@@ -60,12 +47,9 @@ float4 PS_Std2D(VS_OUT _in) : SV_Target
     {
         vOutColor = float4(1.f, 0.f, 1.f, 1.f);
     }    
-    
+        
     if (0.f == vOutColor.a)
         discard;
-    
-    //clip(-1);
-    //discard;
     
     return vOutColor;
 }

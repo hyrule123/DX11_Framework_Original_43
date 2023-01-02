@@ -1,0 +1,37 @@
+Script multi
+
+Object Hierachy
+
+Object Create / Delete
+EventMgr
+
+CollisionMgr
+Collider2D
+
+Animator2D
+
+StructuredBuffer
+
+Light2D
+
+TileMap
+
+ComputeShader
+
+ParticleSystem
+
+PostProcess
+
+
+
+Editor
+ImGui
+
+
+
+
+
+
+
+
+

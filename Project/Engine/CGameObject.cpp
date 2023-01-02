@@ -7,6 +7,7 @@
 
 CGameObject::CGameObject()
 	: m_arrCom{}
+	, m_RenderCom(nullptr)
 {
 }
 
@@ -41,10 +42,8 @@ void CGameObject::finaltick()
 
 void CGameObject::render()
 {
-	if (nullptr == MeshRender())
-		return;
-
-	MeshRender()->render();
+	if (nullptr != m_RenderCom)
+		m_RenderCom->render();
 }
 
 void CGameObject::AddComponent(CComponent* _Component)
@@ -54,4 +53,12 @@ void CGameObject::AddComponent(CComponent* _Component)
 
 	_Component->m_pOwner = this;
 	m_arrCom[(UINT)_Component->GetType()] = _Component;
+
+	// RenderComponent »Æ¿Œ
+	if (COMPONENT_TYPE::MESHRENDER <= _Component->GetType() 
+		&& _Component->GetType() <= COMPONENT_TYPE::DECAL)
+	{
+		assert(!m_RenderCom);
+		m_RenderCom = (CRenderComponent*)_Component;
+	}
 }
