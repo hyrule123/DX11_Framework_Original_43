@@ -19,6 +19,8 @@ public:
     int RegisterCamera(CCamera* _Cam, int _idx);
     void AddDebugShapeInfo(const tDebugShapeInfo& _info) { m_vecShapeInfo.push_back(_info); }
 
+    vector<tDebugShapeInfo>& GetDebugShapeInfo() { return m_vecShapeInfo; }
+
     CCamera* GetMainCam() 
     { 
         if (m_vecCam.empty())

@@ -7,6 +7,7 @@
 #include "CTimeMgr.h"
 #include "CResMgr.h"
 #include "CLevelMgr.h"
+#include "CCollisionMgr.h"
 #include "CRenderMgr.h"
 #include "CEventMgr.h"
 
@@ -68,8 +69,8 @@ void CEngine::tick()
 	// Manager Tick
 	CTimeMgr::GetInst()->tick();
 	CKeyMgr::GetInst()->tick();	
-
 	CLevelMgr::GetInst()->tick();
+	CCollisionMgr::GetInst()->tick();
 }
 
 void CEngine::render()

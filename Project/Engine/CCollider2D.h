@@ -9,8 +9,10 @@ private:
     Vec3            m_vOffsetScale;
     bool            m_bAbsolute;
     COLLIDER2D_TYPE m_Shape;
-
     Matrix          m_matCollider2D;    // Collider 의 월드행렬
+
+    int             m_iCollisionCount;  // 충돌 횟수
+
 
 public:
     virtual void finaltick() override;
@@ -21,6 +23,15 @@ public:
     void SetAbsolute(bool _bSet) { m_bAbsolute = _bSet; }
     void SetCollider2DType(COLLIDER2D_TYPE _Type) { m_Shape = _Type; }
 
+
+public:
+    void BeginOverlap(CCollider2D* _Other);
+    void OnOverlap(CCollider2D* _Other);
+    void EndOverlap(CCollider2D* _Other);
+
+
+
+    CLONE(CCollider2D);
 public:
     CCollider2D();
     ~CCollider2D();
