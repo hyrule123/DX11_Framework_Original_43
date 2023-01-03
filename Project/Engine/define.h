@@ -69,7 +69,7 @@ enum class CB_TYPE
 {
 	TRANSFORM,	// b0
 	MATERIAL,	// b1
-
+	LIGHT,		// b2
 	END,
 };
 

@@ -1,6 +1,8 @@
 #ifndef _VALUE
 #define _VALUE
 
+#include "struct.fx"
+
 cbuffer TRANSFORM : register(b0)
 {
     row_major matrix g_matWorld;
@@ -47,6 +49,13 @@ cbuffer MATERIAL : register(b1)
     int g_btex_6;
     int g_btex_7;   
 };
+
+cbuffer LIGHT : register(b2)
+{
+    tLightInfo  arrInfo[10];
+    int         iLightCount;
+    int3        iLightPadding;
+}
 
 
 Texture2D g_tex_0 : register(t0);

@@ -371,4 +371,7 @@ void CDevice::CreateConstBuffer()
 
     m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL] = new CConstBuffer((UINT)CB_TYPE::MATERIAL);
     m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL]->Create(sizeof(tMtrlConst), 1);
+
+    m_arrConstBuffer[(UINT)CB_TYPE::LIGHT] = new CConstBuffer((UINT)CB_TYPE::LIGHT);
+    m_arrConstBuffer[(UINT)CB_TYPE::LIGHT]->Create(sizeof(tLightInfo) * 10 + 16, 1);
 }
