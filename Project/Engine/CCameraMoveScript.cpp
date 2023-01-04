@@ -26,24 +26,28 @@ void CCameraMoveScript::Camera2DMove()
 	// 키 입력에 따른 카메라 이동
 	Vec3 vPos = Transform()->GetRelativePos();
 
+	float fSpeed = m_fCamSpeed;
+	if (KEY_PRESSED(KEY::LSHIFT))
+		fSpeed *= 5.f;
+
 	if (KEY_PRESSED(KEY::W))
 	{
-		vPos.y += DT * m_fCamSpeed;
+		vPos.y += DT * fSpeed;
 	}
 
 	if (KEY_PRESSED(KEY::S))
 	{
-		vPos.y -= DT * m_fCamSpeed;
+		vPos.y -= DT * fSpeed;
 	}
 
 	if (KEY_PRESSED(KEY::A))
 	{
-		vPos.x -= DT * m_fCamSpeed;
+		vPos.x -= DT * fSpeed;
 	}
 
 	if (KEY_PRESSED(KEY::D))
 	{
-		vPos.x += DT * m_fCamSpeed;
+		vPos.x += DT * fSpeed;
 	}
 
 

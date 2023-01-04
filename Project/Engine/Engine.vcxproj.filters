@@ -133,6 +133,9 @@
     <ClInclude Include="CLight2D.h">
       <Filter>Source\06. Component\4. Light2D</Filter>
     </ClInclude>
+    <ClInclude Include="CStructuredBuffer.h">
+      <Filter>Source\02. Device\StructuredBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -248,6 +251,9 @@
     </ClCompile>
     <ClCompile Include="CLight2D.cpp">
       <Filter>Source\06. Component\4. Light2D</Filter>
+    </ClCompile>
+    <ClCompile Include="CStructuredBuffer.cpp">
+      <Filter>Source\02. Device\StructuredBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +380,9 @@
     <Filter Include="Source\06. Component\4. Light2D">
       <UniqueIdentifier>{47977f3b-3e69-4e3d-bf03-c87abe9f355c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\02. Device\StructuredBuffer">
+      <UniqueIdentifier>{4133d464-b1f7-4ff4-b41c-071f2f05dc08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -395,6 +404,9 @@
       <Filter>Source\08. ShaderCode</Filter>
     </FxCompile>
     <FxCompile Include="struct.fx">
+      <Filter>Source\08. ShaderCode</Filter>
+    </FxCompile>
+    <FxCompile Include="func.fx">
       <Filter>Source\08. ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>
