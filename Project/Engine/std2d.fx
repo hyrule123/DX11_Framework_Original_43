@@ -118,8 +118,8 @@ float4 PS_Std2DLight(VS_Light_OUT _in) : SV_Target
     float3 vNormal = (float3) vNormal;
     if(g_btex_1)
     {
-        // Normal 값 추출
-        vNormal = g_tex_1.Sample(g_sam_0, _in.vUV);
+        // Normal 값 추출. Normal 텍스처의 좌표축과 DirectX 좌표축을 맞춰준다.
+        vNormal = (g_tex_1.Sample(g_sam_0, _in.vUV)).xyz;
         
         // 0 ~ 1 범위를 -1 ~ 1 로 변경
         vNormal = (vNormal * 2.f) - 1.f;
@@ -140,17 +140,12 @@ float4 PS_Std2DLight(VS_Light_OUT _in) : SV_Target
     
     // Lighting 처리
     tLightColor LightColor = (tLightColor) 0.f;
-    CalcLight2D(_in.vWorldPos, LightColor);
-    //CalcLight2D(_in.vWorldPos, vNormal, LightColor);
+    //CalcLight2D(_in.vWorldPos, LightColor);
+    CalcLight2DNormalMap(_in.vWorldPos, vNormal, LightColor);
         
     vOutColor.rgb *= (LightColor.vDiffuse.rgb + LightColor.vAmbient.rgb);
     
+    
     return vOutColor;
 }
-
-
-
-
-
-
 #endif

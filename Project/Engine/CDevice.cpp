@@ -3,6 +3,7 @@
 
 #include "CEngine.h"
 #include "CConstBuffer.h"
+#include "CStructuredBuffer.h"
 
 CDevice::CDevice()
     : m_hWnd(nullptr)  
@@ -14,16 +15,13 @@ CDevice::CDevice()
 CDevice::~CDevice()
 {
     Safe_Del_Array(m_arrConstBuffer);
+    Safe_Del_Map(m_mapStructBuffer);
 }
 
 int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 {
     m_hWnd = _hWnd;    
     m_vRenderResolution = Vec2((float)_iWidth, (float)_iHeight);
-
-    GlobalData.Resolution = m_vRenderResolution;
-
-
 
     int iFlag = 0;
 #ifdef _DEBUG
@@ -107,6 +105,9 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 
     // 상수버퍼 생성
     CreateConstBuffer();
+
+    //구조화버퍼 생성
+    CreateStructBuffer();
 
 
     return S_OK; // E_FAIL;
@@ -376,6 +377,13 @@ void CDevice::CreateConstBuffer()
     m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL] = new CConstBuffer((UINT)CB_TYPE::MATERIAL);
     m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL]->Create(sizeof(tMtrlConst), 1);
 
-    m_arrConstBuffer[(UINT)CB_TYPE::GLOBAL] = new CConstBuffer((UINT)CB_TYPE::GLOBAL);
-    m_arrConstBuffer[(UINT)CB_TYPE::GLOBAL]->Create(sizeof(tGlobal), 1);
+    m_arrConstBuffer[(UINT)CB_TYPE::LIGHT] = new CConstBuffer((UINT)CB_TYPE::LIGHT);
+    m_arrConstBuffer[(UINT)CB_TYPE::LIGHT]->Create(sizeof(UINT) + sizeof(float) * 3ull, 1);
+}
+
+void CDevice::CreateStructBuffer()
+{
+    CStructuredBuffer* pSBuffer = new CStructuredBuffer;
+    pSBuffer->Create(sizeof(tLightInfo), 5);
+    m_mapStructBuffer.insert(make_pair((UINT)SB_TYPE::LIGHT, pSBuffer));
 }

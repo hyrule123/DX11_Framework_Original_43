@@ -52,4 +52,17 @@ void Safe_Del_Vec(vector<T*>& _vec)
 }
 
 
+template<typename K, typename V>
+void Safe_Del_Map(unordered_map<K, V*>& _map)
+{
+	for (std::pair<const K, V*>& iter : _map)
+	{
+		if (nullptr != iter.second)
+		{
+			delete(iter.second);
+		}
+	}
+
+	_map.clear();
+}
 

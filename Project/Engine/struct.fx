@@ -21,9 +21,4 @@ struct tLightInfo
     float       Angle; // ºûÀÇ °¢µµ    
     int         Padding;
 };
-
-
-
-
-
 #endif

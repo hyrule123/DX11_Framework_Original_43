@@ -69,8 +69,13 @@ enum class CB_TYPE
 {
 	TRANSFORM,	// b0
 	MATERIAL,	// b1
-	GLOBAL,		// b2
+	LIGHT,		// b2
 	END,
+};
+
+enum class SB_TYPE
+{
+	LIGHT = 8
 };
 
 
@@ -116,13 +121,13 @@ enum TEX_PARAM
 	TEX_END,
 };
 
-enum PIPELINE_STAGE
+enum PIPELINE_STAGE : UINT
 {
-	PS_VERTEX = 0x00,
-	PS_HULL = 0x01,
-	PS_DOMAIN = 0x02,
-	PS_GEOMETRY = 0x04,
-	PS_PIXEL = 0x08,
+	PS_VERTEX = 0x01,
+	PS_HULL = 0x02,
+	PS_DOMAIN = 0x04,
+	PS_GEOMETRY = 0x08,
+	PS_PIXEL = 0x010,
 
 	PS_ALL = PS_VERTEX | PS_HULL | PS_DOMAIN | PS_GEOMETRY | PS_PIXEL,	
 };

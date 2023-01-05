@@ -3,11 +3,13 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <unordered_map>
 #include <string>
 
 using std::vector;
 using std::list;
 using std::map;
+using std::unordered_map;
 using std::make_pair;
 using std::wstring;
 using std::string;

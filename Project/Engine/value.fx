@@ -3,6 +3,9 @@
 
 #include "struct.fx"
 
+static const float PI = 3.14159;
+static const float PIHalf = PI / 2.f;
+
 cbuffer TRANSFORM : register(b0)
 {
     row_major matrix g_matWorld;
@@ -50,16 +53,6 @@ cbuffer MATERIAL : register(b1)
     int g_btex_7;   
 };
 
-cbuffer GLOBAL : register(b2)
-{
-    float2 g_Resolution;
-    float  g_DT;
-    float  g_AccTime;
-    uint   g_Light2DCount;
-    uint   g_Light3DCount;
-    int2   g_globalpadding;
-}
-
 
 Texture2D g_tex_0 : register(t0);
 Texture2D g_tex_1 : register(t1);
@@ -70,7 +63,13 @@ Texture2D g_tex_5 : register(t5);
 Texture2D g_tex_6 : register(t6);
 Texture2D g_tex_7 : register(t7);
 
-StructuredBuffer<tLightInfo> g_Light2DBuffer : register(t8);
+StructuredBuffer<tLightInfo> g_buffer_0 : register(t8);
+cbuffer g_BufferCount : register(b2)
+{
+    uint g_buffer_count;
+    float3 Padding;
+}
+
 
 SamplerState g_sam_0 : register(s0);
 SamplerState g_sam_1 : register(s1);

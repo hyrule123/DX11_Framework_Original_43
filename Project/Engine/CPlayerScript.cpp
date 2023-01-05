@@ -59,7 +59,9 @@ void CPlayerScript::tick()
 		Transform()->SetRelativeRot(vRot);
 	}
 
-	Transform()->SetRelativePos(vCurPos);			
+	Transform()->SetRelativePos(vCurPos);	
+
+	ComputeSpotLight();
 
 	if (KEY_TAP(KEY::SPACE))
 	{
@@ -78,6 +80,16 @@ void CPlayerScript::Shoot()
 
 	// 레벨에 추가
 	SpawnGameObject(pCloneMissile, vMissilePos, L"PlayerProjectile");
+}
+
+void CPlayerScript::ComputeSpotLight()
+{
+	CLight2D* Light = GetOwner()->Light2D();
+
+	if (nullptr == Light || LIGHT_TYPE::SPOT != Light->GetLightType())
+		return;
+
+	Light->SetLightDirection(Transform()->GetWorldMat().Right().Normalize());
 }
 
 

@@ -14,8 +14,12 @@ public:
     void SetLightAmbient(Vec3 _vAmbient) {m_LightInfo.Color.vAmbient = _vAmbient; }
     void SetRadius(float _Radius) { m_LightInfo.Radius = _Radius; }
     void SetAngle(float _Angle) { m_LightInfo.Angle = _Angle; }
+    
+    LIGHT_TYPE GetLightType() const { return (LIGHT_TYPE)m_LightInfo.LightType; }
+
 
 public:
+    virtual void tick() override;
     virtual void finaltick() override;
 
     CLONE(CLight2D);

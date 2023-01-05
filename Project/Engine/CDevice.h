@@ -1,6 +1,7 @@
 #pragma once
 
 class CConstBuffer;
+class CStructuredBuffer;
 
 class CDevice
 	: public CSingleton<CDevice>
@@ -37,7 +38,7 @@ private:
 	// ∑ª¥ı≈∏∞Ÿ «ÿªÛµµ
 	Vec2							m_vRenderResolution;							
 	CConstBuffer*					m_arrConstBuffer[(UINT)CB_TYPE::END];
-
+	unordered_map<UINT, CStructuredBuffer*>			m_mapStructBuffer;
 
 
 
@@ -57,11 +58,19 @@ private:
 	int CreateDepthStencilState();
 	int CreateSampler();
 	void CreateConstBuffer();
+	void CreateStructBuffer();
 
 public:
 	ID3D11Device* GetDevice() { return m_Device.Get(); }
 	ID3D11DeviceContext* GetDeviceContext() { return m_Context.Get(); }
 	CConstBuffer* GetConstBuffer(CB_TYPE _Type) { return m_arrConstBuffer[(UINT)_Type]; }
+	CStructuredBuffer* GetStructBuffer(SB_TYPE _Type) 
+	{
+		auto iter = m_mapStructBuffer.find((UINT)_Type);
+		if (m_mapStructBuffer.end() == iter)
+			return nullptr;
+		return (*iter).second;
+	}
 
 	ComPtr<ID3D11RasterizerState> GetRSState(RS_TYPE _Type) { return m_RSState[(UINT)_Type]; }
 	ComPtr<ID3D11DepthStencilState> GetDSState(DS_TYPE _Type) { return m_DSState[(UINT)_Type]; }

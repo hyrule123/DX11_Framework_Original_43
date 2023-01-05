@@ -3,7 +3,8 @@
 
 class CCamera;
 class CLight2D;
-class CStructuredBuffer;
+class CConstBuffer;
+
 
 class CRenderMgr :
     public CSingleton<CRenderMgr>
@@ -13,8 +14,9 @@ private:
     vector<CCamera*>            m_vecCam;
     vector<tDebugShapeInfo>     m_vecShapeInfo;
 
+    //구조화 버퍼에 들어갈 광원 정보를 저장하는 컨테이너.
+    //구조화 버퍼의 갯수는 별도의 Constant buffer을 통해서 전달할 예정(b2 레지스터, CBUFFER::LIGHT)
     vector<tLightInfo>          m_vecLight2D;
-    CStructuredBuffer*          m_Light2DBuffer;
 
 
 

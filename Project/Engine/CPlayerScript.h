@@ -16,6 +16,7 @@ public:
 
 private:
     void Shoot();
+    void ComputeSpotLight();
 
     CLONE(CPlayerScript);
 public:

@@ -3,29 +3,26 @@
 
 #include "CDevice.h"
 #include "CConstBuffer.h"
-#include "CStructuredBuffer.h"
 
 #include "CCamera.h"
 #include "CLight2D.h"
 
+#include "CConstBuffer.h"
+#include "CStructuredBuffer.h"
+
 CRenderMgr::CRenderMgr()
-    : m_Light2DBuffer(nullptr)
 {
 
 }
 
 CRenderMgr::~CRenderMgr()
 {
-    if (nullptr != m_Light2DBuffer)
-        delete m_Light2DBuffer;
+
 }
 
 
 void CRenderMgr::init()
 {
-    // Light2DBuffer 구조화 버퍼 생성
-    m_Light2DBuffer = new CStructuredBuffer;
-    m_Light2DBuffer->Create(sizeof(tLightInfo), 10);
 }
 
 void CRenderMgr::render()
@@ -58,28 +55,27 @@ int CRenderMgr::RegisterCamera(CCamera* _Cam, int _idx)
 
 void CRenderMgr::UpdateData()
 {
-    // GlobalData 에 광원 개수정보 세팅
-    GlobalData.Light2DCount = m_vecLight2D.size();
+    //출력하도록 등록된 빛의 사이즈를 등록한다.
+    //패딩을 넣어야 하므로 임시 구조체 변수를 만든 다음 전달한다.
+    struct {
+        UINT size;
+        Vec3 Padding;
+    } tCBuffer{};
+    tCBuffer.size = (UINT)m_vecLight2D.size();
+    static CConstBuffer* pLightBuffer = CDevice::GetInst()->GetConstBuffer(CB_TYPE::LIGHT);
+    pLightBuffer->SetData((void*)&tCBuffer);
+    pLightBuffer->UpdateData();
 
-    // 구조화버퍼의 크기가 모자라면 더 크게 새로 만든다.
-    if (m_Light2DBuffer->GetElementCount() < m_vecLight2D.size())
-    {
-        m_Light2DBuffer->Create(sizeof(tLightInfo), m_vecLight2D.size());
-    }
+    //구조화버퍼의 데이터를 업데이트
+    CStructuredBuffer* pBuffer = CDevice::GetInst()->GetStructBuffer(SB_TYPE::LIGHT);
 
-    // 구조화버퍼로 광원 데이터를 옮긴다.
-    m_Light2DBuffer->SetData(m_vecLight2D.data(), sizeof(tLightInfo) * m_vecLight2D.size());
-    m_Light2DBuffer->UpdateData(8, PIPELINE_STAGE::PS_PIXEL);
-
-
-    // 전역 상수 데이터 바인딩
-    CConstBuffer* pGlobalBuffer = CDevice::GetInst()->GetConstBuffer(CB_TYPE::GLOBAL);
-    pGlobalBuffer->SetData(&GlobalData, sizeof(tGlobal));
-    pGlobalBuffer->UpdateData();
+    UINT bytesize = (UINT)(sizeof(tLightInfo) * m_vecLight2D.size());
+    pBuffer->SetData(m_vecLight2D.data(), bytesize);
+    UINT PStage = PIPELINE_STAGE::PS_VERTEX | PIPELINE_STAGE::PS_PIXEL;
+    pBuffer->UpdateData((UINT)SB_TYPE::LIGHT, PStage); 
 }
 
 void CRenderMgr::Clear()
 {
     m_vecLight2D.clear();
-
 }
