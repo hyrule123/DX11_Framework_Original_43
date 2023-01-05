@@ -13,8 +13,9 @@ class CTexture :
     public CRes
 {
 private:
-    ComPtr<ID3D11Texture2D>             m_Tex2D;    
+    ComPtr<ID3D11Texture2D>             m_Tex2D;
     ComPtr<ID3D11ShaderResourceView>    m_SRV;
+
     D3D11_TEXTURE2D_DESC                m_Desc;
 
     ScratchImage                        m_Image;

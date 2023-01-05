@@ -21,6 +21,10 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
     m_hWnd = _hWnd;    
     m_vRenderResolution = Vec2((float)_iWidth, (float)_iHeight);
 
+    GlobalData.Resolution = m_vRenderResolution;
+
+
+
     int iFlag = 0;
 #ifdef _DEBUG
     iFlag = D3D11_CREATE_DEVICE_DEBUG;
@@ -372,6 +376,6 @@ void CDevice::CreateConstBuffer()
     m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL] = new CConstBuffer((UINT)CB_TYPE::MATERIAL);
     m_arrConstBuffer[(UINT)CB_TYPE::MATERIAL]->Create(sizeof(tMtrlConst), 1);
 
-    m_arrConstBuffer[(UINT)CB_TYPE::LIGHT] = new CConstBuffer((UINT)CB_TYPE::LIGHT);
-    m_arrConstBuffer[(UINT)CB_TYPE::LIGHT]->Create(sizeof(tLightInfo) * 10 + 16, 1);
+    m_arrConstBuffer[(UINT)CB_TYPE::GLOBAL] = new CConstBuffer((UINT)CB_TYPE::GLOBAL);
+    m_arrConstBuffer[(UINT)CB_TYPE::GLOBAL]->Create(sizeof(tGlobal), 1);
 }

@@ -58,7 +58,12 @@ struct tLightInfo
 };
 
 
-
+// TileMap
+struct tTile
+{
+	Vec2 vLeftTop;
+	Vec2 vSlice;
+};
 
 
 
@@ -90,6 +95,18 @@ struct tMtrlConst
 	int arrTex[(UINT)TEX_PARAM::TEX_END];
 };
 
+
+struct tGlobal
+{
+	Vec2  Resolution;
+	float tDT;
+	float tAccTime;
+	UINT  Light2DCount;
+	UINT  Light3DCount;
+	int	  globalpadding[2];
+};
+
+extern tGlobal GlobalData;
 
 
 
