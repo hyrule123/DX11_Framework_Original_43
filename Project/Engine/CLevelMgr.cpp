@@ -132,6 +132,9 @@ void CLevelMgr::init()
 	pTileMap->Transform()->SetRelativeScale(Vec3(500.f, 500.f, 1.f));
 
 	pTileMap->TileMap()->GetMaterial()->SetTexParam(TEX_0, CResMgr::GetInst()->FindRes<CTexture>(L"TileAtlasTex"));
+	pTileMap->TileMap()->SetSliceSize(Vec2(0.125f, 0.166f));
+	pTileMap->TileMap()->SetTileCount(8, 8);
+	
 
 	m_pCurLevel->AddGameObject(pTileMap, L"Tile", false);
 
