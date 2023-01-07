@@ -139,6 +139,12 @@
     <ClInclude Include="CTileMap.h">
       <Filter>Source\06. Component\RenderComponent\3. TileMap</Filter>
     </ClInclude>
+    <ClInclude Include="CAnimator2D.h">
+      <Filter>Source\06. Component\5. Animator2D</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnim2D.h">
+      <Filter>Source\06. Component\5. Animator2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -260,6 +266,12 @@
     </ClCompile>
     <ClCompile Include="CTileMap.cpp">
       <Filter>Source\06. Component\RenderComponent\3. TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator2D.cpp">
+      <Filter>Source\06. Component\5. Animator2D</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnim2D.cpp">
+      <Filter>Source\06. Component\5. Animator2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -388,6 +400,9 @@
     </Filter>
     <Filter Include="Source\02. Device\StructuredBuffer">
       <UniqueIdentifier>{4133d464-b1f7-4ff4-b41c-071f2f05dc08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\06. Component\5. Animator2D">
+      <UniqueIdentifier>{7d787944-7b75-432b-91a9-8452604ba075}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
