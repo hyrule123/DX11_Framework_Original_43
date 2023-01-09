@@ -16,7 +16,7 @@ private:
 
 
 public:
-    void SetScalarParam(SCALAR_PARAM _Param, void* _Src);
+    void SetScalarParam(SCALAR_PARAM _Param, const void* _Src);
     void SetTexParam(TEX_PARAM _Param, const Ptr<CTexture>& _Tex);
 
 

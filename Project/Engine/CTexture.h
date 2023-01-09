@@ -17,16 +17,17 @@ private:
     ComPtr<ID3D11ShaderResourceView>    m_SRV;
 
     D3D11_TEXTURE2D_DESC                m_Desc;
-
     ScratchImage                        m_Image;
 
+
+public:
+    float Width() { return m_Desc.Width; }
+    float Height() { return m_Desc.Height; }
 
 private:
     virtual int Load(const wstring& _strFilePath) override;
 public:
     virtual int Save(const wstring& _strRelativePath) override;
-
-
 
 public:
     // _PipelineStage : PIPELINE_STAGE

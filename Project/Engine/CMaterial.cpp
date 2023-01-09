@@ -46,8 +46,7 @@ void CMaterial::UpdateData()
 	pMtrlBuffer->UpdateData();
 }
 
-
-void CMaterial::SetScalarParam(SCALAR_PARAM _Param, void* _Src)
+void CMaterial::SetScalarParam(SCALAR_PARAM _Param, const void* _Src)
 {
 	switch (_Param)
 	{

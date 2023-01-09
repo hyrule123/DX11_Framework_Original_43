@@ -32,6 +32,7 @@ void CRenderMgr::render()
 {
     UpdateData();
 
+
     for (size_t i = 0; i < m_vecCam.size(); ++i)
     {
         if (nullptr == m_vecCam[i])

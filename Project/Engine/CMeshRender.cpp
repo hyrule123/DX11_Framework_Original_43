@@ -2,6 +2,7 @@
 #include "CMeshRender.h"
 
 #include "CTransform.h"
+#include "CAnimator2D.h"
 
 CMeshRender::CMeshRender()
 	: CRenderComponent(COMPONENT_TYPE::MESHRENDER)		
@@ -23,6 +24,12 @@ void CMeshRender::render()
 
 	// Transform 에 UpdateData 요청
 	Transform()->UpdateData();
+
+	// Animator2D 컴포넌트가 있다면
+	if (Animator2D())
+	{
+		Animator2D()->UpdateData();
+	}
 
 	// 재질 업데이트
 	GetMaterial()->UpdateData();
