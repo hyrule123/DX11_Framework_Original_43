@@ -57,11 +57,6 @@ int CDevice::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
         return E_FAIL;
     }
 
-
-    // 출력 타겟 설정
-    m_Context->OMSetRenderTargets(1, m_RTV.GetAddressOf(), m_DSV.Get());
-
-
     // ViewPort 설정
     m_ViewPort.TopLeftX = 0.f;
     m_ViewPort.TopLeftY = 0.f;

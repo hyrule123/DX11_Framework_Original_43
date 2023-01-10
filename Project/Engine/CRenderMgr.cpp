@@ -30,9 +30,13 @@ void CRenderMgr::init()
 
 void CRenderMgr::render()
 {
+    // 출력 타겟 지정    
+    CDevice::GetInst()->OMSet();
+
+    // 광원 및 전역 데이터 업데이트 및 바인딩
     UpdateData();
 
-
+    // 카메라 기준 렌더링
     for (size_t i = 0; i < m_vecCam.size(); ++i)
     {
         if (nullptr == m_vecCam[i])
@@ -42,6 +46,7 @@ void CRenderMgr::render()
         m_vecCam[i]->render();
     }   
 
+    // 광원 해제
     Clear();
 }
 

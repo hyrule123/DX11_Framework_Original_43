@@ -45,6 +45,7 @@ private:
 public:
 	int init(HWND _hWnd, UINT _iWidth, UINT _iHeight);
 	void ClearTarget(float(&_color)[4]);
+	void OMSet() { m_Context->OMSetRenderTargets(1, m_RTV.GetAddressOf(), m_DSV.Get()); }
 	void Present()	{ m_SwapChain->Present(0, 0); }
 
 	Vec2 GetRenderResolution() { return m_vRenderResolution; }
@@ -58,7 +59,8 @@ private:
 	int CreateSampler();
 	void CreateConstBuffer();
 
-public:
+public:	
+
 	ID3D11Device* GetDevice() { return m_Device.Get(); }
 	ID3D11DeviceContext* GetDeviceContext() { return m_Context.Get(); }
 	CConstBuffer* GetConstBuffer(CB_TYPE _Type) { return m_arrConstBuffer[(UINT)_Type]; }
