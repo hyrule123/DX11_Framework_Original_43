@@ -2,6 +2,7 @@
 #include "CSingleton.h"
 
 class CLevel;
+class CGameObject;
 
 class CLevelMgr :
     public CSingleton<CLevelMgr>
@@ -12,6 +13,9 @@ private:
 
 public:
     CLevel* GetCurLevel() { return m_pCurLevel; }
+    CGameObject* FindObjectByName(const wstring& _strName);
+    void FindObjectByName(const wstring& _strName, vector<CGameObject*>& _Out);
+
 
 public:
     void init();

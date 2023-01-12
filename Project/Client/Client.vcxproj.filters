@@ -8,14 +8,35 @@
     <Filter Include="Default">
       <UniqueIdentifier>{8e093ada-c2c2-4bff-9390-9244f58587a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EditorObjMgr">
-      <UniqueIdentifier>{9345d13f-0174-4f6d-9ddb-3587d6334bea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EditorObjMgr\GameObjectEx">
-      <UniqueIdentifier>{ee8a76cf-4e38-431e-bc14-b6bd5c62857b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{6a3b17e3-c055-433c-b620-c9c8796ac376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{cb29e3c8-5212-4dc9-9d98-c4c010e0be04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\EditorObjMgr">
+      <UniqueIdentifier>{9345d13f-0174-4f6d-9ddb-3587d6334bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\EditorObjMgr\GameObjectEx">
+      <UniqueIdentifier>{ee8a76cf-4e38-431e-bc14-b6bd5c62857b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\GUIMgr">
+      <UniqueIdentifier>{6199bf00-89fe-4eba-8b79-6cb47214341a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{badbf60d-bec1-47bc-986b-a705b864689e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Inspector">
+      <UniqueIdentifier>{b5451cb5-87b3-484d-81da-ff2d62408d0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Inspector\ComponentUI">
+      <UniqueIdentifier>{91daa0d8-536c-4d08-ae67-14a0dffca022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Inspector\ComponentUI\01. TransformUI">
+      <UniqueIdentifier>{845b1d5c-be2e-4db5-b8e5-2f57f7265f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Inspector\ComponentUI\02. MeshRenderUI">
+      <UniqueIdentifier>{638439d2-548a-47d7-b2fc-769d9a7a787b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,13 +53,13 @@
       <Filter>Default</Filter>
     </ClInclude>
     <ClInclude Include="CEditorObjMgr.h">
-      <Filter>EditorObjMgr</Filter>
+      <Filter>Manager\EditorObjMgr</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Default</Filter>
     </ClInclude>
     <ClInclude Include="CGameObjectEx.h">
-      <Filter>EditorObjMgr\GameObjectEx</Filter>
+      <Filter>Manager\EditorObjMgr\GameObjectEx</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imconfig.h">
       <Filter>ImGui</Filter>
@@ -54,6 +75,24 @@
     </ClInclude>
     <ClInclude Include="ImGui\imgui_impl_win32.h">
       <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiMgr.h">
+      <Filter>Manager\GUIMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="InspectorUI.h">
+      <Filter>UI\Inspector</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformUI.h">
+      <Filter>UI\Inspector\ComponentUI\01. TransformUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderUI.h">
+      <Filter>UI\Inspector\ComponentUI\02. MeshRenderUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentUI.h">
+      <Filter>UI\Inspector\ComponentUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,13 +111,13 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CEditorObjMgr.cpp">
-      <Filter>EditorObjMgr</Filter>
+      <Filter>Manager\EditorObjMgr</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Default</Filter>
     </ClCompile>
     <ClCompile Include="CGameObjectEx.cpp">
-      <Filter>EditorObjMgr\GameObjectEx</Filter>
+      <Filter>Manager\EditorObjMgr\GameObjectEx</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui.cpp">
       <Filter>ImGui</Filter>
@@ -100,6 +139,24 @@
     </ClCompile>
     <ClCompile Include="ImGui\imgui_impl_win32.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiMgr.cpp">
+      <Filter>Manager\GUIMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="InspectorUI.cpp">
+      <Filter>UI\Inspector</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformUI.cpp">
+      <Filter>UI\Inspector\ComponentUI\01. TransformUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderUI.cpp">
+      <Filter>UI\Inspector\ComponentUI\02. MeshRenderUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentUI.cpp">
+      <Filter>UI\Inspector\ComponentUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -150,3 +150,15 @@ void CLevelMgr::tick()
 	m_pCurLevel->tick();
 	m_pCurLevel->finaltick();
 }
+
+
+
+CGameObject* CLevelMgr::FindObjectByName(const wstring& _strName)
+{
+	return m_pCurLevel->FindObjectByName(_strName);	
+}
+
+void CLevelMgr::FindObjectByName(const wstring& _strName, vector<CGameObject*>& _vec)
+{
+	m_pCurLevel->FindObjectByName(_strName, _vec);
+}
