@@ -1,15 +1,13 @@
 #pragma once
 #include "ComponentUI.h"
-
-class MeshRenderUI :
+class Collider2DUI :
     public ComponentUI
 {
-
 public:
     virtual int render_update() override;
 
 public:
-    MeshRenderUI();
-    ~MeshRenderUI();
+    Collider2DUI();
+    ~Collider2DUI();
 };
 

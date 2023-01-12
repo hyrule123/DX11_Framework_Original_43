@@ -1,7 +1,6 @@
 #pragma once
 #include "ComponentUI.h"
-
-class MeshRenderUI :
+class Light2DUI :
     public ComponentUI
 {
 
@@ -9,7 +8,7 @@ public:
     virtual int render_update() override;
 
 public:
-    MeshRenderUI();
-    ~MeshRenderUI();
+    Light2DUI();
+    ~Light2DUI();
 };
 
