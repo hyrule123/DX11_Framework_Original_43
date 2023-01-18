@@ -29,6 +29,9 @@ private:
     void LoadDefaultTexture();   
 
 public:
+    const map<wstring, Ptr<CRes>>& GetResources(RES_TYPE _Type) { return m_arrRes[(UINT)_Type]; }
+
+
     template<typename T>
     Ptr<T> FindRes(const wstring& _strKey);
 
