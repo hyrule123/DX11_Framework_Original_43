@@ -8,7 +8,8 @@ class CLevel :
     public CEntity
 {
 private:
-    CLayer*     m_arrLayer[MAX_LAYER];
+    CLayer*         m_arrLayer[MAX_LAYER];
+    LEVEL_STATE     m_State;
 
 public:
     void begin();
@@ -24,10 +25,9 @@ public:
 
     void AddGameObject(CGameObject* _Object, int _iLayerIdx, bool _Move);
     void AddGameObject(CGameObject* _Object, const wstring& _LayerName, bool _Move);
-
-
     
-
+    void ChangeState(LEVEL_STATE _State);
+    LEVEL_STATE GetState() { return m_State; }
 
 private:
     // 등록된 GameObject 제거

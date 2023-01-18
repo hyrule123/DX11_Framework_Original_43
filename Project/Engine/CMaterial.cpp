@@ -15,7 +15,6 @@ CMaterial::~CMaterial()
 {
 }
 
-
 void CMaterial::UpdateData()
 {
 	if (nullptr == m_pShader)

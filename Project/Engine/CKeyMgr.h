@@ -23,6 +23,8 @@ enum class KEY
 	E,
 	R,
 
+	T,Y,U,I,O,P,
+
 	A,
 	S,
 	D,

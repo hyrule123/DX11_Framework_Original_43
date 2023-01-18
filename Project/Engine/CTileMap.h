@@ -10,10 +10,7 @@ class CTileMap :
 private:
     UINT                m_iTileCountX;  // 타일 가로
     UINT                m_iTileCountY;  // 타일 세로
-
     Vec2                m_vSliceSize;   // 타일 하나의 크기(UV 단위)
-
-
     vector<tTile>       m_vecTile;
     CStructuredBuffer*  m_Buffer;
 

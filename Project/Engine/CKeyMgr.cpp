@@ -27,6 +27,13 @@ int g_arrVK[(UINT)KEY::END]
 	 'E',
 	 'R',
 
+	 'T',
+	 'Y',
+	 'U',
+	 'I',
+	 'O',
+	 'P',
+
 	 'A',
 	 'S',
 	 'D',
