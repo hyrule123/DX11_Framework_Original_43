@@ -15,6 +15,7 @@ void CResMgr::init()
 {
 	CreateDefaultMesh();
 	CreateDefaultGraphicsShader();
+	CreateDefaultComputeShader();
 	CreateDefaultMaterial();
 	CreateDefaultPrefab();
 
@@ -161,6 +162,22 @@ void CResMgr::CreateDefaultGraphicsShader()
 	
 	AddRes(L"TestShader", pShader);
 
+	// ===============
+	// SetColor Shader
+	// ===============
+	pShader = new CGraphicsShader;
+	pShader->SetKey(L"SetColorShader");
+	pShader->CreateVertexShader(L"shader\\test.fx", "VS_SetColor");
+	pShader->CreatePixelShader(L"shader\\test.fx", "PS_SetColor");
+
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE); // 깊이 테스트 진행, 깊이 기록 X
+	pShader->SetBSType(BS_TYPE::DEFAULT);
+
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_TRANSPARENT);
+
+	AddRes(L"SetColorShader", pShader);
+
 
 	// ============================
 	// Std2DShader
@@ -255,6 +272,12 @@ void CResMgr::CreateDefaultGraphicsShader()
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASK);
 
 	AddRes(pShader->GetKey(), pShader);
+}
+
+void CResMgr::CreateDefaultComputeShader()
+{
+	// Texture 색상 변경 쉐이더
+
 }
 
 void CResMgr::CreateDefaultMaterial()
