@@ -67,3 +67,8 @@ void CConstBuffer::UpdateData()
 	CONTEXT->PSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
 }
 
+void CConstBuffer::UpdateData_CS()
+{
+	CONTEXT->CSSetConstantBuffers(m_iRegisterNum, 1, m_CB.GetAddressOf());
+}
+

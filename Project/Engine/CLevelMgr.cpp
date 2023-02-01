@@ -15,6 +15,7 @@
 #include "CMonsterScript.h"
 
 #include "CDevice.h"
+#include "CSetColorShader.h"
 
 CLevelMgr::CLevelMgr()
 	: m_pCurLevel(nullptr)
@@ -37,18 +38,13 @@ void CLevelMgr::init()
 								, 1280, 768
 								, DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM
 								, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS
-								, D3D11_USAGE_DEFAULT);		 
+								, D3D11_USAGE_DEFAULT);	
 	
-	// U0 에 바인딩
-	pCreateTex->UpdateData_CS(0);
-
 	// ComputeShader 로 텍스쳐 색 변경하기
-	Ptr<CComputeShader> pCS = CResMgr::GetInst()->FindRes<CComputeShader>(L"SetColorCS");
-	pCS->Dispatch(pCreateTex->Width() / 32, pCreateTex->Height() / 32, 1);
-
-	// U0 에 바인딩 된 텍스쳐 해제
-	pCreateTex->Clear();
-
+	Ptr<CSetColorShader> pCS = (CSetColorShader*)CResMgr::GetInst()->FindRes<CComputeShader>(L"SetColorCS").Get();
+	pCS->SetTargetTexture(pCreateTex);
+	pCS->SetColor(Vec3(0.f, 1.f, 1.f));
+	pCS->Execute();
 
 	m_pCurLevel = new CLevel;
 	m_pCurLevel->ChangeState(LEVEL_STATE::STOP);

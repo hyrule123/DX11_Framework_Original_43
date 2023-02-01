@@ -148,6 +148,12 @@
     <ClInclude Include="CComputeShader.h">
       <Filter>Source\07. Resource\4. Shader\ComputeShader</Filter>
     </ClInclude>
+    <ClInclude Include="CSetColorShader.h">
+      <Filter>Source\08. ShaderCode\Compute\SetColor</Filter>
+    </ClInclude>
+    <ClInclude Include="CParticleSystem.h">
+      <Filter>Source\06. Component\RenderComponent\2. ParticleSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -278,6 +284,12 @@
     </ClCompile>
     <ClCompile Include="CComputeShader.cpp">
       <Filter>Source\07. Resource\4. Shader\ComputeShader</Filter>
+    </ClCompile>
+    <ClCompile Include="CSetColorShader.cpp">
+      <Filter>Source\08. ShaderCode\Compute\SetColor</Filter>
+    </ClCompile>
+    <ClCompile Include="CParticleSystem.cpp">
+      <Filter>Source\06. Component\RenderComponent\2. ParticleSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +425,12 @@
     <Filter Include="Source\08. ShaderCode\Compute">
       <UniqueIdentifier>{e7e58685-e989-40bc-92c9-4f79bf523b39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\08. ShaderCode\Compute\SetColor">
+      <UniqueIdentifier>{10f44ac0-4d7c-466f-8168-e9649d728a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\08. ShaderCode\Compute\ParticleUpdate">
+      <UniqueIdentifier>{12834beb-ba3f-4987-aee4-cf905f38179d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="SimpleMath.inl">
@@ -443,7 +461,13 @@
       <Filter>Source\08. ShaderCode</Filter>
     </FxCompile>
     <FxCompile Include="setcolor.fx">
-      <Filter>Source\08. ShaderCode\Compute</Filter>
+      <Filter>Source\08. ShaderCode\Compute\SetColor</Filter>
+    </FxCompile>
+    <FxCompile Include="particle_update.fx">
+      <Filter>Source\08. ShaderCode\Compute\ParticleUpdate</Filter>
+    </FxCompile>
+    <FxCompile Include="particle_render.fx">
+      <Filter>Source\08. ShaderCode</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
