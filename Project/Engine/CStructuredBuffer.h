@@ -5,9 +5,12 @@ class CStructuredBuffer :
     public CEntity
 {
 private:
-    ComPtr<ID3D11Buffer>                m_SB;
+    ComPtr<ID3D11Buffer>                m_SB;   // register binding
     ComPtr<ID3D11ShaderResourceView>    m_SRV;
     ComPtr<ID3D11UnorderedAccessView>   m_UAV;
+
+    ComPtr<ID3D11Buffer>                m_SB_CPU_Read;  // GPU -> Sys
+    ComPtr<ID3D11Buffer>                m_SB_CPU_Write; // Sys -> GPU
 
     D3D11_BUFFER_DESC                   m_tDesc;
 
@@ -15,10 +18,12 @@ private:
     UINT                                m_iElementCount;
 
     SB_TYPE                             m_Type;
+    bool                                m_bSysAccess;
 
 public:
-    void Create(UINT _iElementSize, UINT _iElementCount, SB_TYPE _Type);
+    void Create(UINT _iElementSize, UINT _iElementCount, SB_TYPE _Type, bool _bUseSysAccess, void* _pSysMem = nullptr);
     void SetData(void* _pSrc, UINT _iSize = 0);
+    void GetData(void* _pDst);
 
     // PIPELINE_STAGE
     void UpdateData(UINT _iRegisterNum, UINT _iPipeLineStage);

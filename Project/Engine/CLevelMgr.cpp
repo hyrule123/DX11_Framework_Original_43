@@ -158,6 +158,15 @@ void CLevelMgr::init()
 	
 	m_pCurLevel->AddGameObject(pTileMap, L"Tile", false);
 
+
+	// Particle Object
+	CGameObject* pParticleObj = new CGameObject;
+	pParticleObj->AddComponent(new CTransform);
+	pParticleObj->AddComponent(new CParticleSystem);
+	
+	m_pCurLevel->AddGameObject(pParticleObj, L"Default", false);
+
+
 	// 충돌 시킬 레이어 짝 지정
 	CCollisionMgr::GetInst()->LayerCheck(L"Player", L"Monster");
 }
