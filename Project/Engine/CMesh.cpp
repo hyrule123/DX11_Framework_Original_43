@@ -79,3 +79,11 @@ void CMesh::render()
 
 	CONTEXT->DrawIndexed(m_IdxCount, 0, 0);
 }
+
+void CMesh::render_particle(UINT _iParticleCount)
+{
+	UpdateData();
+
+	// ÀÎ½ºÅÏ½Ì
+	CONTEXT->DrawIndexedInstanced(m_IdxCount, _iParticleCount, 0, 0, 0);
+}

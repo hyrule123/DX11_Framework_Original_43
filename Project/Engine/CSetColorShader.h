@@ -8,7 +8,7 @@ class CSetColorShader :
     public CComputeShader
 {
 private:
-    Ptr<CTexture>   m_OutTex;    
+    Ptr<CTexture>   m_OutTex;
 
 public:
     void SetTargetTexture(Ptr<CTexture> _Tex) {m_OutTex = _Tex; }

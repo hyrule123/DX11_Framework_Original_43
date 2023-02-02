@@ -26,6 +26,9 @@ public:
 
 
 	void render();
+	void render_particle(UINT _iParticleCount);
+
+
 
 private:
 	virtual void UpdateData() override;

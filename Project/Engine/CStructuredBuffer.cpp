@@ -120,10 +120,16 @@ void CStructuredBuffer::Create(UINT _iElementSize, UINT _iElementCount
 
 void CStructuredBuffer::SetData(void* _pSrc, UINT _iSize)
 {
+	UINT iSize = _iSize;
+	if (0 == iSize)
+	{
+		iSize = GetBufferSize();
+	}
+
 	// CPU -> CPU WriteBuffer
 	D3D11_MAPPED_SUBRESOURCE tSub = {};
 	CONTEXT->Map(m_SB_CPU_Write.Get(), 0, D3D11_MAP::D3D11_MAP_WRITE_DISCARD, 0, &tSub);
-	memcpy(tSub.pData, _pSrc, _iSize);
+	memcpy(tSub.pData, _pSrc, iSize);
 	CONTEXT->Unmap(m_SB_CPU_Write.Get(), 0);
 
 	// CPU WriteBuffer -> Main Buffer
@@ -138,12 +144,14 @@ void CStructuredBuffer::GetData(void* _pDst)
 	// CPU ReadBuffer -> CPU
 	D3D11_MAPPED_SUBRESOURCE tSub = {};
 	CONTEXT->Map(m_SB_CPU_Read.Get(), 0, D3D11_MAP::D3D11_MAP_READ, 0, &tSub);	
-	memcpy(_pDst, tSub.pData, m_iElementCount * m_iElementSize);
+	memcpy(_pDst, tSub.pData, GetBufferSize());
 	CONTEXT->Unmap(m_SB_CPU_Read.Get(), 0);
 }
 
 void CStructuredBuffer::UpdateData(UINT _iRegisterNum, UINT _iPipeLineStage)
 {
+	m_iRecentRegisterNum = _iRegisterNum;
+
 	if (PIPELINE_STAGE::PS_VERTEX & _iPipeLineStage)
 	{
 		CONTEXT->VSSetShaderResources(_iRegisterNum, 1, m_SRV.GetAddressOf());
@@ -168,4 +176,31 @@ void CStructuredBuffer::UpdateData(UINT _iRegisterNum, UINT _iPipeLineStage)
 	{
 		CONTEXT->PSSetShaderResources(_iRegisterNum, 1, m_SRV.GetAddressOf());
 	}
+}
+
+void CStructuredBuffer::UpdateData_CS(UINT _iRegisterNum)
+{
+	m_iRecentRegisterNum = _iRegisterNum;
+
+	UINT i = -1;
+	CONTEXT->CSSetUnorderedAccessViews(_iRegisterNum, 1, m_UAV.GetAddressOf(), &i);
+}
+
+void CStructuredBuffer::Clear()
+{
+	ID3D11ShaderResourceView* pSRV = nullptr;
+	CONTEXT->VSSetShaderResources(m_iRecentRegisterNum, 1, &pSRV);
+	CONTEXT->HSSetShaderResources(m_iRecentRegisterNum, 1, &pSRV);
+	CONTEXT->DSSetShaderResources(m_iRecentRegisterNum, 1, &pSRV);
+	CONTEXT->GSSetShaderResources(m_iRecentRegisterNum, 1, &pSRV);
+	CONTEXT->PSSetShaderResources(m_iRecentRegisterNum, 1, &pSRV);
+	CONTEXT->CSSetShaderResources(m_iRecentRegisterNum, 1, &pSRV);
+
+}
+
+void CStructuredBuffer::Clear_CS()
+{
+	ID3D11UnorderedAccessView* pUAV = nullptr;
+	UINT i = -1;
+	CONTEXT->CSSetUnorderedAccessViews(m_iRecentRegisterNum, 1, &pUAV, &i);
 }
