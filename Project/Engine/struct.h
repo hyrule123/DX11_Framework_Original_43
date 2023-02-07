@@ -101,15 +101,11 @@ struct tParticleModule
 {
 	// 스폰 모듈
 	Vec4    vSpawnColor;
-
 	Vec4	vSpawnScale;
-
 	Vec3	vBoxShapeScale;	
 	float	fSphereShapeRadius;
-
 	int		SpawnShapeType;		// Sphere , Box
 	int		SpawnRate;			// 초당 생성 개수
-	const Vec2	Padding;
 
 	// Color Change 모듈
 	Vec4	vStartColor;		// 초기 색상
