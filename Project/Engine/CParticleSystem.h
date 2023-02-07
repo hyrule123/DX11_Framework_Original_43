@@ -11,12 +11,13 @@ class CParticleSystem :
 {
 private:
     CStructuredBuffer*          m_ParticleBuffer;
-    UINT                        m_iMaxParticleCount;
-
+    CStructuredBuffer*          m_RWBuffer;
+    CStructuredBuffer*          m_ModleDataBuffer;
+    
+    tParticleModule             m_ModuleData;
     Ptr<CParticleUpdateShader>  m_UpdateCS;
-
-
    
+    float                       m_AccTime;
 
 
 public:
