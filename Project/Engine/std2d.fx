@@ -108,8 +108,7 @@ VS_Light_OUT VS_Std2DLight(VS_Light_IN _in)
     
     output.vPosition = mul(float4(_in.vLocalPos, 1.f), g_matWVP);
     output.vUV = _in.vUV;
-    output.vWorldPos = mul(float4(_in.vLocalPos, 1.f), g_matWorld).xyz;
-    
+    output.vWorldPos = mul(float4(_in.vLocalPos, 1.f), g_matWorld).xyz;    
         
     return output;
 }

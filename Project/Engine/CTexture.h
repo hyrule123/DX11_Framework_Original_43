@@ -22,7 +22,7 @@ private:
     D3D11_TEXTURE2D_DESC                m_Desc;
     ScratchImage                        m_Image;
 
-    UINT                                m_iRecentCSNum;
+    UINT                                m_iRecentNum;
 
 public:
     int Create(UINT _Width, UINT _Height, DXGI_FORMAT _pixelformat
@@ -48,8 +48,9 @@ public:
 public:
     // _PipelineStage : PIPELINE_STAGE
     void UpdateData(int _iRegisterNum, int _PipelineStage);
-    void UpdateData_CS(int _iRegisterNum);
+    void UpdateData_CS(int _iRegisterNum, bool _bShaderRes);
     void Clear();
+    void Clear_CS(bool _bShaderRes);
 
 
 private:

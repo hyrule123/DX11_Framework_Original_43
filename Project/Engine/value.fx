@@ -70,7 +70,15 @@ Texture2D g_tex_5 : register(t5);
 Texture2D g_tex_6 : register(t6);
 Texture2D g_tex_7 : register(t7);
 
-StructuredBuffer<tLightInfo> g_Light2DBuffer : register(t8);
+TextureCube g_cube_0 : register(t8);
+TextureCube g_cube_1 : register(t9);
+
+Texture2DArray g_arrtex_0 : register(t10);
+Texture2DArray g_arrtex_1 : register(t11);
+
+StructuredBuffer<tLightInfo> g_Light2DBuffer : register(t12);
+StructuredBuffer<tLightInfo> g_Light3DBuffer : register(t13);
+
 
 SamplerState g_sam_0 : register(s0);
 SamplerState g_sam_1 : register(s1);
