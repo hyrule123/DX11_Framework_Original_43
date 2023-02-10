@@ -4,7 +4,6 @@
 #define DEVICE  CDevice::GetInst()->GetDevice()
 #define CONTEXT CDevice::GetInst()->GetDeviceContext()
 
-
 #define CLONE(type) public: virtual type* Clone() { return new type(*this); }
 #define CLONE_DISABLE(type) public: virtual type* Clone() { return nullptr; assert(nullptr); }
 
@@ -247,6 +246,12 @@ enum class PARTICLE_MODULE
 	PARTICLE_SPAWN,
 	COLOR_CHANGE,
 	SCALE_CHANGE,
-	DUMMY,
+	ADD_VELOCITY,
+
+	DRAG,
+	DUMMY_1,
+	DUMMY_2,
+	DUMMY_3,
+
 	END,
 };
