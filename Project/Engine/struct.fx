@@ -26,6 +26,7 @@ struct tLightInfo
 // Particle
 struct tParticle
 {
+    float4  vLocalPos;
     float4  vWorldPos; // 파티클 위치
     float4  vWorldScale; // 파티클 크기
     float4  vColor; // 파티클 색상
@@ -36,6 +37,9 @@ struct tParticle
     float   NomalizedAge; // 수명대비 생존시간을 0~1로 정규화 한 값
     float   LifeTime; // 수명
     float   Mass; // 질량
+    
+    int     Active;
+    int3    pad;
 };
 
 
@@ -48,7 +52,8 @@ struct tParticleModule
     float   fSphereShapeRadius;
     int     SpawnShapeType; // Sphere , Box
     int     SpawnRate;
-    int2    spawnpad;
+    int     Space;          // 0 World, 1 Local
+    int     spawnpad;
 
 	// Color Change 모듈
     float4  vStartColor; // 초기 색상
