@@ -26,9 +26,6 @@
     <Filter Include="Manager\ImGuiMgr">
       <UniqueIdentifier>{6199bf00-89fe-4eba-8b79-6cb47214341a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\ListUI">
-      <UniqueIdentifier>{28416446-aa71-4140-b738-81b70f72fccd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\InspectorUI">
       <UniqueIdentifier>{b5451cb5-87b3-484d-81da-ff2d62408d0c}</UniqueIdentifier>
     </Filter>
@@ -58,6 +55,18 @@
     </Filter>
     <Filter Include="UI\InspectorUI\ComponentUI\08. ParticleSystemUI">
       <UniqueIdentifier>{26ea688e-f2d8-4f3f-85e5-e9909a31dacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\ContentUI">
+      <UniqueIdentifier>{6ff1df0b-768c-4425-88dd-d62587ca58fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Module">
+      <UniqueIdentifier>{ab4338fd-59b8-4cc0-a1db-cc269dc91284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Module\ListUI">
+      <UniqueIdentifier>{28416446-aa71-4140-b738-81b70f72fccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Module\TreeUI">
+      <UniqueIdentifier>{3e7bdc3d-f64d-49b2-8e0e-12be2ec4f1c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +140,13 @@
       <Filter>UI\InspectorUI\ComponentUI\07. TileMapUI</Filter>
     </ClInclude>
     <ClInclude Include="ListUI.h">
-      <Filter>UI\ListUI</Filter>
+      <Filter>UI\Module\ListUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentUI.h">
+      <Filter>UI\ContentUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeUI.h">
+      <Filter>UI\Module\TreeUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -213,7 +228,13 @@
       <Filter>UI\InspectorUI\ComponentUI\07. TileMapUI</Filter>
     </ClCompile>
     <ClCompile Include="ListUI.cpp">
-      <Filter>UI\ListUI</Filter>
+      <Filter>UI\Module\ListUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentUI.cpp">
+      <Filter>UI\ContentUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeUI.cpp">
+      <Filter>UI\Module\TreeUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
