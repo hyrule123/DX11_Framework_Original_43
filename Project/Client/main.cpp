@@ -77,7 +77,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
             CEditorObjMgr::GetInst()->progress();
 
-            ImGuiMgr::GetInst()->progress();                  
+            ImGuiMgr::GetInst()->progress();
 
             // 렌더 종료
             CDevice::GetInst()->Present();

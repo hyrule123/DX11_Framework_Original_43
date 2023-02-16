@@ -10,6 +10,7 @@ private:
     TreeUI*     m_Tree;
 
 public:
+    virtual void tick() override;
     virtual int render_update() override;
 
 public:

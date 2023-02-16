@@ -18,8 +18,9 @@ CEventMgr::~CEventMgr()
 
 void CEventMgr::tick()
 {
-	GC_Clear();
+	m_LevelChanged = false;
 
+	GC_Clear();
 
 	for (size_t i = 0; i < m_vecEvent.size(); ++i)
 	{
@@ -30,8 +31,9 @@ void CEventMgr::tick()
 		{
 			CGameObject* NewObject = (CGameObject*)m_vecEvent[i].wParam;
 			int iLayerIdx = (int)m_vecEvent[i].lParam;
-
 			CLevelMgr::GetInst()->GetCurLevel()->AddGameObject(NewObject, iLayerIdx, false);
+
+			m_LevelChanged = true;
 		}
 			break;
 		case EVENT_TYPE::DELETE_OBJECT:
@@ -42,12 +44,14 @@ void CEventMgr::tick()
 			{
 				DeleteObject->m_bDead = true;
 				m_vecGC.push_back(DeleteObject);
-			}			
+			}
+
+			m_LevelChanged = true;
 		}
 			break;
 		case EVENT_TYPE::ADD_CHILD:
 
-
+			m_LevelChanged = true;
 			break;
 		case EVENT_TYPE::DELETE_RESOURCE:
 
@@ -55,7 +59,7 @@ void CEventMgr::tick()
 			break;
 		case EVENT_TYPE::LEVEL_CHANGE:
 
-
+			m_LevelChanged = true;
 			break;		
 		}
 	}

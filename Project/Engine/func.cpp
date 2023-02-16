@@ -103,3 +103,14 @@ void DrawDebugCircle(const Matrix& _matWorld, Vec4 _vColor, float _fTime)
 
 	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
 }
+
+
+const char* ToString(RES_TYPE type)
+{
+	return RES_TYPE_STR[(UINT)type];
+}
+
+const wchar_t* ToWString(RES_TYPE type)
+{
+	return RES_TYPE_WSTR[(UINT)type];
+}
