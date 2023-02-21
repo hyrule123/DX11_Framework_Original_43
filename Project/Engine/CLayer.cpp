@@ -3,6 +3,7 @@
 
 #include "CGameObject.h"
 
+
 CLayer::CLayer()
 {
 }
@@ -70,4 +71,27 @@ void CLayer::AddGameObject(CGameObject* _Object, bool _bMove)
 		if(nullptr == pObject->m_Parent || -1 == pObject->m_iLayerIdx || _bMove)
 			pObject->m_iLayerIdx = m_iLayerIdx;
 	}	
+}
+
+
+void CLayer::RemoveFromParentList(CGameObject* _Obj)
+{
+	vector<CGameObject*>::iterator iter = m_vecParentObj.begin();
+
+	for (; iter != m_vecParentObj.end(); ++iter)
+	{
+		if ((*iter) == _Obj)
+		{
+			m_vecParentObj.erase(iter);
+			return;
+		}
+	}
+
+	assert(nullptr);
+}
+
+void CLayer::AddParentList(CGameObject* _Obj)
+{
+	assert(!_Obj->m_Parent);
+	m_vecParentObj.push_back(_Obj);
 }

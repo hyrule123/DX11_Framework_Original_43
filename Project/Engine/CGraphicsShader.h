@@ -1,6 +1,21 @@
 #pragma once
 #include "CShader.h"
 
+
+struct tScalarParam
+{
+    SCALAR_PARAM    eParam;
+    string          strDesc;
+};
+
+struct tTexParam
+{
+    TEX_PARAM       eParam;
+    string          strDesc;
+};
+
+
+
 class CGraphicsShader :
     public CShader
 {
@@ -27,6 +42,10 @@ private:
     SHADER_DOMAIN                   m_Domain;
 
 
+    vector<tScalarParam>            m_vecScalarParam;
+    vector<tTexParam>               m_vecTexParam;
+
+
 public:
     void CreateVertexShader(const wstring& _strFileName, const string& _strFuncName);
     void CreateGeometryShader(const wstring& _strFileName, const string& _strFuncName);
@@ -39,6 +58,9 @@ public:
 
     SHADER_DOMAIN GetDomain() { return m_Domain; }
     virtual void UpdateData() override;
+
+    void AddScalarParam(SCALAR_PARAM _Param, const string& _desc) { m_vecScalarParam.push_back(tScalarParam{ _Param, _desc }); }
+    void AddTexParam(TEX_PARAM _Param, const string& _desc) { m_vecTexParam.push_back(tTexParam{_Param, _desc}); }
 
 
 public:

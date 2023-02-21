@@ -49,9 +49,32 @@ void CEventMgr::tick()
 			m_LevelChanged = true;
 		}
 			break;
+
 		case EVENT_TYPE::ADD_CHILD:
+			// wParam : ParentObject, lParam : ChildObject
+		{
+			CGameObject* pParent = (CGameObject*)m_vecEvent[i].wParam;
+			CGameObject* pChild = (CGameObject*)m_vecEvent[i].lParam;
+
+			// 부모로 지정된 오브젝트가 없으면, Child 오브젝트가 최상위 부모 오브젝트가 된다.
+			if (nullptr == pParent)
+			{
+				// 기존 부모와의 연결 해제
+				pChild->DisconnectFromParent();
+
+				// 최상위 부모 오브젝트로, 소속 레이어에 등록
+				pChild->AddParentList();
+			}
+			else
+			{
+				pParent->AddChild(pChild);
+			}
 
 			m_LevelChanged = true;
+		}
+			
+
+		
 			break;
 		case EVENT_TYPE::DELETE_RESOURCE:
 

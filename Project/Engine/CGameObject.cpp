@@ -123,8 +123,7 @@ void CGameObject::finaltick()
 	{
 		m_vecChild[i]->finaltick();
 	}
-
-	
+		
 	// 소속 레이어가 없는데 finaltick 이 호출되었다.
 	assert(-1 != m_iLayerIdx); 
 
@@ -169,10 +168,39 @@ void CGameObject::AddComponent(CComponent* _Component)
 
 void CGameObject::AddChild(CGameObject* _Object)
 {
+	if (_Object->m_Parent)
+	{
+		// 기존 부모가 있으면 연결 해제 후 연결
+		_Object->DisconnectFromParent();
+	}
+	
+	else
+	{
+		// 기존 부모가 없으면, 소속 레이어에서 최상위부모 목록에서 제거된 후 연결
+		_Object->ChangeToChildType();
+	}
+	
+
+	// 부모 자식 연결
 	_Object->m_Parent = this;
 	m_vecChild.push_back(_Object);
 }
 
+
+bool CGameObject::IsAncestor(CGameObject* _Target)
+{
+	CGameObject* pParent = m_Parent;
+	while (pParent)
+	{
+		if (pParent == _Target)
+		{
+			return true;
+		}
+		pParent = pParent->m_Parent;
+	}
+
+	return false;
+}
 
 void CGameObject::DisconnectFromParent()
 {
@@ -185,9 +213,27 @@ void CGameObject::DisconnectFromParent()
 		if (this == *iter)
 		{
 			m_Parent->m_vecChild.erase(iter);
+			m_Parent = nullptr;
 			return;
 		}
 	}
 
 	assert(nullptr);
+}
+
+void CGameObject::ChangeToChildType()
+{
+	assert(-1 <= m_iLayerIdx && m_iLayerIdx < MAX_LAYER);
+
+	if (-1 != m_iLayerIdx)
+	{
+		CLayer* pLayer = CLevelMgr::GetInst()->GetCurLevel()->GetLayer(m_iLayerIdx);
+		pLayer->RemoveFromParentList(this);
+	}
+}
+
+void CGameObject::AddParentList()
+{
+	CLayer* pLayer = CLevelMgr::GetInst()->GetCurLevel()->GetLayer(m_iLayerIdx);
+	pLayer->AddParentList(this);
 }
