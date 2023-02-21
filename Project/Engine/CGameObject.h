@@ -45,7 +45,7 @@ public:
     void AddChild(CGameObject* _Object);
 
     CComponent* GetComponent(COMPONENT_TYPE _ComType) { return m_arrCom[(UINT)_ComType]; }
-    const vector<CGameObject*> GetChild() { return m_vecChild; }
+    const vector<CGameObject*>& GetChild() { return m_vecChild; }
 
     CGameObject* GetParent() const { return m_Parent; }
 

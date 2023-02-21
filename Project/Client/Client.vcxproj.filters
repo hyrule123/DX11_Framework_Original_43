@@ -181,11 +181,32 @@
     <ClInclude Include="OutlinerUI.h">
       <Filter>UI\OutlinerUI</Filter>
     </ClInclude>
+    <ClInclude Include="MeshUI.h">
+      <Filter>UI\InspectorUI\ResUI\MeshUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ComputeShaderUI.h">
+      <Filter>UI\InspectorUI\ResUI\ComputeShaderUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsShaderUI.h">
+      <Filter>UI\InspectorUI\ResUI\GraphicsShaderUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialUI.h">
+      <Filter>UI\InspectorUI\ResUI\MaterialUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshDataUI.h">
+      <Filter>UI\InspectorUI\ResUI\MeshDataUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PrefabUI.h">
+      <Filter>UI\InspectorUI\ResUI\PrefabUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundUI.h">
+      <Filter>UI\InspectorUI\ResUI\SoundUI</Filter>
+    </ClInclude>
     <ClInclude Include="ResUI.h">
       <Filter>UI\InspectorUI\ResUI</Filter>
     </ClInclude>
-    <ClInclude Include="MeshUI.h">
-      <Filter>UI\InspectorUI\ResUI\MeshUI</Filter>
+    <ClInclude Include="TextureUI.h">
+      <Filter>UI\InspectorUI\ResUI\TextureUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -202,7 +223,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="CEditorObjMgr.cpp">
       <Filter>Manager\EditorObjMgr</Filter>
     </ClCompile>
@@ -272,17 +292,39 @@
     <ClCompile Include="ContentUI.cpp">
       <Filter>UI\ContentUI</Filter>
     </ClCompile>
-    <ClCompile Include="TreeUI.cpp">
-      <Filter>UI\Module\TreeUI</Filter>
-    </ClCompile>
     <ClCompile Include="OutlinerUI.cpp">
       <Filter>UI\OutlinerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\MeshUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ComputeShaderUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\ComputeShaderUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsShaderUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\GraphicsShaderUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\MaterialUI</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MeshDataUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\MeshDataUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PrefabUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\PrefabUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\SoundUI</Filter>
     </ClCompile>
     <ClCompile Include="ResUI.cpp">
       <Filter>UI\InspectorUI\ResUI</Filter>
     </ClCompile>
-    <ClCompile Include="MeshUI.cpp">
-      <Filter>UI\InspectorUI\ResUI\MeshUI</Filter>
+    <ClCompile Include="TextureUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\TextureUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeUI.cpp">
+      <Filter>UI\Module\TreeUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

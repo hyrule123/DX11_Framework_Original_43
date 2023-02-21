@@ -18,6 +18,7 @@ private:
 public:
     virtual void finaltick() override;
     void UpdateData();
+    void Clear();
 
 public:
     void Play(const wstring& _strName, bool _bRepeat);

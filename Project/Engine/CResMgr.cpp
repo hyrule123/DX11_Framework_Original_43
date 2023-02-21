@@ -359,10 +359,22 @@ void CResMgr::CreateDefaultMaterial()
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DShader"));
 	AddRes(L"Std2DMtrl", pMtrl);
 
+	// Std2DAnim Material
+	pMtrl = new CMaterial;
+	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DShader"));
+	AddRes(L"Std2DAnimMtrl", pMtrl);
+
+
 	// Std2DLight Material
 	pMtrl = new CMaterial;
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DLightShader"));
 	AddRes(L"Std2DLightMtrl", pMtrl);
+
+
+	// Std2DLight Material
+	pMtrl = new CMaterial;
+	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DLightShader"));
+	AddRes(L"Std2DAnimLightMtrl", pMtrl);
 	
 	// DebugShape Material
 	pMtrl = new CMaterial;

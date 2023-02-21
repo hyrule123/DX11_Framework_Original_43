@@ -36,4 +36,8 @@ void CMeshRender::render()
 
 	// 렌더
 	GetMesh()->render();
+
+	// Animation 관련 정보 제거
+	if (Animator2D())
+		Animator2D()->Clear();
 }

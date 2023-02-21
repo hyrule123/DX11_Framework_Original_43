@@ -49,6 +49,17 @@ void CAnimator2D::UpdateData()
 	pMtrl->SetTexParam(TEX_0, m_pCurAnim->GetAtlasTex());
 }
 
+void CAnimator2D::Clear()
+{
+	Ptr<CMaterial> pMtrl = MeshRender()->GetMaterial();
+
+	int iAnimUse = 0;
+	pMtrl->SetScalarParam(INT_0, &iAnimUse);
+
+	Ptr<CTexture> pTex = nullptr;
+	pMtrl->SetTexParam(TEX_0, pTex);
+}
+
 void CAnimator2D::Play(const wstring& _strName, bool _bRepeat)
 {
 	CAnim2D* pAnim = FindAnim(_strName);
