@@ -3,8 +3,9 @@
 
 #include <Engine\CResMgr.h>
 #include "TreeUI.h"
+#include "ImGuiMgr.h"
+#include "InspectorUI.h"
 
-#include <Engine\CKeyMgr.h>
 
 ContentUI::ContentUI()
     : UI("##Content")
@@ -16,6 +17,9 @@ ContentUI::ContentUI()
     m_Tree->SetName("ContentTree");
     m_Tree->SetActive(true);
     m_Tree->ShowRoot(false);
+
+	m_Tree->AddDynamic_Select(this, (UI_DELEGATE_1)&ContentUI::SetTargetToInspector);
+
     AddChildUI(m_Tree);   
 }
 
@@ -24,6 +28,10 @@ ContentUI::~ContentUI()
 
 }
 
+void ContentUI::init()
+{
+    ResetContent();
+}
 
 void ContentUI::tick()
 {
@@ -60,6 +68,16 @@ void ContentUI::ResetContent()
 			m_Tree->AddItem(string(pair.first.begin(), pair.first.end()), (DWORD_PTR)pair.second.Get(), pCategory);
 		}
 	}
+}
+
+void ContentUI::SetTargetToInspector(DWORD_PTR _SelectedNode)
+{
+	TreeNode* pSelectedNode = (TreeNode*)_SelectedNode;
+	CRes* pSelectObject = (CRes*)pSelectedNode->GetData();
+
+	// Inspector 에 선택된 Resource 를 알려준다.	
+	InspectorUI* pInspector = (InspectorUI*)ImGuiMgr::GetInst()->FindUI("##Inspector");
+	pInspector->SetTargetResource(pSelectObject);
 }
 
 

@@ -25,7 +25,7 @@ int ComponentUI::render_update()
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(0.f / 7.0f, 0.6f, 0.6f));
 	ImGui::Button(GetName().c_str());
 	ImGui::PopStyleColor(3);
-	ImGui::PopID();	
+	ImGui::PopID();
 
 	return TRUE;
 }
@@ -36,7 +36,10 @@ void ComponentUI::SetTarget(CGameObject* _Target)
 	m_Target = _Target;
 
 	if (nullptr == m_Target)
+	{
+		SetActive(false);
 		return;
+	}
 
 	if (nullptr == m_Target->GetComponent(m_Type))
 	{

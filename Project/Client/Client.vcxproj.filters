@@ -71,6 +71,33 @@
     <Filter Include="UI\OutlinerUI">
       <UniqueIdentifier>{22e92769-5ebe-445e-a2bf-3e731161578b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\InspectorUI\ResUI">
+      <UniqueIdentifier>{d086e281-6ad8-4cfb-9fa7-4e833bbc5a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\TextureUI">
+      <UniqueIdentifier>{74a3f94b-659f-474e-8f4d-10a0a9ab0f99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\MeshUI">
+      <UniqueIdentifier>{315bfeab-aa77-4aa0-875e-a719bb654885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\SoundUI">
+      <UniqueIdentifier>{dfeb02b8-e1dc-4d73-96ab-ee6243d9eaab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\MaterialUI">
+      <UniqueIdentifier>{67f45a23-4eea-4bea-967f-d786a60dba68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\GraphicsShaderUI">
+      <UniqueIdentifier>{eb670eb2-2aeb-45cf-9aa3-6500a5be7445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\ComputeShaderUI">
+      <UniqueIdentifier>{2270a1d7-6d7d-4a35-b1f1-47a3bcef806c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\MeshDataUI">
+      <UniqueIdentifier>{60f9e28d-3a49-4570-adf7-be98346cbd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\InspectorUI\ResUI\PrefabUI">
+      <UniqueIdentifier>{e6a095f5-a739-45ef-a32d-00edece3c90b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -153,6 +180,12 @@
     </ClInclude>
     <ClInclude Include="OutlinerUI.h">
       <Filter>UI\OutlinerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ResUI.h">
+      <Filter>UI\InspectorUI\ResUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshUI.h">
+      <Filter>UI\InspectorUI\ResUI\MeshUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +277,12 @@
     </ClCompile>
     <ClCompile Include="OutlinerUI.cpp">
       <Filter>UI\OutlinerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ResUI.cpp">
+      <Filter>UI\InspectorUI\ResUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUI.cpp">
+      <Filter>UI\InspectorUI\ResUI\MeshUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
