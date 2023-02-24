@@ -50,6 +50,7 @@ public:
     void UpdateData(int _iRegisterNum, int _PipelineStage);
     void UpdateData_CS(int _iRegisterNum, bool _bShaderRes);
     void Clear();
+    static void Clear(int _iRegisterNum);
     void Clear_CS(bool _bShaderRes);
 
 
