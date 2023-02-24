@@ -15,7 +15,6 @@ struct tTexParam
 };
 
 
-
 class CGraphicsShader :
     public CShader
 {
@@ -59,9 +58,11 @@ public:
     SHADER_DOMAIN GetDomain() { return m_Domain; }
     virtual void UpdateData() override;
 
-    void AddScalarParam(SCALAR_PARAM _Param, const string& _desc) { m_vecScalarParam.push_back(tScalarParam{ _Param, _desc }); }
+    void AddScalarParam(SCALAR_PARAM _Param, const string& _desc) { m_vecScalarParam.push_back(tScalarParam{ _Param, _desc });}
     void AddTexParam(TEX_PARAM _Param, const string& _desc) { m_vecTexParam.push_back(tTexParam{_Param, _desc}); }
 
+    const vector<tScalarParam>& GetScalarParam() { return m_vecScalarParam; }
+    const vector<tTexParam>& GetTexParam() { return m_vecTexParam; }
 
 public:
     CGraphicsShader();

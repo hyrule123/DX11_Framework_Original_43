@@ -98,6 +98,9 @@
     <Filter Include="UI\InspectorUI\ResUI\PrefabUI">
       <UniqueIdentifier>{e6a095f5-a739-45ef-a32d-00edece3c90b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\Module\ParamUI">
+      <UniqueIdentifier>{50578aa4-f03f-471a-a07c-5c0366120bdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="TextureUI.h">
       <Filter>UI\InspectorUI\ResUI\TextureUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ParamUI.h">
+      <Filter>UI\Module\ParamUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -325,6 +331,9 @@
     </ClCompile>
     <ClCompile Include="TreeUI.cpp">
       <Filter>UI\Module\TreeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ParamUI.cpp">
+      <Filter>UI\Module\ParamUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
