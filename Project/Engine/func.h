@@ -24,6 +24,9 @@ void DrawDebugCircle(const Matrix& _matWorld, Vec4 _vColor, float _fTime = 0.f);
 const char* ToString(RES_TYPE);
 const wchar_t* ToWSTring(RES_TYPE);
 
+const char* ToString(COMPONENT_TYPE);
+const wchar_t* ToWSTring(COMPONENT_TYPE);
+
 
 
 

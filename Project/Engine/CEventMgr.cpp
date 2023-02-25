@@ -65,7 +65,7 @@ void CEventMgr::tick()
 					pSrcObj->DisconnectFromParent();
 					// 최상위 부모 오브젝트로, 소속 레이어에 등록
 					pSrcObj->AddParentList();
-				}	
+				}
 			}
 			else
 			{

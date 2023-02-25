@@ -1,5 +1,5 @@
 #pragma once
-#include "CScript.h"
+#include <Engine\CScript.h>
 
 class CPlayerScript :
     public CScript
@@ -11,9 +11,7 @@ public:
     virtual void begin() override;
     virtual void tick() override;
 
-
     virtual void BeginOverlap(CCollider2D* _Other) override;
-
 
 private:
     void Shoot();

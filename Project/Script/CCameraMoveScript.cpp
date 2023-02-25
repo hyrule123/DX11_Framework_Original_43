@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "CCameraMoveScript.h"
 
-#include "CTransform.h"
-#include "CCamera.h"
+#include <Engine\CTransform.h>
+#include <Engine\CCamera.h>
 
 CCameraMoveScript::CCameraMoveScript()
 	: m_fCamSpeed(100.f)

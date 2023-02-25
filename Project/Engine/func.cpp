@@ -114,3 +114,14 @@ const wchar_t* ToWString(RES_TYPE type)
 {
 	return RES_TYPE_WSTR[(UINT)type];
 }
+
+
+const char* ToString(COMPONENT_TYPE type)
+{
+	return COMPONENT_TYPE_STR[(UINT)type];
+}
+
+const wchar_t* ToWString(COMPONENT_TYPE type)
+{
+	return COMPONENT_TYPE_WSTR[(UINT)type];
+}

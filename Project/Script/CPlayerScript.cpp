@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "CPlayerScript.h"
 
-#include "CMeshRender.h"
-#include "CMaterial.h"
+#include <Engine\CMeshRender.h>
+#include <Engine\CMaterial.h>
 
 #include "CMissileScript.h"
 

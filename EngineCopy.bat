@@ -9,3 +9,6 @@ xcopy /d /s /y /i  /exclude:exclude_list.txt ".\Project\Engine\*.fx" ".\OutputFi
 
 :: bin/content/ 폴더를 bin_d/content/ 폴더로 복사
 xcopy /d /s /y /i  /exclude:exclude_list.txt ".\OutputFile\bin\content\*" ".\OutputFile\bin_d\content\"
+
+:: Engine 내부의 파일들을 읽기 전용으로 변경
+attrib +r ".\External\Include\Engine\*"

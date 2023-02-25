@@ -18,8 +18,7 @@ class CCollider2D;
 class CScript :
     public CComponent
 {
-private:
-   
+private:  
 
 
 public:
