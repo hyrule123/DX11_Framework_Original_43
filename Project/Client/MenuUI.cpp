@@ -6,7 +6,7 @@
 #include <Engine\components.h>
 #include <Engine\CScript.h>
 
-#include <Script\CScriptMgr.h>
+#include <Script/CScriptMgr.h>
 
 #include "ImGuiMgr.h"
 #include "OutlinerUI.h"
