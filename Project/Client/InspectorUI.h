@@ -8,16 +8,19 @@ class ResUI;
 #include <Engine\ptr.h>
 #include <Engine\CRes.h>
 
+class ScriptUI;
 
 class InspectorUI :
     public UI
 {
 private:
-    CGameObject*    m_pTargetObj;    
-    ComponentUI*    m_arrComUI[(UINT)COMPONENT_TYPE::END];
+    CGameObject*        m_pTargetObj;    
+    ComponentUI*        m_arrComUI[(UINT)COMPONENT_TYPE::END];
+    vector<ScriptUI*>   m_vecScriptUI;
 
-    Ptr<CRes>       m_pTargetRes;
-    ResUI*          m_arrResUI[(UINT)RES_TYPE::END];
+
+    Ptr<CRes>           m_pTargetRes;
+    ResUI*              m_arrResUI[(UINT)RES_TYPE::END];
 
 
 
@@ -33,8 +36,6 @@ public:
 private:
     void ClearTargetObject();
     void ClearTargetResource();
-
-
 
 public:
     InspectorUI();

@@ -104,6 +104,9 @@
     <Filter Include="UI\MenuUI">
       <UniqueIdentifier>{47afa2ee-3e6f-4c48-b177-46a3b2927bde}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\InspectorUI\ComponentUI\09. ScriptUI">
+      <UniqueIdentifier>{662a78f7-bbf9-46d2-a9e0-cd5e1ed84873}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -220,6 +223,9 @@
     <ClInclude Include="TestLevel.h" />
     <ClInclude Include="MenuUI.h">
       <Filter>UI\MenuUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptUI.h">
+      <Filter>UI\InspectorUI\ComponentUI\09. ScriptUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +351,9 @@
     <ClCompile Include="TestLevel.cpp" />
     <ClCompile Include="MenuUI.cpp">
       <Filter>UI\MenuUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptUI.cpp">
+      <Filter>UI\InspectorUI\ComponentUI\09. ScriptUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
