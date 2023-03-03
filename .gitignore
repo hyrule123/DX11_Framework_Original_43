@@ -384,7 +384,6 @@ FodyWeavers.xsd
 
 # Except External/*/Engine Folder : Used to gather header files - automatically generated at build time
 External/*/Engine/
-External/*/Script/
 
 # Exclude *.pdb, *.exe file from OutputFile Bin Folder
 OutputFile/[Bb]in/*
