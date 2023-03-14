@@ -4,6 +4,7 @@
 #include "CDevice.h"
 #include "CConstBuffer.h"
 
+#include "CResMgr.h"
 #include "CPathMgr.h"
 
 CMaterial::CMaterial(bool _bEngine)
@@ -168,11 +169,21 @@ int CMaterial::Save(const wstring& _strRelativePath)
 	// Res
 	SaveWString(GetKey(), pFile);	
 	
-	// Material
-	wstring strKey = m_pShader->GetKey();
-	
+	// Shader
+	SaveResRef(m_pShader.Get(), pFile);
 
+	// Constant
+	fwrite(&m_Const, sizeof(tMtrlConst), 1, pFile);
+
+	// Texture
+	for (UINT i = 0; i < (UINT)TEX_PARAM::TEX_END; ++i)
+	{
+		SaveResRef(m_arrTex[i].Get(), pFile);
+	}
+	
 	fclose(pFile);
+
+	return S_OK;
 }
 
 
@@ -190,6 +201,17 @@ int CMaterial::Load(const wstring& _strFilePath)
 	wstring strKey;
 	LoadWString(strKey, pFile);
 	
+	// Shader
+	LoadResRef(m_pShader, pFile);
+
+	// Constant
+	fread(&m_Const, sizeof(tMtrlConst), 1, pFile);
+
+	// Texture
+	for (UINT i = 0; i < (UINT)TEX_PARAM::TEX_END; ++i)
+	{
+		LoadResRef(m_arrTex[i], pFile);
+	}
 
 	fclose(pFile);
 
