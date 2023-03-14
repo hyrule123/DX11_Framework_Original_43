@@ -392,8 +392,6 @@ OutputFile/[Bb]in_d/*
 
 # Include Content(Resources) Files, Exclude Only Shader Files(*.fx) - will be copied after build
 !OutputFile/[Bb]in/content/
-!OutputFile/[Bb]in/CodeGen.exe
-!OutputFile/[Bb]in/exeptlist.txt
 OutputFile/[Bb]in*/content/shader/
 
 # Exclude Unity cpp File
@@ -404,3 +402,7 @@ imgui.ini
 
 # Include CopySrc Directory
 !43CopySrc/
+
+# Include Code Generator execute File
+!OutputFile/[Bb]in/CodeGen.exe
+!OutputFile/[Bb]in/exeptlist.txt
