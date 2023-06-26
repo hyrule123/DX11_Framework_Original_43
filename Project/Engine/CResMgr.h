@@ -28,9 +28,7 @@ private:
     void CreateDefaultMesh();
     void CreateDefaultGraphicsShader();
     void CreateDefaultComputeShader();
-    void CreateDefaultMaterial();
-    void CreateDefaultPrefab();
-    void LoadDefaultTexture();   
+    void CreateDefaultMaterial();  
 
 
 
@@ -122,7 +120,7 @@ inline Ptr<T> CResMgr::Load(const wstring& _strKey, const wstring& _strRelativeP
     // 이미 해당 키로 리소스가 있다면, 반환
     if (nullptr != pRes)
         return (T*)pRes.Get();
-        
+            
     pRes = new T;
     pRes->SetKey(_strKey);
     pRes->SetRelativePath(_strRelativePath);
