@@ -48,20 +48,7 @@ void CreateTestLevel()
 
 	SpawnGameObject(pMainCam, Vec3(0.f, 0.f, 0.f), 0);
 
-	// UI cameara
-	CGameObject* pUICam = new CGameObject;
-	pUICam->SetName(L"UICamera");
-
-	pUICam->AddComponent(new CTransform);
-	pUICam->AddComponent(new CCamera);
-
-	pUICam->Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
-	pUICam->Camera()->SetCameraIndex(1);		// MainCamera 로 설정
-	pUICam->Camera()->SetLayerMask(31, true);	// 모든 레이어 체크
-
-	SpawnGameObject(pUICam, Vec3(0.f, 0.f, 0.f), 0);
-
-
+	
 	// 광원 추가
 	CGameObject* pLightObj = new CGameObject;
 	pLightObj->SetName(L"Directional Light");
@@ -80,6 +67,20 @@ void CreateTestLevel()
 
 
 	SpawnGameObject(pLightObj, Vec3(0.f, 0.f, 0.f), 0);
+
+
+	/*CGameObject* pSkyBox  = new CGameObject;
+	pSkyBox->SetName(L"SkyBox");
+
+	pSkyBox->AddComponent(new CTransform);
+	pSkyBox->AddComponent(new CSkyBox);
+
+	pSkyBox->Transform()->SetRelativeScale(Vec3(100.f, 100.f, 100.f));
+	pSkyBox->Transform()->SetRelativeRot(Vec3(0.f, XM_PI / 2.f, 0.f));
+
+	pSkyBox->SkyBox()->GetMaterial()->SetTexParam(TEX_0, CResMgr::GetInst()->FindRes<CTexture>(L"texture\\skybox\\Sky01.png"));
+
+	SpawnGameObject(pSkyBox, Vec3(0.f, 0.f, 0.f), 0);*/
 
 
 	// 오브젝트 생성

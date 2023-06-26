@@ -24,7 +24,7 @@ VS_OUT VS_Std3D(VS_IN _in)
 {
     VS_OUT output = (VS_OUT) 0.f;    
         
-    output.vPosition = mul(float4(_in.vPos, 1.f), g_matWVP);            
+    output.vPosition = mul(float4(_in.vPos, 1.f), g_matWVP);          
     
     output.vViewPos = mul(float4(_in.vPos, 1.f), g_matWV);
     output.vViewNormal = normalize(mul(float4(_in.vNormal, 0.f), g_matWV));
@@ -32,11 +32,7 @@ VS_OUT VS_Std3D(VS_IN _in)
     return output;
 }
 
-
-
 // Rasterizer
-
-
 
 float4 PS_Std3D(VS_OUT _in) : SV_Target
 {        
