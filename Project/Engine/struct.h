@@ -177,6 +177,11 @@ struct tRaycastOut
 	int  bSuccess;
 };
 
+struct tWeight_4
+{
+	float arrWeight[4];
+};
+
 
 // ===================
 // 상수버퍼 대응 구조체

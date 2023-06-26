@@ -43,8 +43,7 @@ int g_arrVK[(UINT)KEY::END]
 	 'X',
 	 'C',
 	 'V',
-	  
-	 	 
+	   	 
 
 	 '0',
 	 '1',
@@ -57,6 +56,16 @@ int g_arrVK[(UINT)KEY::END]
 	 '8',
 	 '9',
 
+	 VK_NUMPAD0,
+	 VK_NUMPAD1,
+	 VK_NUMPAD2,
+	 VK_NUMPAD3,
+	 VK_NUMPAD4,
+	 VK_NUMPAD5,
+	 VK_NUMPAD6,
+	 VK_NUMPAD7,
+	 VK_NUMPAD8,
+	 VK_NUMPAD9,
 };
 
 
