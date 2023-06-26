@@ -40,7 +40,15 @@ CCamera::CCamera(const CCamera& _Other)
 }
 
 CCamera::~CCamera()
+{	
+}
+
+void CCamera::begin()
 {
+	if (-1 != m_iCamIdx)
+	{
+		CRenderMgr::GetInst()->RegisterCamera(this, m_iCamIdx);
+	}
 }
 
 void CCamera::finaltick()

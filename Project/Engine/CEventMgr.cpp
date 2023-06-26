@@ -5,6 +5,7 @@
 #include "CLevel.h"
 #include "CGameObject.h"
 #include "CResMgr.h"
+#include "CRenderMgr.h"
 
 
 CEventMgr::CEventMgr()
@@ -34,6 +35,10 @@ void CEventMgr::tick()
 			CGameObject* NewObject = (CGameObject*)m_vecEvent[i].wParam;
 			int iLayerIdx = (int)m_vecEvent[i].lParam;
 			CLevelMgr::GetInst()->GetCurLevel()->AddGameObject(NewObject, iLayerIdx, false);
+			if (CLevelMgr::GetInst()->GetCurLevel()->GetState() == LEVEL_STATE::PLAY)
+			{
+				NewObject->begin();
+			}
 
 			m_LevelChanged = true;
 		}
@@ -46,9 +51,7 @@ void CEventMgr::tick()
 			{
 				DeleteObject->m_bDead = true;
 				m_vecGC.push_back(DeleteObject);
-			}
-
-			m_LevelChanged = true;
+			}			
 		}
 			break;
 
@@ -94,6 +97,7 @@ void CEventMgr::tick()
 			// wParam : Level Adress
 			CLevel* Level = (CLevel*)m_vecEvent[i].wParam;
 			CLevelMgr::GetInst()->ChangeLevel(Level);
+			CRenderMgr::GetInst()->ClearCamera();
 			m_LevelChanged = true;
 		}
 			break;		
@@ -115,6 +119,8 @@ void CEventMgr::GC_Clear()
 				m_vecGC[i]->DisconnectFromParent();
 			
 			delete m_vecGC[i];
+
+			m_LevelChanged = true;
 		}		
 	}
 	m_vecGC.clear();
