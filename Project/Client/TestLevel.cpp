@@ -92,7 +92,7 @@ void CreateTestLevel()
 	pObject->Transform()->SetRelativeScale(Vec3(500.f, 500.f, 500.f));
 
 	pObject->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"SphereMesh"));
-	pObject->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std3D_DeferredMtrl"));
+	pObject->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std3D_DeferredMtrl"),0);
 	pObject->MeshRender()->SetDynamicShadow(true);
 
 	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);
@@ -113,6 +113,21 @@ void CreateTestLevel()
 	pLandScape->LandScape()->SetDynamicShadow(true);
 
 	SpawnGameObject(pLandScape, Vec3(0.f, 0.f, 0.f), 0);
+
+
+	// ============
+	// FBX Loading
+	// ============	
+	{
+		Ptr<CMeshData> pMeshData = nullptr;
+		CGameObject* pObj = nullptr;
+		pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\house.fbx");
+		SpawnGameObject(pMeshData->Instantiate(), Vec3(0.f, 500.f, 0.f), 0);
+	}
+
+
+
+
 
 
 	// 충돌 시킬 레이어 짝 지정
