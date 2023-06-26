@@ -67,7 +67,7 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
     }
        
     // NomalMap 이 있다면
-    if(g_btex_1 && g_int_0 == 1)
+    if(g_btex_1)
     {
         float3x3 matRot =
         {
@@ -81,25 +81,14 @@ float4 PS_Std3D(VS_OUT _in) : SV_Target
         vViewNormal = mul(vNormal, matRot);       
     }    
     
-    // Light 의 ViewSpace 에서의 방향
-    float3 vLightDir = mul(float4(g_Light3DBuffer[0].vWorldDir.xyz, 0.f), g_matView);
+    tLightColor lightcolor = (tLightColor) 0.f;        
     
-    // Diffuse Power
-    float fPow = saturate(dot(-vLightDir, vViewNormal));
-            
-    // Specular 계산
-    float3 vViewReflect = normalize(vLightDir + 2.f * (dot(-vLightDir, vViewNormal)) * vViewNormal);
-    
-    // 카메라에서 픽셀 지점을 바라보는 시선 벡터
-    float3 vEye = -normalize(_in.vViewPos);
-    
-    // 반사광 세기          
-    float fRelfectPow = pow(saturate(dot(vViewReflect, vEye)), 10);        
+    CalcLight3D(_in.vViewPos, vViewNormal, 0, lightcolor);
         
     // 광원 적용
-    vOutColor.xyz = vObjectColor.xyz * g_Light3DBuffer[0].Color.vDiffuse.xyz * fPow 
-                    + g_Light3DBuffer[0].Color.vSpecular.xyz * fRelfectPow
-                    + g_Light3DBuffer[0].Color.vAmbient.xyz * vObjectColor.xyz;
+    vOutColor.xyz = vObjectColor.xyz * lightcolor.vDiffuse.xyz
+                    + lightcolor.vSpecular.xyz
+                    + vObjectColor.xyz * lightcolor.vAmbient.xyz;
     
     return vOutColor;
 }

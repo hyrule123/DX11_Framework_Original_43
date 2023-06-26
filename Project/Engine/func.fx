@@ -61,6 +61,63 @@ void CalcLight2D(float3 _vWorldPos, float3 _vWorldDir, inout tLightColor _Light)
 }
 
 
+void CalcLight3D(float3 _vViewPos, float3 _vViewNormal, uint _LightIdx, inout tLightColor _LightColor)
+{
+    tLightInfo lightinfo = g_Light3DBuffer[_LightIdx];
+    
+    float3 vLightDir = (float3) 0.f;
+    float fDiffusePow = 0.f;
+    float fDistPow = 1.f;
+    float fAnglePow = 1.f;
+    
+    // Directional Light
+    if (0 == lightinfo.LightType)
+    {
+        // Light 의 ViewSpace 에서의 방향
+        vLightDir = mul(float4(lightinfo.vWorldDir.xyz, 0.f), g_matView);     
+    }
+    
+    // PointLight
+    else if (1 == lightinfo.LightType)
+    {
+        // Light 의 ViewSpace 에서의 방향
+        float4 vLightViewPos = mul(float4(lightinfo.vWorldPos.xyz, 1.f), g_matView);
+       
+        // 표면위치 - 광원 위치
+        vLightDir = normalize(_vViewPos - vLightViewPos.xyz);          
+        
+        // 거리에 따른 세기 변화
+        float fDist = distance(_vViewPos, vLightViewPos.xyz);        
+        fDistPow = 1.f - saturate(fDist / lightinfo.Radius);        
+    }
+    
+    // SpotLight
+    else
+    {
+        
+    }             
+    
+    // Diffuse Power
+    float fPow = saturate(dot(-vLightDir, _vViewNormal));
+    
+    // Specular 계산
+    float3 vViewReflect = normalize(vLightDir + 2.f * (dot(-vLightDir, _vViewNormal)) * _vViewNormal);
+    
+    // 카메라에서 픽셀 지점을 바라보는 시선 벡터
+    float3 vEye = -normalize(_vViewPos);
+    
+    // 반사광 세기          
+    float fRelfectPow = pow(saturate(dot(vViewReflect, vEye)), 10);
+    
+    // 결과값 저장
+    _LightColor.vDiffuse = lightinfo.Color.vDiffuse * fPow * fDistPow;
+    _LightColor.vSpecular = lightinfo.Color.vSpecular * fRelfectPow * fDistPow;
+    _LightColor.vAmbient = lightinfo.Color.vAmbient;
+}
+
+
+
+
 // ======
 // Random
 // ======
