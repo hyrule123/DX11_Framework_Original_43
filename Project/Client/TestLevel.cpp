@@ -93,7 +93,7 @@ void CreateTestLevel()
 
 	pParent->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
 
-	pParent->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
+	pParent->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"CubeMesh"));
 	pParent->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DAnimLightMtrl"));
 
 	pParent->Collider2D()->SetAbsolute(true);
