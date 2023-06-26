@@ -19,7 +19,7 @@ CDecal::~CDecal()
 void CDecal::finaltick()
 {
 	const Matrix& matWorld = Transform()->GetWorldMat();
-	DrawDebugCube(matWorld, Vec4(0.f, 1.f, 0.f, 1.f), 0.f);
+	//DrawDebugCube(matWorld, Vec4(0.f, 1.f, 0.f, 1.f), 0.f);
 }
 
 void CDecal::render()
