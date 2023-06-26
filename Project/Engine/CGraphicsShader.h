@@ -53,6 +53,10 @@ public:
     void SetBSType(BS_TYPE _Type) { m_BSType = _Type; }
     void SetDomain(SHADER_DOMAIN _domain) { m_Domain = _domain; }
 
+    RS_TYPE GetRSType() { return m_RSType; }
+
+
+
     SHADER_DOMAIN GetDomain() { return m_Domain; }
     virtual void UpdateData() override;
 

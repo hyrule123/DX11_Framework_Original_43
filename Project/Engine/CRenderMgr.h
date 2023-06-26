@@ -37,6 +37,9 @@ public:
     void init();
     void render();
 
+private:
+    void render_clear();
+
 public:
     CMRT* GetMRT(MRT_TYPE _type) { return m_MRT[(UINT)_type]; }
 
