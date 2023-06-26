@@ -171,7 +171,9 @@ struct tParticleModule
 struct tTransform
 {
 	Matrix matWorld;
+	Matrix matWorldInv;
 	Matrix matView;
+	Matrix matViewInv;
 	Matrix matProj;
 
 	Matrix matWV;

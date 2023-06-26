@@ -78,7 +78,7 @@ VS_OUT VS_Distortion(VS_IN _in)
 
 float4 PS_Distortion(VS_OUT _in) : SV_Target
 {
-	float2 vUV = _in.vPosition.xy / g_Resolution;		
+	float2 vUV = _in.vPosition.xy / g_Resolution;
 	
 	// Noise Texture 가 세팅이 되어 있다면
 	if (g_btex_1)
