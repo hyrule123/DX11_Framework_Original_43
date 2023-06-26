@@ -138,9 +138,7 @@
     </Link>
     <PreBuildEvent>
       <Command>cd $(SolutionDir)
-call ScriptCopy.bat
-cd $(SolutionDir)OutputFile\bin_d\
-call CodeGen.exe</Command>
+call ScriptCopy.bat</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -166,9 +164,7 @@ call CodeGen.exe</Command>
     </Link>
     <PreBuildEvent>
       <Command>cd $(SolutionDir)
-call ScriptCopy.bat
-cd $(SolutionDir)OutputFile\bin_d\
-call CodeGen.exe</Command>
+call ScriptCopy.bat</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

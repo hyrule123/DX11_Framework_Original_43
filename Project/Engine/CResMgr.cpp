@@ -328,6 +328,10 @@ void CResMgr::CreateDefaultGraphicsShader()
 	pShader->SetRSType(RS_TYPE::CULL_NONE);
 	pShader->SetDSType(DS_TYPE::NO_TEST_NO_WRITE);
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_POSTPROCESS);
+
+	// Parameter
+	pShader->AddTexParam(TEX_1, "Noise Texture");
+
 	AddRes(pShader->GetKey(), pShader);
 }
 
