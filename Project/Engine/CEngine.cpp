@@ -79,6 +79,11 @@ void CEngine::tick()
 	CResMgr::GetInst()->tick();
 	CTimeMgr::GetInst()->tick();
 	CKeyMgr::GetInst()->tick();	
+
+	// FMOD Update
+	CSound::g_pFMOD->update();
+
+	// Level Update
 	CLevelMgr::GetInst()->tick();
 	CCollisionMgr::GetInst()->tick();
 }
