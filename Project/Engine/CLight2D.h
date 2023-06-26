@@ -15,6 +15,8 @@ public:
     void SetRadius(float _Radius) { m_LightInfo.Radius = _Radius; }
     void SetAngle(float _Angle) { m_LightInfo.Angle = _Angle; }
 
+    const tLightInfo& GetLightInfo() { return m_LightInfo; }
+
 public:
     virtual void finaltick() override;
 
