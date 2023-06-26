@@ -46,6 +46,7 @@ struct tLightColor
 {
 	Vec4 vDiffuse;	// ºûÀÇ »ö»ó
 	Vec4 vAmbient;	// ÁÖº¯ ±¤(È¯°æ ±¤)
+	Vec4 vSpecular; // ¹Ý»ç±¤ ¼¼±â
 };
 
 // LightInfo

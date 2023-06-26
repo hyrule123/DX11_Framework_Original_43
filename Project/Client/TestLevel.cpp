@@ -64,17 +64,20 @@ void CreateTestLevel()
 
 	// ±¤¿ø Ãß°¡
 	CGameObject* pLightObj = new CGameObject;
-	pLightObj->SetName(L"Point Light");
+	pLightObj->SetName(L"Directional Light");
 
 	pLightObj->AddComponent(new CTransform);
-	pLightObj->AddComponent(new CLight2D);
+	pLightObj->AddComponent(new CLight3D);
 
 	pLightObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
-	pLightObj->Transform()->SetRelativeRot(Vec3(0.f, 0.f, XM_PI / 2.f));
+	pLightObj->Transform()->SetRelativeRot(Vec3(0.f, XM_PI / 2.f, 0.f));
 
-	pLightObj->Light2D()->SetLightType(LIGHT_TYPE::POINT);
-	pLightObj->Light2D()->SetLightDiffuse(Vec3(1.f, 1.f, 1.f));
-	pLightObj->Light2D()->SetRadius(500.f);
+	pLightObj->Light3D()->SetLightType(LIGHT_TYPE::DIRECTIONAL);
+
+	pLightObj->Light3D()->SetLightDiffuse(Vec3(1.f, 1.f, 1.f));
+	pLightObj->Light3D()->SetLightSpecular(Vec3(0.3f, 0.3f, 0.3f));
+	pLightObj->Light3D()->SetLightAmbient(Vec3(0.1f, 0.1f, 0.1f));	
+
 
 	SpawnGameObject(pLightObj, Vec3(0.f, 0.f, 0.f), 0);
 

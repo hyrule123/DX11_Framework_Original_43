@@ -21,6 +21,10 @@ private:
     vector<tLightInfo>          m_vecLight2D;
     CStructuredBuffer*          m_Light2DBuffer;
 
+    vector<tLightInfo>          m_vecLight3D;
+    CStructuredBuffer*          m_Light3DBuffer;
+
+
     void (CRenderMgr::* RENDER_FUNC)(void);
 
     Ptr<CTexture>               m_RTCopyTex;
@@ -34,7 +38,10 @@ public:
     int RegisterCamera(CCamera* _Cam, int _idx);
     void RegisterEditorCamera(CCamera* _Cam) { m_pEditorCam = _Cam; }
     void SetRenderFunc(bool _IsPlay);
+
     void RegisterLight2D(const tLightInfo& _Light2D) { m_vecLight2D.push_back(_Light2D); }
+    void RegisterLight3D(const tLightInfo& _Light3D) { m_vecLight3D.push_back(_Light3D); }
+
     void ClearCamera() { m_vecCam.clear(); }
 
     void AddDebugShapeInfo(const tDebugShapeInfo& _info) { m_vecShapeInfo.push_back(_info); }

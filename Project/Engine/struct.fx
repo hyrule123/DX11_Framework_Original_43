@@ -4,8 +4,9 @@
 
 struct tLightColor
 {
-    float4 vDiffuse; // ºûÀÇ »ö»ó
-    float4 vAmbient; // ÁÖº¯ ±¤(È¯°æ ±¤)
+    float4 vDiffuse;    // ºûÀÇ »ö»ó
+    float4 vAmbient;    // ÁÖº¯ ±¤(È¯°æ ±¤)
+    float4 vSpecular;   // ¹Ý»ç±¤ ¼¼±â
 };
 
 // LightInfo

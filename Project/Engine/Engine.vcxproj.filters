@@ -96,9 +96,6 @@
     <ClCompile Include="CLight2D.cpp">
       <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="CMeshRender.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
     <ClCompile Include="CPrefab.cpp">
       <Filter>Component</Filter>
     </ClCompile>
@@ -106,9 +103,6 @@
       <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="CScript.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="CRenderComponent.cpp">
       <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="CTimeMgr.cpp">
@@ -132,12 +126,6 @@
     <ClCompile Include="CRes.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="CTileMap.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="CParticleSystem.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
     <ClCompile Include="CShader.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
@@ -149,6 +137,21 @@
     </ClCompile>
     <ClCompile Include="CResMgr.cpp">
       <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CLight3D.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CMeshRender.cpp">
+      <Filter>Component\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CParticleSystem.cpp">
+      <Filter>Component\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderComponent.cpp">
+      <Filter>Component\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CTileMap.cpp">
+      <Filter>Component\RenderComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,9 +214,6 @@
     <ClInclude Include="CLight2D.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="CMeshRender.h">
-      <Filter>Component</Filter>
-    </ClInclude>
     <ClInclude Include="components.h">
       <Filter>header</Filter>
     </ClInclude>
@@ -224,9 +224,6 @@
       <Filter>Component</Filter>
     </ClInclude>
     <ClInclude Include="CScript.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="CRenderComponent.h">
       <Filter>Component</Filter>
     </ClInclude>
     <ClInclude Include="CTimeMgr.h">
@@ -256,12 +253,6 @@
     <ClInclude Include="CRes.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="CTileMap.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="CParticleSystem.h">
-      <Filter>Component</Filter>
-    </ClInclude>
     <ClInclude Include="CShader.h">
       <Filter>Resource</Filter>
     </ClInclude>
@@ -286,6 +277,21 @@
     <ClInclude Include="CResMgr.h">
       <Filter>Manager</Filter>
     </ClInclude>
+    <ClInclude Include="CLight3D.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CMeshRender.h">
+      <Filter>Component\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="CParticleSystem.h">
+      <Filter>Component\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="CRenderComponent.h">
+      <Filter>Component\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="CTileMap.h">
+      <Filter>Component\RenderComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -302,6 +308,9 @@
     </Filter>
     <Filter Include="ShaderCode">
       <UniqueIdentifier>{15b6b9d7-1520-41ab-ac99-8b1cfe0a51d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\RenderComponent">
+      <UniqueIdentifier>{3ae703e4-fa1b-4106-b337-e7cc537b582c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
