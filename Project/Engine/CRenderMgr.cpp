@@ -9,6 +9,7 @@
 #include "CLight2D.h"
 
 #include "CResMgr.h"
+#include "CMRT.h"
 
 CRenderMgr::CRenderMgr()
     : m_Light2DBuffer(nullptr)
@@ -31,9 +32,10 @@ CRenderMgr::~CRenderMgr()
     if (nullptr != m_Light2DBuffer)
         delete m_Light2DBuffer;
 
-
     if (nullptr != m_Light3DBuffer)
         delete m_Light3DBuffer;
+
+    Safe_Del_Array(m_MRT);
 }
 
 
@@ -46,16 +48,30 @@ void CRenderMgr::init()
     // Light3DBuffer 구조화 버퍼 생성
     m_Light3DBuffer = new CStructuredBuffer;
     m_Light3DBuffer->Create(sizeof(tLightInfo), 10, SB_TYPE::READ_ONLY, true);
+
+
+    // ==================
+    // SwapChain MRT 생성
+    // ==================
+    Ptr<CTexture> arrRTTex[8] = { CResMgr::GetInst()->FindRes<CTexture>(L"RenderTargetTex"), };
+    Ptr<CTexture> DSTex = CResMgr::GetInst()->FindRes<CTexture>(L"DepthStencilTex");
+
+    m_MRT[(UINT)MRT_TYPE::SWAPCHAIN] = new CMRT;
+    m_MRT[(UINT)MRT_TYPE::SWAPCHAIN]->Create(arrRTTex, DSTex);
+
+    // ========
+    // Test MRT
+    // ========
 }
 
 void CRenderMgr::render()
 {
     // 렌더링 시작
     float arrColor[4] = { 0.2f, 0.2f, 0.2f, 1.f };
-    CDevice::GetInst()->ClearTarget(arrColor);
-
+    m_MRT[(UINT)MRT_TYPE::SWAPCHAIN]->Clear(arrColor);
+    
     // 출력 타겟 지정    
-    CDevice::GetInst()->OMSet();
+    m_MRT[(UINT)MRT_TYPE::SWAPCHAIN]->OMSet();
 
     // 광원 및 전역 데이터 업데이트 및 바인딩
     UpdateData();

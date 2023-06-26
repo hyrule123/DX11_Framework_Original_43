@@ -19,7 +19,11 @@
 
 
 
-
+enum class MRT_TYPE
+{
+	SWAPCHAIN,
+	END,
+};
 
 
 

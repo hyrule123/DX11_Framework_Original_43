@@ -7,12 +7,15 @@
 class CCamera;
 class CLight2D;
 class CStructuredBuffer;
+class CMRT;
 
 class CRenderMgr :
     public CSingleton<CRenderMgr>
 {
     SINGLE(CRenderMgr);
 private:
+    CMRT*                       m_MRT[(UINT)MRT_TYPE::END];
+
     vector<CCamera*>            m_vecCam;
     CCamera*                    m_pEditorCam;
 
@@ -28,6 +31,8 @@ private:
     void (CRenderMgr::* RENDER_FUNC)(void);
 
     Ptr<CTexture>               m_RTCopyTex;
+
+
 
 
 public:
