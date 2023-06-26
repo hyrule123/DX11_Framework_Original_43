@@ -17,3 +17,7 @@ xcopy /d /s /y /i /r  /exclude:exclude_list.txt ".\OutputFile\bin\content\*" ".\
 :: 코드 생성 프로그램 복사
 xcopy /d /s /y /i /r  ".\OutputFile\bin\CodeGen.exe" ".\OutputFile\bin_d\"
 xcopy /d /s /y /i /r  ".\OutputFile\bin\exeptlist.txt" ".\OutputFile\bin_d\"
+
+::폴더 없을 시 폴더 생성
+if not exist .\OutputFile\bin\material ( mkdir .\OutputFile\bin\material )
+if not exist .\OutputFile\bin_d\material ( mkdir .\OutputFile\bin_d\material )
