@@ -19,10 +19,7 @@
 
 void CreateTestLevel()
 {
-	//return;
-
-	Ptr<CSound> pSound = CResMgr::GetInst()->FindRes<CSound>(L"sound\\BGM_Stage1.wav");
-	pSound->Play(1, 0.5f, false);
+	//return;	
 
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	pCurLevel->ChangeState(LEVEL_STATE::STOP);
@@ -86,108 +83,16 @@ void CreateTestLevel()
 	CGameObject* pParent = new CGameObject;
 	pParent->SetName(L"Player");
 	pParent->AddComponent(new CTransform);
-	pParent->AddComponent(new CMeshRender);
-	pParent->AddComponent(new CCollider2D);
-	pParent->AddComponent(new CAnimator2D);
+	pParent->AddComponent(new CMeshRender);	
 	pParent->AddComponent(new CPlayerScript);
 
-	pParent->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+	pParent->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 200.f));
 
 	pParent->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"CubeMesh"));
-	pParent->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DAnimLightMtrl"));
-
-	pParent->Collider2D()->SetAbsolute(true);
-	pParent->Collider2D()->SetOffsetScale(Vec2(150.f, 150.f));
-
-	Ptr<CTexture> pAnimAtlas = CResMgr::GetInst()->FindRes<CTexture>(L"texture\\link.png");
-	pParent->Animator2D()->CreateAnimation(L"WalkDown", pAnimAtlas, Vec2(0.f, 520.f), Vec2(120.f, 130.f), Vec2(300.f, 300.f), 10, 16);
-	pParent->Animator2D()->Play(L"WalkDown", true);
+	pParent->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std3DMtrl"));
 
 	SpawnGameObject(pParent, Vec3(0.f, 0.f, 500.f), 0);
-
-
-	CGameObject* pChild = new CGameObject;
-
-	pChild->SetName(L"Child");
-	pChild->AddComponent(new CTransform);
-	pChild->AddComponent(new CMeshRender);
-
-	pChild->Transform()->SetAbsolute(true);
-	pChild->Transform()->SetRelativePos(200.f, 0.f, 0.f);
-	pChild->Transform()->SetRelativeScale(100.f, 100.f, 1.f);
-
-	pChild->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
-	pChild->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DLightMtrl"));
-	pChild->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CResMgr::GetInst()->FindRes<CTexture>(L"texture\\Fighter.bmp"));
-
-	pParent->AddChild(pChild);
-
-	// Monster
-	CGameObject* pMonster = new CGameObject;
-	pMonster->SetName(L"Monster");
-
-	pMonster->AddComponent(new CTransform);
-	pMonster->AddComponent(new CMeshRender);
-	pMonster->AddComponent(new CCollider2D);
-	pMonster->AddComponent(new CMonsterScript);
-
-	pMonster->Transform()->SetRelativePos(Vec3(0.f, 250.f, 100.f));
-	pMonster->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
-
-	pMonster->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
-	pMonster->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std2DMtrl"));	
-
-	pMonster->Collider2D()->SetAbsolute(true);
-	pMonster->Collider2D()->SetOffsetScale(Vec2(100.f, 100.f));
-
-	SpawnGameObject(pMonster, Vec3(0.f, 250.f, 100.f), L"Monster");
-
-
-	// TileMap Object
-	CGameObject* pTileMap = new CGameObject;
-	pTileMap->SetName(L"TileMap");
-
-	pTileMap->AddComponent(new CTransform);
-	pTileMap->AddComponent(new CTileMap);
-
-	pTileMap->Transform()->SetRelativePos(Vec3(0.f, 0.f, 600.f));
-	pTileMap->Transform()->SetRelativeScale(Vec3(500.f, 500.f, 1.f));
-
-	pTileMap->TileMap()->GetMaterial()->SetTexParam(TEX_0, CResMgr::GetInst()->FindRes<CTexture>(L"texture\\TILE.bmp"));
-	pTileMap->TileMap()->SetSliceSize(Vec2(0.125f, 0.166f));
-	pTileMap->TileMap()->SetTileCount(8, 8);
-
-	SpawnGameObject(pTileMap, Vec3(0.f, 0.f, 600.f), L"Tile");
-
-
-	// Particle Object
-	CGameObject* pParticleObj = new CGameObject;
-	pParticleObj->SetName(L"ParticleObject");
-	pParticleObj->AddComponent(new CTransform);
-	pParticleObj->AddComponent(new CParticleSystem);
-
-	SpawnGameObject(pParticleObj, Vec3(0.f, 0.f, 0.f), 0);
-
-
-	/*CGameObject* pPostProcess = new CGameObject;
-	pPostProcess->SetName(L"PostProcess");
-	pPostProcess->AddComponent(new CTransform);
-	pPostProcess->AddComponent(new CMeshRender);
-	pPostProcess->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
-	pPostProcess->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"GrayMtrl"));
-	SpawnGameObject(pPostProcess, Vec3(0.f, 0.f, 0.f), 0);*/
-
-	CGameObject* pDistortion = new CGameObject;
-	pDistortion->SetName(L"Distortion");
-	pDistortion->AddComponent(new CTransform);
-	pDistortion->AddComponent(new CMeshRender);
-	pDistortion->Transform()->SetRelativeScale(200.f, 200.f, 1.f);
-	pDistortion->MeshRender()->SetMesh(CResMgr::GetInst()->FindRes<CMesh>(L"RectMesh"));
-	pDistortion->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"DistortionMtrl"));
-	SpawnGameObject(pDistortion, Vec3(0.f, 0.f, 500.f), 0);
-
-	
-	
+				
 	// 충돌 시킬 레이어 짝 지정
 	CCollisionMgr::GetInst()->LayerCheck(L"Player", L"Monster");	
 }

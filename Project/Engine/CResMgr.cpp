@@ -4,6 +4,7 @@
 #include "CPathMgr.h"
 
 CResMgr::CResMgr()
+	: m_Changed(false)
 {
 }
 
@@ -403,6 +404,34 @@ void CResMgr::CreateDefaultGraphicsShader()
 
 	AddRes(pShader->GetKey(), pShader);
 
+	// ============================
+	// Std3DShader
+	// RasterizerState      : CULL_BACK
+	// BlendState           : Mask
+	// DepthStencilState    : Less
+	//
+	// Parameter
+	// g_tex_0              : Output Texture
+	// ============================
+	pShader = new CGraphicsShader;
+	pShader->SetKey(L"Std3DShader");
+	pShader->CreateVertexShader(L"shader\\std3d.fx", "VS_Std3D");
+	pShader->CreatePixelShader(L"shader\\std3d.fx", "PS_Std3D");
+
+	pShader->SetRSType(RS_TYPE::CULL_BACK);
+	pShader->SetDSType(DS_TYPE::LESS);
+	pShader->SetBSType(BS_TYPE::MASK);
+
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASK);
+
+	// Param
+	pShader->AddTexParam(TEX_0, "Output Texture");
+
+	AddRes(pShader->GetKey(), pShader);
+
+
+
+
 	// =================
 	// DebugShape Shader
 	// Topology : LineStrip
@@ -560,11 +589,17 @@ void CResMgr::CreateDefaultMaterial()
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DLightShader"));
 	AddRes(L"Std2DLightMtrl", pMtrl);
 
-	// Std2DLight Material
+	// Std2DAnimLight Material
 	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std2DLightShader"));
 	AddRes(L"Std2DAnimLightMtrl", pMtrl);
 	
+	// Std3DMtrl
+	pMtrl = new CMaterial(true);
+	pMtrl->SetShader(FindRes<CGraphicsShader>(L"Std3DShader"));
+	AddRes(L"Std3DMtrl", pMtrl);
+
+
 	// DebugShape Material
 	pMtrl = new CMaterial(true);
 	pMtrl->SetShader(FindRes<CGraphicsShader>(L"DebugShapeShader"));

@@ -39,7 +39,7 @@ void CGraphicsShader::CreateVertexShader(const wstring& _strFileName, const stri
 
 
 	// InputLayout »ý¼º
-	D3D11_INPUT_ELEMENT_DESC LayoutDesc[3] = {};
+	D3D11_INPUT_ELEMENT_DESC LayoutDesc[6] = {};
 
 	LayoutDesc[0].SemanticName = "POSITION";
 	LayoutDesc[0].SemanticIndex = 0;
@@ -65,8 +65,31 @@ void CGraphicsShader::CreateVertexShader(const wstring& _strFileName, const stri
 	LayoutDesc[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
 	LayoutDesc[2].InstanceDataStepRate = 0;
 
+	LayoutDesc[3].SemanticName = "TANGENT";
+	LayoutDesc[3].SemanticIndex = 0;
+	LayoutDesc[3].AlignedByteOffset = 36;
+	LayoutDesc[3].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+	LayoutDesc[3].InputSlot = 0;
+	LayoutDesc[3].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	LayoutDesc[3].InstanceDataStepRate = 0;
 
-	if (FAILED(DEVICE->CreateInputLayout(LayoutDesc, 3
+	LayoutDesc[4].SemanticName = "NORMAL";
+	LayoutDesc[4].SemanticIndex = 0;
+	LayoutDesc[4].AlignedByteOffset = 48;
+	LayoutDesc[4].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+	LayoutDesc[4].InputSlot = 0;
+	LayoutDesc[4].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	LayoutDesc[4].InstanceDataStepRate = 0;
+
+	LayoutDesc[5].SemanticName = "BINORMAL";
+	LayoutDesc[5].SemanticIndex = 0;
+	LayoutDesc[5].AlignedByteOffset = 60;
+	LayoutDesc[5].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+	LayoutDesc[5].InputSlot = 0;
+	LayoutDesc[5].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	LayoutDesc[5].InstanceDataStepRate = 0;
+
+	if (FAILED(DEVICE->CreateInputLayout(LayoutDesc, 6
 		, m_VSBlob->GetBufferPointer(), m_VSBlob->GetBufferSize()
 		, m_Layout.GetAddressOf())))
 	{
