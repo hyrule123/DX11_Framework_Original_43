@@ -146,3 +146,30 @@ void CParticleSystem::render()
 	m_ParticleBuffer->Clear();
 	m_ModuleDataBuffer->Clear();
 }
+
+void CParticleSystem::SaveToLevelFile(FILE* _File)
+{
+	CRenderComponent::SaveToLevelFile(_File);
+	
+	fwrite(&m_ModuleData, sizeof(tParticleModule), 1, _File);
+	SaveResRef(m_UpdateCS.Get(), _File);
+}
+
+void CParticleSystem::LoadFromLevelFile(FILE* _File)
+{
+	CRenderComponent::LoadFromLevelFile(_File);
+
+	fread(&m_ModuleData, sizeof(tParticleModule), 1, _File);
+
+	int i = 0;
+	fread(&i, sizeof(i), 1, _File);
+
+	if (i)
+	{
+		wstring strKey, strRelativePath;
+		LoadWString(strKey, _File);
+		LoadWString(strRelativePath, _File);
+
+		m_UpdateCS = (CParticleUpdateShader*)CResMgr::GetInst()->FindRes<CComputeShader>(strKey).Get();
+	}
+}

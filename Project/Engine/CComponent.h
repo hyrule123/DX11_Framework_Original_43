@@ -29,6 +29,10 @@ public:
     virtual CComponent* Clone() = 0;
 
 public:
+    virtual void SaveToLevelFile(FILE* _File) = 0;
+    virtual void LoadFromLevelFile(FILE* _FILE) = 0;
+
+public:
     GET_OTHER_COMPONENT(Transform);
     GET_OTHER_COMPONENT(MeshRender);
     GET_OTHER_COMPONENT(Camera);

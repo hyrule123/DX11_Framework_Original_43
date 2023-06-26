@@ -19,6 +19,8 @@
 
 void CreateTestLevel()
 {
+	return;
+
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	pCurLevel->ChangeState(LEVEL_STATE::STOP);
 
@@ -149,23 +151,5 @@ void CreateTestLevel()
 
 
 	// 충돌 시킬 레이어 짝 지정
-	CCollisionMgr::GetInst()->LayerCheck(L"Player", L"Monster");
-
-
-	// Level 저장
-	//CLevelSaveLoad::SaveLevel(L"Level\\TestLevel.lv", pCurLevel);
-
-	// Level 불러오기
-	//CLevel* pLoadedLevel = CLevelSaveLoad::LoadLevel(L"Level\\TestLevel.lv");
-
-	/*Ptr<CMaterial> pNewMtrl = new CMaterial;
-	pNewMtrl->SetShader(CResMgr::GetInst()->FindRes<CGraphicsShader>(L"Std2DLightShader"));
-	int a = 101;
-	pNewMtrl->SetScalarParam(INT_1, &a);
-	pNewMtrl->SetTexParam(TEX_0, CResMgr::GetInst()->FindRes<CTexture>(L"PlayerTex"));	
-	CResMgr::GetInst()->AddRes<CMaterial>(L"New Material", pNewMtrl);		
-
-	pNewMtrl->Save(L"material\\test.mtrl");*/
-
-	//CResMgr::GetInst()->Load<CMaterial>(L"New Material", L"material\\test.mtrl");
+	CCollisionMgr::GetInst()->LayerCheck(L"Player", L"Monster");	
 }

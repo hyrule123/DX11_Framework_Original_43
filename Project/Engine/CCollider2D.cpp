@@ -11,6 +11,7 @@ CCollider2D::CCollider2D()
 	, m_bAbsolute(false)
 	, m_iCollisionCount(0)
 {
+	SetName(L"Collider2D");
 }
 
 CCollider2D::~CCollider2D()
@@ -84,4 +85,20 @@ void CCollider2D::EndOverlap(CCollider2D* _Other)
 	{
 		vecScript[i]->EndOverlap(_Other);
 	}
+}
+
+void CCollider2D::SaveToLevelFile(FILE* _File)
+{
+	fwrite(&m_vOffsetPos, sizeof(Vec3), 1, _File);
+	fwrite(&m_vOffsetScale, sizeof(Vec3), 1, _File);
+	fwrite(&m_bAbsolute, sizeof(bool), 1, _File);
+	fwrite(&m_Shape, sizeof(UINT), 1, _File);
+}
+
+void CCollider2D::LoadFromLevelFile(FILE* _File)
+{
+	fread(&m_vOffsetPos, sizeof(Vec3), 1, _File);
+	fread(&m_vOffsetScale, sizeof(Vec3), 1, _File);
+	fread(&m_bAbsolute, sizeof(bool), 1, _File);
+	fread(&m_Shape, sizeof(UINT), 1, _File);
 }

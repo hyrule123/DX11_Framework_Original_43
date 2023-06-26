@@ -37,3 +37,17 @@ Ptr<CMaterial> CRenderComponent::GetDynamicMaterial()
 
 	return m_pCurrentMtrl;
 }
+
+void CRenderComponent::SaveToLevelFile(FILE* _File)
+{
+	SaveResRef(m_pMesh.Get(), _File);
+	SaveResRef(m_pSharedMtrl.Get(), _File);	
+}
+
+void CRenderComponent::LoadFromLevelFile(FILE* _File)
+{
+	LoadResRef(m_pMesh, _File);
+	LoadResRef(m_pSharedMtrl, _File);
+
+	SetMaterial(m_pSharedMtrl);
+}

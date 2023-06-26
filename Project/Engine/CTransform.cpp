@@ -13,6 +13,7 @@ CTransform::CTransform()
 		, Vec3(0.f, 1.f, 0.f)
 		, Vec3(0.f, 0.f, 1.f)}	
 {
+	SetName(L"Transform");
 }
 
 CTransform::~CTransform()
@@ -85,4 +86,20 @@ void CTransform::UpdateData()
 
 	pTransformBuffer->SetData(&g_transform);
 	pTransformBuffer->UpdateData();
+}
+
+void CTransform::SaveToLevelFile(FILE* _File)
+{
+	fwrite(&m_vRelativePos	, sizeof(Vec3), 1, _File);
+	fwrite(&m_vRelativeScale, sizeof(Vec3), 1, _File);
+	fwrite(&m_vRelativeRot	, sizeof(Vec3), 1, _File);
+	fwrite(&m_bAbsolute, sizeof(bool), 1, _File);	    
+}
+
+void CTransform::LoadFromLevelFile(FILE* _FILE)
+{	
+	fread(&m_vRelativePos, sizeof(Vec3), 1, _FILE);
+	fread(&m_vRelativeScale, sizeof(Vec3), 1, _FILE);
+	fread(&m_vRelativeRot, sizeof(Vec3), 1, _FILE);
+	fread(&m_bAbsolute, sizeof(bool), 1, _FILE);
 }
