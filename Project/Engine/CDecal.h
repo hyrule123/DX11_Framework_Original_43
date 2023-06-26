@@ -6,8 +6,12 @@ class CDecal :
 {
 private:
     Ptr<CTexture>   m_DecalTex;
+    int             m_Light;
 
 public:
+    void SetAsLight(bool _bLight) { m_Light = _bLight; }
+    void SetOutputTexture(Ptr<CTexture> _Tex) { m_DecalTex = _Tex; }
+
     virtual void finaltick() override;
     virtual void render() override;
 

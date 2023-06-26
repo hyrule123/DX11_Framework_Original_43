@@ -63,7 +63,7 @@
       <Filter>03. GameObject\Component</Filter>
     </ClCompile>
     <ClCompile Include="CCollisionMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CComponent.cpp">
       <Filter>03. GameObject\Component</Filter>
@@ -72,22 +72,22 @@
       <Filter>04. Resource</Filter>
     </ClCompile>
     <ClCompile Include="CDevice.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CEngine.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CEventMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CFontMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CKeyMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CLevelMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CGraphicsShader.cpp">
       <Filter>04. Resource</Filter>
@@ -111,13 +111,10 @@
       <Filter>03. GameObject\Component</Filter>
     </ClCompile>
     <ClCompile Include="CTimeMgr.cpp">
-      <Filter>02, Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="CRenderMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CPathMgr.cpp">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClCompile>
     <ClCompile Include="CTexture.cpp">
       <Filter>04. Resource</Filter>
@@ -130,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="CShader.cpp">
       <Filter>04. Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="CResMgr.cpp">
-      <Filter>02, Manager</Filter>
     </ClCompile>
     <ClCompile Include="CLight3D.cpp">
       <Filter>03. GameObject\Component</Filter>
@@ -185,11 +179,20 @@
     <ClCompile Include="pch.cpp">
       <Filter>Default</Filter>
     </ClCompile>
-    <ClCompile Include="CRenderMgr_init.cpp">
-      <Filter>02, Manager</Filter>
-    </ClCompile>
     <ClCompile Include="CDecal.cpp">
       <Filter>03. GameObject\Component\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderMgr_init.cpp">
+      <Filter>02. Manager\RenderMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CRenderMgr.cpp">
+      <Filter>02. Manager\RenderMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr_init.cpp">
+      <Filter>02. Manager\ResMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CResMgr.cpp">
+      <Filter>02. Manager\ResMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,7 +210,7 @@
       <Filter>03. GameObject\Component</Filter>
     </ClInclude>
     <ClInclude Include="CCollisionMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CComponent.h">
       <Filter>03. GameObject\Component</Filter>
@@ -216,22 +219,22 @@
       <Filter>04. Resource</Filter>
     </ClInclude>
     <ClInclude Include="CDevice.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CEngine.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CEventMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CFontMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CKeyMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CLevelMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CGraphicsShader.h">
       <Filter>04. Resource</Filter>
@@ -258,13 +261,10 @@
       <Filter>03. GameObject\Component</Filter>
     </ClInclude>
     <ClInclude Include="CTimeMgr.h">
-      <Filter>02, Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="CRenderMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="CPathMgr.h">
-      <Filter>02, Manager</Filter>
+      <Filter>02. Manager</Filter>
     </ClInclude>
     <ClInclude Include="global.h">
       <Filter>01. header</Filter>
@@ -298,9 +298,6 @@
     </ClInclude>
     <ClInclude Include="ptr.h">
       <Filter>01. header</Filter>
-    </ClInclude>
-    <ClInclude Include="CResMgr.h">
-      <Filter>02, Manager</Filter>
     </ClInclude>
     <ClInclude Include="CLight3D.h">
       <Filter>03. GameObject\Component</Filter>
@@ -353,13 +350,16 @@
     <ClInclude Include="CDecal.h">
       <Filter>03. GameObject\Component\RenderComponent</Filter>
     </ClInclude>
+    <ClInclude Include="CRenderMgr.h">
+      <Filter>02. Manager\RenderMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CResMgr.h">
+      <Filter>02. Manager\ResMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01. header">
       <UniqueIdentifier>{4549b324-204a-4360-8422-8ea0a013e6f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02, Manager">
-      <UniqueIdentifier>{830b9d4d-530e-42eb-8f44-7a781a1cedd3}</UniqueIdentifier>
     </Filter>
     <Filter Include="04. Resource">
       <UniqueIdentifier>{4fbc524d-557e-41b9-9293-067af8c42ecd}</UniqueIdentifier>
@@ -402,6 +402,15 @@
     </Filter>
     <Filter Include="Default">
       <UniqueIdentifier>{a646fac2-e977-4dac-80c2-d1f93be58cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Manager">
+      <UniqueIdentifier>{830b9d4d-530e-42eb-8f44-7a781a1cedd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Manager\ResMgr">
+      <UniqueIdentifier>{45a3139e-7d2b-4451-ac61-6ba38ccfed05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Manager\RenderMgr">
+      <UniqueIdentifier>{d8884ed6-cd05-4eb4-9c2c-1ac4312930ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@ CEntity::CEntity()
 {
 }
 
+
 CEntity::CEntity(const CEntity& _other)
 	: m_strName(_other.m_strName)
 	, m_iID(g_iNextID++)

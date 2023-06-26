@@ -59,7 +59,7 @@ void CreateTestLevel()
 	pLightObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 0.f));
 	pLightObj->Transform()->SetRelativeRot(Vec3(XM_PI / 7.f, -XM_PI / 2.f, 0.f));
 
-	pLightObj->Light3D()->SetLightType(LIGHT_TYPE::POINT);
+	pLightObj->Light3D()->SetLightType(LIGHT_TYPE::DIRECTIONAL);
 		
 	pLightObj->Light3D()->SetLightDiffuse(Vec3(1.f, 1.f, 1.f));
 	//pLightObj->Light3D()->SetLightSpecular(Vec3(0.3f, 0.3f, 0.3f));
@@ -109,7 +109,7 @@ void CreateTestLevel()
 
 	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);
 
-	/*pObject = new CGameObject;
+	pObject = new CGameObject;
 	pObject->SetName(L"Player_Deferred");
 	pObject->AddComponent(new CTransform);
 	pObject->AddComponent(new CMeshRender);
@@ -123,7 +123,7 @@ void CreateTestLevel()
 	pObject->MeshRender()->GetMaterial()->SetTexParam(TEX_0, CResMgr::GetInst()->FindRes<CTexture>(L"texture\\tile\\TILE_03.tga"));
 	pObject->MeshRender()->GetMaterial()->SetTexParam(TEX_1, CResMgr::GetInst()->FindRes<CTexture>(L"texture\\tile\\TILE_03_N.tga"));
 
-	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);*/
+	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);
 
 
 	// Decal Object
@@ -133,6 +133,7 @@ void CreateTestLevel()
 	pObject->AddComponent(new CDecal);	
 
 	pObject->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 200.f));	
+	pObject->Decal()->SetOutputTexture(CResMgr::GetInst()->FindRes<CTexture>(L"texture\\MagicCircle.png"));
 
 	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);
 
