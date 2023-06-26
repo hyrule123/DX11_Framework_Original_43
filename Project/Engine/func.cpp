@@ -105,6 +105,60 @@ void DrawDebugCircle(const Matrix& _matWorld, Vec4 _vColor, float _fTime)
 	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
 }
 
+void DrawDebugCube(Vec3 _vWorldPos, Vec2 _vWorldScale, Vec4 _vColor, Vec3 _vRotation, float _fTime)
+{
+	tDebugShapeInfo info = {};
+
+	info.matWorld = XMMatrixIdentity();
+	info.eShape = SHAPE_TYPE::CUBE;
+	info.fMaxTime = _fTime;
+	info.vWorldPos = _vWorldPos;
+	info.vWorldScale = Vec3(_vWorldScale.x, _vWorldScale.y, 1.f);
+	info.vWorldRotation = _vRotation;
+	info.vColor = _vColor;
+
+	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
+}
+
+void DrawDebugCube(const Matrix& _matWorld, Vec4 _vColor, float _fTime)
+{
+	tDebugShapeInfo info = {};
+
+	info.matWorld = _matWorld;
+	info.eShape = SHAPE_TYPE::CUBE;
+	info.fMaxTime = _fTime;
+	info.vColor = _vColor;
+
+	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
+}
+
+void DrawDebugSphere(Vec3 _vWorldPos, float _fRadius, Vec4 _vColor, Vec3 _vRotation, float _fTime)
+{
+	tDebugShapeInfo info = {};
+
+	info.matWorld = XMMatrixIdentity();
+	info.eShape = SHAPE_TYPE::SPHERE;
+	info.fMaxTime = _fTime;
+	info.vWorldPos = _vWorldPos;
+	info.vWorldScale = Vec3(_fRadius, _fRadius, _fRadius);
+	info.vWorldRotation = _vRotation;
+	info.vColor = _vColor;
+
+	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
+}
+
+void DrawDebugSphere(const Matrix& _matWorld, Vec4 _vColor, float _fTime)
+{
+	tDebugShapeInfo info = {};
+
+	info.matWorld = _matWorld;
+	info.eShape = SHAPE_TYPE::SPHERE;
+	info.fMaxTime = _fTime;
+	info.vColor = _vColor;
+
+	CRenderMgr::GetInst()->AddDebugShapeInfo(info);
+}
+
 
 const char* ToString(RES_TYPE type)
 {

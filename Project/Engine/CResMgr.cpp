@@ -338,7 +338,6 @@ void CResMgr::CreateDefaultMesh()
 	vecIdx.clear();
 
 
-
 	// ===========
 	// Sphere Mesh
 	// ===========

@@ -43,6 +43,9 @@
     <FxCompile Include="light.fx">
       <Filter>05. ShaderCode\02. Render\3D</Filter>
     </FxCompile>
+    <FxCompile Include="decal.fx">
+      <Filter>05. ShaderCode\02. Render\3D</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CEntity.cpp" />
@@ -184,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="CRenderMgr_init.cpp">
       <Filter>02, Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CDecal.cpp">
+      <Filter>03. GameObject\Component\RenderComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="CDecal.h">
+      <Filter>03. GameObject\Component\RenderComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
