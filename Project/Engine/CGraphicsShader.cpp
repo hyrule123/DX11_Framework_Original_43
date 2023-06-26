@@ -32,6 +32,7 @@ void CGraphicsShader::CreateVertexShader(const wstring& _strFileName, const stri
 			, "Vertex Shader Compile Failed!!", MB_OK);
 	}
 
+
 	// 컴파일된 객체로 VertexShader, PixelShader 를 만든다.
 	DEVICE->CreateVertexShader(m_VSBlob->GetBufferPointer(), m_VSBlob->GetBufferSize()
 		, nullptr, m_VS.GetAddressOf());

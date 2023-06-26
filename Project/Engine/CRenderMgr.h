@@ -1,6 +1,9 @@
 #pragma once
 #include "CSingleton.h"
 
+#include "ptr.h"
+#include "CTexture.h"
+
 class CCamera;
 class CLight2D;
 class CStructuredBuffer;
@@ -19,6 +22,8 @@ private:
     CStructuredBuffer*          m_Light2DBuffer;
 
     void (CRenderMgr::* RENDER_FUNC)(void);
+
+    Ptr<CTexture>               m_RTCopyTex;
 
 
 public:
@@ -41,6 +46,8 @@ public:
 
         return m_vecCam[0];
     }
+
+    void CopyRenderTarget();
 
 private:
     void UpdateData();

@@ -8,10 +8,21 @@
 #include "CCamera.h"
 #include "CLight2D.h"
 
+#include "CResMgr.h"
+
 CRenderMgr::CRenderMgr()
     : m_Light2DBuffer(nullptr)
+    , RENDER_FUNC(nullptr)
+    , m_pEditorCam(nullptr)
 {
+    Vec2 vResolution = CDevice::GetInst()->GetRenderResolution();
+    m_RTCopyTex = CResMgr::GetInst()->CreateTexture(L"RTCopyTex"
+                                                    , (UINT)vResolution.x, (UINT)vResolution.y
+                                                    , DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE
+                                                    , D3D11_USAGE_DEFAULT);
 
+    CResMgr::GetInst()->FindRes<CMaterial>(L"GrayMtrl")->SetTexParam(TEX_0, m_RTCopyTex);
+    CResMgr::GetInst()->FindRes<CMaterial>(L"DistortionMtrl")->SetTexParam(TEX_0, m_RTCopyTex);
 }
 
 CRenderMgr::~CRenderMgr()
@@ -85,6 +96,12 @@ void CRenderMgr::SetRenderFunc(bool _IsPlay)
         RENDER_FUNC = &CRenderMgr::render_play;
     else
         RENDER_FUNC = &CRenderMgr::render_editor;
+}
+
+void CRenderMgr::CopyRenderTarget()
+{
+    Ptr<CTexture> pRTTex = CResMgr::GetInst()->FindRes<CTexture>(L"RenderTargetTex");
+    CONTEXT->CopyResource(m_RTCopyTex->GetTex2D().Get(), pRTTex->GetTex2D().Get());
 }
 
 void CRenderMgr::UpdateData()
