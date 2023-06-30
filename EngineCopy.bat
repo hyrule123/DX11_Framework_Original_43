@@ -18,6 +18,6 @@ xcopy /d /s /y /i /r  /exclude:exclude_list.txt ".\OutputFile\bin\content\*" ".\
 xcopy /d /s /y /i /r  ".\OutputFile\bin\CodeGen.exe" ".\OutputFile\bin_d\"
 xcopy /d /s /y /i /r  ".\OutputFile\bin\exeptlist.txt" ".\OutputFile\bin_d\"
 
-:: 컨텐츠 폴더 미리 생성
-if not exist ".\OutputFile\bin\content\material" ( mkdir ".\OutputFile\bin\content\material" )
-if not exist ".\OutputFile\bin_d\content\material" ( mkdir ".\OutputFile\bin_d\content\material" )
+::폴더 없을 시 폴더 생성
+if not exist .\OutputFile\bin\material ( mkdir .\OutputFile\bin\material )
+if not exist .\OutputFile\bin_d\material ( mkdir .\OutputFile\bin_d\material )

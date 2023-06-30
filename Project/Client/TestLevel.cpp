@@ -83,7 +83,7 @@ void CreateTestLevel()
 
 
 	// Object
-	CGameObject* pObject = new CGameObject;
+	/*CGameObject* pObject = new CGameObject;
 	pObject->SetName(L"Object");
 
 	pObject->AddComponent(new CTransform);
@@ -95,7 +95,7 @@ void CreateTestLevel()
 	pObject->MeshRender()->SetMaterial(CResMgr::GetInst()->FindRes<CMaterial>(L"Std3D_DeferredMtrl"),0);
 	pObject->MeshRender()->SetDynamicShadow(true);
 
-	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);
+	SpawnGameObject(pObject, Vec3(0.f, 0.f, 0.f), 0);*/
 
 
 	// LandScape Object
@@ -121,14 +121,18 @@ void CreateTestLevel()
 	{
 		Ptr<CMeshData> pMeshData = nullptr;
 		CGameObject* pObj = nullptr;
-		pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\house.fbx");
-		SpawnGameObject(pMeshData->Instantiate(), Vec3(0.f, 500.f, 0.f), 0);
+		//pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\house.fbx");
+		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\house.mdat");
+		//pObj = pMeshData->Instantiate();
+		//pObj->SetName(L"House");
+
+		pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\monster.fbx");
+		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\monster.mdat");
+		pObj = pMeshData->Instantiate();
+		pObj->SetName(L"Monster");
+
+		SpawnGameObject(pObj, Vec3(0.f, 0.f, 0.f), 0);
 	}
-
-
-
-
-
 
 	// 충돌 시킬 레이어 짝 지정
 	CCollisionMgr::GetInst()->LayerCheck(L"Player", L"Monster");	
