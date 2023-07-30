@@ -242,6 +242,9 @@
     <ClCompile Include="CSetColorShader.cpp">
       <Filter>05. ShaderCode\03. Compute\SetColor</Filter>
     </ClCompile>
+    <ClCompile Include="CInstancingBuffer.cpp">
+      <Filter>02. Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CEntity.h" />
@@ -430,6 +433,9 @@
     </ClInclude>
     <ClInclude Include="CSetColorShader.h">
       <Filter>05. ShaderCode\03. Compute\SetColor</Filter>
+    </ClInclude>
+    <ClInclude Include="CInstancingBuffer.h">
+      <Filter>02. Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

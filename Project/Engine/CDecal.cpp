@@ -33,3 +33,8 @@ void CDecal::render()
 
 	GetMesh()->render(0);
 }
+
+void CDecal::render(UINT _iSubset)
+{
+	render();
+}

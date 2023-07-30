@@ -43,6 +43,11 @@ void CSkyBox::render()
 	GetMesh()->render(0);
 }
 
+void CSkyBox::render(UINT _iSubset)
+{
+	render();
+}
+
 void CSkyBox::SetType(SKYBOX_TYPE _Type)
 {
 	m_Type = _Type;

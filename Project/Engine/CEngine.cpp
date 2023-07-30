@@ -5,6 +5,7 @@
 #include "CPathMgr.h"
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
+#include "CInstancingBuffer.h"
 #include "CResMgr.h"
 #include "CLevelMgr.h"
 #include "CCollisionMgr.h"
@@ -45,18 +46,13 @@ int CEngine::init(HWND _hWnd, UINT _iWidth, UINT _iHeight)
 
 	// Manager ÃÊ±âÈ­
 	CPathMgr::GetInst()->init();
-
 	CKeyMgr::GetInst()->init();
-
 	CTimeMgr::GetInst()->init();
-
+	CInstancingBuffer::GetInst()->init();
 	CResMgr::GetInst()->init();
-
 	CRenderMgr::GetInst()->init();
-
 	CFontMgr::GetInst()->init();
-
-	CLevelMgr::GetInst()->init();		
+	CLevelMgr::GetInst()->init();
 	
 
 

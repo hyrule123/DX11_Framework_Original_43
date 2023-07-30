@@ -39,6 +39,7 @@ public:
    
 
     void UpdateData();
+    void UpdateData_Inst();
 
 private:
     virtual int Load(const wstring& _strFilePath);

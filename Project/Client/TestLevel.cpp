@@ -121,17 +121,28 @@ void CreateTestLevel()
 	{
 		Ptr<CMeshData> pMeshData = nullptr;
 		CGameObject* pObj = nullptr;
+
 		//pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\house.fbx");
 		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\house.mdat");
 		//pObj = pMeshData->Instantiate();
 		//pObj->SetName(L"House");
 
-		pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\monster.fbx");
+		//pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\monster.fbx");
 		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\monster.mdat");
-		pObj = pMeshData->Instantiate();
-		pObj->SetName(L"Monster");
+		//pObj = pMeshData->Instantiate();
+		//pObj->SetName(L"Monster");
 
-		SpawnGameObject(pObj, Vec3(0.f, 0.f, 0.f), 0);
+		// 인스턴싱 테스트		
+		//pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\house.fbx");
+		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\house.mdat");
+
+		//이 부분에서 에러 나서 주석 처리하였음.
+		//for (int i = 0; i < 10; ++i)
+		//{
+		//	pObj = pMeshData->Instantiate();
+		//	pObj->SetName(L"House");						
+		//	SpawnGameObject(pObj, Vec3(i * 400.f, 0.f, 0.f), 0);
+		//}
 	}
 
 	// 충돌 시킬 레이어 짝 지정
