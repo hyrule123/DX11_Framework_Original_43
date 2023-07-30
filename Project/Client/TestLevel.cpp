@@ -134,14 +134,13 @@ void CreateTestLevel()
 
 		// 인스턴싱 테스트		
 		//pMeshData = CResMgr::GetInst()->LoadFBX(L"fbx\\house.fbx");
-		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\house.mdat");
+		//pMeshData = CResMgr::GetInst()->FindRes<CMeshData>(L"meshdata\\monster.mdat");
 
-		//이 부분에서 에러 나서 주석 처리하였음.
 		//for (int i = 0; i < 10; ++i)
 		//{
 		//	pObj = pMeshData->Instantiate();
-		//	pObj->SetName(L"House");						
-		//	SpawnGameObject(pObj, Vec3(i * 400.f, 0.f, 0.f), 0);
+		//	pObj->SetName(L"Monster");						
+		//	SpawnGameObject(pObj, Vec3(i * 100.f, 0.f, 0.f), 0);
 		//}
 	}
 

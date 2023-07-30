@@ -847,6 +847,7 @@ void CResMgr::CreateDefaultGraphicsShader()
 #include "CSetColorShader.h"
 #include "CParticleUpdateShader.h"
 #include "CAnimation3DShader.h"
+#include "CCopyBoneShader.h"
 
 void CResMgr::CreateDefaultComputeShader()
 {
@@ -868,6 +869,12 @@ void CResMgr::CreateDefaultComputeShader()
 	pCS = new CAnimation3DShader(256, 1, 1);
 	pCS->SetKey(L"Animation3DUpdateCS");
 	pCS->CreateComputeShader(L"shader\\animation3d.fx", "CS_Animation3D");
+	AddRes(pCS->GetKey(), pCS);
+
+	// Animation Matrix Update ½¦ÀÌ´õ
+	pCS = new CCopyBoneShader(1024, 1, 1);
+	pCS->SetKey(L"CopyBoneCS");
+	pCS->CreateComputeShader(L"shader\\copybone.fx", "CS_CopyBoneMatrix");
 	AddRes(pCS->GetKey(), pCS);
 }
 

@@ -64,6 +64,9 @@
     <FxCompile Include="animation3d.fx">
       <Filter>05. ShaderCode\03. Compute\Animation\AnimationUpdate</Filter>
     </FxCompile>
+    <FxCompile Include="copybone.fx">
+      <Filter>05. ShaderCode\03. Compute\CopyBone</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CEntity.cpp" />
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="CInstancingBuffer.cpp">
       <Filter>02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CCopyBoneShader.cpp">
+      <Filter>05. ShaderCode\03. Compute\CopyBone</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +443,9 @@
     <ClInclude Include="CInstancingBuffer.h">
       <Filter>02. Manager</Filter>
     </ClInclude>
+    <ClInclude Include="CCopyBoneShader.h">
+      <Filter>05. ShaderCode\03. Compute\CopyBone</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01. header">
@@ -525,6 +534,9 @@
     </Filter>
     <Filter Include="05. ShaderCode\03. Compute\SetColor">
       <UniqueIdentifier>{8f302337-534e-47ec-a2f5-de4a3f87f715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. ShaderCode\03. Compute\CopyBone">
+      <UniqueIdentifier>{9d6e4a08-7929-4563-b863-0e2f9f67cd66}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
